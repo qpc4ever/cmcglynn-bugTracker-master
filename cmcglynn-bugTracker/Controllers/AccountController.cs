@@ -140,6 +140,9 @@ namespace cmcglynn_bugTracker.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var timezones = TimeZoneInfo.GetSystemTimeZones();
+
+            ViewBag.TimeZone = new SelectList(timezones, "Id", "Id");
             return View();
         }
 

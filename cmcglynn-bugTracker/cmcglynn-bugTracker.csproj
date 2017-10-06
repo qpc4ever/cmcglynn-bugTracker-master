@@ -214,6 +214,7 @@
     <Compile Include="Models\CodeFirst\TicketPriority.cs" />
     <Compile Include="Models\CodeFirst\TicketStatus.cs" />
     <Compile Include="Models\CodeFirst\TicketType.cs" />
+    <Compile Include="Models\CustomHtmlHelper.cs" />
     <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

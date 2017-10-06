@@ -257,7 +257,7 @@ namespace cmcglynn_bugTracker.Controllers
         public ActionResult CommentCreate([Bind(Include = "Id,TicketId,Body")] TicketComment ticketComment)
         {
             var userId = User.Identity.GetUserId();
-            if (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticketComment.Ticket.Project.Users.Any(u => u.Id == userId)) || (User.IsInRole("Developer") && ticketComment.Ticket.AssignToUserId == userId) || (User.IsInRole("Submitter") && ticketComment.AuthorId == userId))
+            if (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticketComment.Ticket.Project.Users.Any(u => u.Id == userId)) || (User.IsInRole("Developer") && ticketComment.Ticket.AssignToUserId == userId) || (User.IsInRole("Submitter") && ticketComment.Ticket.OwnerUserId == userId))
                 if (ModelState.IsValid)
             {
                 if (!String.IsNullOrWhiteSpace(userId))
