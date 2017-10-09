@@ -259,24 +259,24 @@ namespace cmcglynn_bugTracker.Controllers
             var userId = User.Identity.GetUserId();
             if (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticketComment.Ticket.Project.Users.Any(u => u.Id == userId)) || (User.IsInRole("Developer") && ticketComment.Ticket.AssignToUserId == userId) || (User.IsInRole("Submitter") && ticketComment.Ticket.OwnerUserId == userId))
                 if (ModelState.IsValid)
-            {
-                if (!String.IsNullOrWhiteSpace(userId))
                 {
-                    ticketComment.Created = DateTime.Now;
-                    ticketComment.AuthorId = User.Identity.GetUserId();
-                    db.TicketComments.Add(ticketComment);
-                    db.SaveChanges();
+                    if (!String.IsNullOrWhiteSpace(userId))
+                    {
+                        ticketComment.Created = DateTime.Now;
+                        ticketComment.AuthorId = User.Identity.GetUserId();
+                        db.TicketComments.Add(ticketComment);
+                        db.SaveChanges();
 
-                    var ticket = db.Tickets.Find(ticketComment.TicketId);
-                    return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
+                        //var ticket = db.Tickets.Find(ticketComment.TicketId);
+                        //return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
+                    }
                 }
-            }
-            return RedirectToAction("Index", "Tickets");
+            return RedirectToAction("Index", "Tickets"); 
 
 
-            ViewBag.AuthorId = new SelectList(db.ApplicationUser, "Id", "FirstName", ticketComment.AuthorId);
-            ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
-            return View(ticketComment);
+            //ViewBag.AuthorId = new SelectList(db.ApplicationUser, "Id", "FirstName", ticketComment.AuthorId);
+            //ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
+            //return View(ticketComment);
         }
 
 
