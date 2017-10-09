@@ -32,20 +32,20 @@ namespace cmcglynn_bugTracker.Controllers
 
             if (User.IsInRole("Project Manager"))
             {
-                return View(Tickets.Where(c => c.Project.Users.Any(u => u.Id == user.Id)));
+                return View(tickets.Where(c => c.Project.Users.Any(u => u.Id == user.Id)));
             }
 
             else if (User.IsInRole("Developer"))
             {
-                return View(Tickets.Where(c => c.AssignToUserId == user.Id).ToList());
+                return View(tickets.Where(c => c.AssignToUserId == user.Id).ToList());
             }
             else if (User.IsInRole("Submitter"))
             {
-                return View(db.Tickets.Where(c => c.OwnerUserId == user.Id).ToList());
+                return View(tickets.Where(c => c.OwnerUserId == user.Id).ToList());
             }
             else if (User.IsInRole("Admin"))
             {
-                return View(db.Tickets.ToList());
+                return View(tickets.ToList());
             }
             return View(tickets);
         }
@@ -271,7 +271,8 @@ namespace cmcglynn_bugTracker.Controllers
                         //return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
                     }
                 }
-            return RedirectToAction("Index", "Tickets"); 
+            var ticket = db.Tickets.Find(ticketComment.TicketId);
+            return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
 
 
             //ViewBag.AuthorId = new SelectList(db.ApplicationUser, "Id", "FirstName", ticketComment.AuthorId);
