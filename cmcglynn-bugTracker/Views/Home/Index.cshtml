@@ -195,3 +195,209 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+    <script src="~/Assets/third-party/flot/jquery.flot.min.js"></script>
+    <script src="~/Assets/third-party/flot/jquery.flot.time.js"></script>
+    <script src="~/Assets/third-party/flot/jquery.flot.pie.js"></script>
+    <script src="~/Assets/third-party/flot/jquery.flot.crosshair.js"></script>
+    <script src="~/Assets/third-party/flot/jquery.flot.threshold.js"></script>
+    <script src="~/Assets/third-party/flot/jquery.flot.stack.js"></script>
+    <script src="~/Assets/third-party/flot/jquery.flot.min.js"></script>
+    <script src="~/Assets/third-party/flot/jquery.flot.time.min.js"></script>
+    <script src="~/Assets/third-party/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript">
+            $(function () {
+                $("#sparkline1").sparkline([500, 640, 570, 600, 700, 800, 900, 550, 750, 930], {
+                    type: 'bar',
+                    height: '65px',
+                    barWidth: 5,
+                    barSpacing: 2,
+                    barColor: '#24caa1'
+                });
+                $("#sparkline2").sparkline([200, 300, 400, 500, 350, 250, 650, 250, 330, 500], {
+                    type: 'bar',
+                    height: '65px',
+                    barWidth: 5,
+                    barSpacing: 2,
+                    barColor: '#faca39'
+                });
+                $("#sparkline3").sparkline([100, 150, 250, 175, 350, 275, 150, 100, 225, 375], {
+                    type: 'bar',
+                    height: '65px',
+                    barWidth: 5,
+                    barSpacing: 2,
+                    barColor: '#805bbe'
+                });
+                $("#sparkline4").sparkline([300, 400, 500, 200, 300, 400, 200, 100, 500, 300], {
+                    type: 'bar',
+                    height: '65px',
+                    barWidth: 5,
+                    barSpacing: 2,
+                    barColor: '#2eb7f3'
+                });
+                $("#sparkline5").sparkline([150, 250, 225, 275, 175, 200, 350, 120, 160, 250], {
+                    type: 'bar',
+                    height: '65px',
+                    barWidth: 5,
+                    barSpacing: 2,
+                    barColor: '#ff7f5a'
+                });
+                $("#sparkline6").sparkline([200, 250, 275, 285, 295, 150, 300, 650, 500, 450], {
+                    type: 'bar',
+                    height: '65px',
+                    barWidth: 5,
+                    barSpacing: 2,
+                    barColor: '#4c5667'
+                });
+            });
+        </script>
+
+    <script>
+        var d1 = [[0, 9], [1, 8], [2, 5], [3, 8], [4, 5], [5, 14], [6, 10], [7, 8], [8, 5], [9, 14], [10, 10]];
+        $.plot("#website-stats-1", [{
+            data: d1, color: '#fff',
+            lines: { show: true, fill: true, fillColor: "rgba(255, 255, 255, 0.7)" }
+        }
+        ], {
+                grid: {
+                    show: false,
+                    color: "rgb(48, 48, 48)",
+                    tickColor: "rgba(255, 255, 255, 0)",
+                    borderWidth: 1
+                },
+                series: {
+                    lines: {
+                        show: false,
+                        fill: true
+                    },
+                    points: {
+                        show: false
+                    },
+                },
+                legend: {
+                    labelBoxBorderColor: "none",
+                    position: "right"
+                }
+            });
+    </script>
+    <script>
+        var d2 = [[0, 5], [1, 12], [2, 4], [3, 3], [4, 12], [5, 11], [6, 14], [7, 12], [8, 8], [9, 4], [10, 8]];
+        $.plot("#website-stats-2", [{
+            data: d2, color: '#fff',
+            lines: { show: true, fill: true, fillColor: "rgba(255, 255, 255, 0.7)" }
+        }
+        ], {
+                grid: {
+                    show: false,
+                    color: "rgb(48, 48, 48)",
+                    tickColor: "rgba(255, 255, 255, 0)",
+                    borderWidth: 1
+                },
+                series: {
+                    lines: {
+                        show: false,
+                        fill: true
+                    },
+                    points: {
+                        show: false
+                    },
+                },
+                legend: {
+                    labelBoxBorderColor: "none",
+                    position: "right"
+                }
+            });
+    </script>
+    <script>
+        var d3 = [[5, 14], [6, 10], [7, 8], [8, 5], [9, 14], [10, 10]];
+        $.plot("#website-stats-3", [{
+            data: d3, color: '#fff',
+            lines: { show: true, fill: true, fillColor: "rgba(255, 255, 255, 0.7)" }
+        }
+        ], {
+                grid: {
+                    show: false,
+                    color: "rgb(48, 48, 48)",
+                    tickColor: "rgba(255, 255, 255, 0)",
+                    borderWidth: 1
+                },
+                series: {
+                    lines: {
+                        show: false,
+                        fill: true
+                    },
+                    points: {
+                        show: false
+                    },
+                },
+                legend: {
+                    labelBoxBorderColor: "none",
+                    position: "right"
+                }
+            });
+    </script>
+
+    <script>
+        $(function () {
+
+            var d = [[1196463600000, 0], [1196550000000, 0], [1196636400000, 0], [1196722800000, 77], [1196809200000, 3636], [1196895600000, 3575], [1196982000000, 2736], [1197068400000, 1086], [1197154800000, 676], [1197241200000, 1205], [1197327600000, 906], [1197414000000, 3010], [1197500400000, 2009], [1197586800000, 1040], [1197673200000, 1435], [1197759600000, 301], [1197846000000, 575], [1197932400000, 481], [1198018800000, 591], [1198105200000, 608], [1198191600000, 459], [1198278000000, 234], [1198364400000, 1352], [1198450800000, 686], [1198537200000, 279], [1198623600000, 449], [1198710000000, 468], [1198796400000, 392], [1198882800000, 282], [1198969200000, 208], [1199055600000, 229], [1199142000000, 177], [1199228400000, 374], [1199314800000, 436], [1199401200000, 404], [1199487600000, 253], [1199574000000, 218], [1199660400000, 476], [1199746800000, 462], [1199833200000, 448], [1199919600000, 442], [1200006000000, 403], [1200092400000, 204], [1200178800000, 194], [1200265200000, 327], [1200351600000, 374], [1200438000000, 507], [1200524400000, 546], [1200610800000, 482], [1200697200000, 283], [1200783600000, 221], [1200870000000, 483], [1200956400000, 523], [1201042800000, 528], [1201129200000, 483], [1201215600000, 452], [1201302000000, 270], [1201388400000, 222], [1201474800000, 439], [1201561200000, 559], [1201647600000, 521], [1201734000000, 477], [1201820400000, 442], [1201906800000, 252], [1201993200000, 236], [1202079600000, 525], [1202166000000, 477], [1202252400000, 386], [1202338800000, 409], [1202425200000, 1408], [1202511600000, 237], [1202598000000, 193], [1202684400000, 357], [1202770800000, 414], [1202857200000, 393], [1202943600000, 353], [1203030000000, 364], [1203116400000, 215], [1203202800000, 214], [1203289200000, 356], [1203375600000, 399], [1203462000000, 334], [1203548400000, 348], [1203634800000, 1243], [1203721200000, 526], [1203807600000, 1157], [1203894000000, 288]];
+
+            // first correct the timestamps - they are recorded as the daily
+            // midnights in UTC+0100, but Flot always displays dates in UTC
+            // so we have to add one hour to hit the midnights in the plot
+
+            for (var i = 0; i < d.length; ++i) {
+                d[i][0] += 60 * 60 * 1000;
+            }
+
+            // helper for returning the weekends in a period
+
+            function weekendAreas(axes) {
+
+                var markings = [],
+                    d = new Date(axes.xaxis.min);
+
+                // go to the first Saturday
+
+                d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 1) % 7))
+                d.setUTCSeconds(0);
+                d.setUTCMinutes(0);
+                d.setUTCHours(0);
+
+                var i = d.getTime();
+
+                // when we don't set yaxis, the rectangle automatically
+                // extends to infinity upwards and downwards
+
+                do {
+                    markings.push({ xaxis: { from: i, to: i + 2 * 24 * 60 * 60 * 1000 } });
+                    i += 7 * 24 * 60 * 60 * 1000;
+                } while (i < axes.xaxis.max);
+
+                return markings;
+            }
+
+            var options = {
+                xaxis: {
+                    mode: "time",
+                    tickLength: 5
+                },
+                series: {
+                    lines: {
+                        fill: true,
+                        show: true,
+                        fillColor: "rgba(63, 77, 159, 0.7)"
+                    }
+                },
+                colors: ["#3f4d9f"],
+                grid: {
+                    color: "#AFAFAF",
+                    borderWidth: 0
+                }
+            };
+
+            var plot = $.plot("#Visitors", [d], options);
+        });
+    </script>
+}

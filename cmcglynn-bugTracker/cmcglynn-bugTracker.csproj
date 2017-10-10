@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -120,12 +127,6 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -270,7 +271,6 @@
     <Content Include="Assets\images\castle.jpg" />
     <Content Include="Assets\images\cd-arrow.svg" />
     <Content Include="Assets\images\checkbox-img.png" />
-    <Content Include="Assets\images\cm_monogram_1x.png" />
     <Content Include="Assets\images\ecommerce-1.png" />
     <Content Include="Assets\images\ecommerce-2.png" />
     <Content Include="Assets\images\ecommerce-3.png" />
@@ -315,8 +315,6 @@
     <Content Include="Assets\mailbox.html" />
     <Content Include="Assets\maps-google.html" />
     <Content Include="Assets\maps-vector.html" />
-    <Content Include="Assets\MultiSelect\MultiSelect.js" />
-    <Content Include="Assets\MultiSelect\MultiSelect.css" />
     <Content Include="Assets\pages\calendar.js" />
     <Content Include="Assets\pages\charts-js.js" />
     <Content Include="Assets\pages\flot-charts.js" />
@@ -1736,11 +1734,15 @@
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\smoothness\jquery-ui.css" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\smoothness\jquery-ui.min.css" />
+    <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-icons_228ef1_256x240.png" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
     <Content Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
@@ -2272,6 +2274,9 @@
     <Content Include="Assets\third-party\x-editable\dist\inputs-ext\typeaheadjs\lib\typeahead.js" />
     <Content Include="Assets\third-party\x-editable\dist\inputs-ext\typeaheadjs\lib\typeahead.js-bootstrap.css" />
     <Content Include="Assets\third-party\x-editable\dist\inputs-ext\typeaheadjs\typeaheadjs.js" />
+    <Content Include="Assets\third-party\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.css" />
+    <Content Include="Assets\third-party\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.js" />
+    <Content Include="Assets\third-party\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.min.js" />
     <Content Include="Assets\third-party\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.js" />
     <Content Include="Assets\third-party\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.min.js" />
     <Content Include="Assets\third-party\x-editable\dist\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysiwyg-color.css" />
@@ -2279,6 +2284,24 @@
     <Content Include="Assets\third-party\x-editable\dist\jquery-editable\css\jquery-editable.css" />
     <Content Include="Assets\third-party\x-editable\dist\jquery-editable\img\clear.png" />
     <Content Include="Assets\third-party\x-editable\dist\jquery-editable\img\loading.gif" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\animated-overlay.gif" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\js\jquery-ui-1.10.3.custom.js" />
     <Content Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\js\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Assets\third-party\x-editable\dist\jquery-editable\js\jquery-editable-poshytip.js" />
@@ -2312,6 +2335,12 @@
     <Content Include="Assets\third-party\x-editable\src\inputs-ext\typeaheadjs\lib\typeahead.js" />
     <Content Include="Assets\third-party\x-editable\src\inputs-ext\typeaheadjs\lib\typeahead.js-bootstrap.css" />
     <Content Include="Assets\third-party\x-editable\src\inputs-ext\typeaheadjs\typeaheadjs.js" />
+    <Content Include="Assets\third-party\x-editable\src\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.css" />
+    <Content Include="Assets\third-party\x-editable\src\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.js" />
+    <Content Include="Assets\third-party\x-editable\src\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\bootstrap-wysihtml5-0.0.2.min.js" />
+    <Content Include="Assets\third-party\x-editable\src\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.js" />
+    <Content Include="Assets\third-party\x-editable\src\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysihtml5-0.3.0.min.js" />
+    <Content Include="Assets\third-party\x-editable\src\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\wysiwyg-color.css" />
     <Content Include="Assets\third-party\x-editable\src\inputs-ext\wysihtml5\wysihtml5.js" />
     <Content Include="Assets\third-party\x-editable\src\inputs\abstract.js" />
     <Content Include="Assets\third-party\x-editable\src\inputs\checklist.js" />
@@ -2325,6 +2354,30 @@
     <Content Include="Assets\third-party\x-editable\src\inputs\datetime\datetimefield.js" />
     <Content Include="Assets\third-party\x-editable\src\inputs\dateui\dateui.js" />
     <Content Include="Assets\third-party\x-editable\src\inputs\dateui\dateuifield.js" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\animated-overlay.gif" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.1.custom.css" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.2.custom.css" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.2.custom.min.css" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\jquery-ui-1.9.1.custom.css" />
+    <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\redmond\jquery-ui-1.9.1.custom.min.css" />
     <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\js\jquery-ui-1.10.1.custom.js" />
     <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\js\jquery-ui-1.10.1.custom.min.js" />
     <Content Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\js\jquery-ui-1.10.2.custom.js" />
@@ -2391,15 +2444,98 @@
     <Content Include="Assets\third-party\x-editable\test\libs\bootstrap300\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\third-party\x-editable\test\libs\bootstrap300\js\bootstrap.js" />
     <Content Include="Assets\third-party\x-editable\test\libs\bootstrap300\js\bootstrap.min.js" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\animated-overlay.gif" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\jquery-ui-1.10.1.custom.css" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\redmond\jquery-ui-1.10.1.custom.min.css" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\js\jquery-1.9.1.js" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\js\jquery-ui-1.10.1.custom.js" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\js\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\animated-overlay.gif" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\jquery-ui-1.10.2.custom.css" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\redmond\jquery-ui-1.10.2.custom.min.css" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\js\jquery-1.9.1.js" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\js\jquery-ui-1.10.2.custom.js" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\js\jquery-ui-1.10.2.custom.min.js" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\animated-overlay.gif" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-icons_222222_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\redmond\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\js\jquery-1.9.1.js" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\js\jquery-ui-1.10.3.custom.js" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\jquery-ui-1.9.1.custom.css" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\redmond\jquery-ui-1.9.1.custom.min.css" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\jquery-ui-1.9.1.custom.css" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\css\smoothness\jquery-ui-1.9.1.custom.min.css" />
     <Content Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.9.1.custom\jquery.ui.datepicker-ru.js" />
@@ -2692,12 +2828,6 @@
     <Folder Include="Assets\third-party\jq-plot\examples\jquery-ui\css\ui-lightness\images-1.9pre\" />
     <Folder Include="Assets\third-party\jqv-map\create\output\" />
     <Folder Include="Assets\third-party\jqv-map\create\source\" />
-    <Folder Include="Assets\third-party\x-editable\dist\jquery-editable\jquery-ui-datepicker\css\redmond\images\" />
-    <Folder Include="Assets\third-party\x-editable\src\inputs-ext\wysihtml5\bootstrap-wysihtml5-0.0.2\" />
-    <Folder Include="Assets\third-party\x-editable\src\inputs\dateui\jquery-ui-datepicker\css\" />
-    <Folder Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.1.custom\css\" />
-    <Folder Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.2.custom\css\" />
-    <Folder Include="Assets\third-party\x-editable\test\libs\jquery-ui-1.10.3.custom\css\" />
     <Folder Include="TicketAttachments\" />
   </ItemGroup>
   <ItemGroup>

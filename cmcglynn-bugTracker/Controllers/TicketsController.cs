@@ -23,7 +23,7 @@ namespace cmcglynn_bugTracker.Controllers
         // GET: Tickets
         public ActionResult Index()
         {
-           
+
 
             var user = db.Users.Find(User.Identity.GetUserId());
             var tickets = db.Tickets.Include(t => t.AssignToUser).Include(t => t.OwnerUser).Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
@@ -105,7 +105,7 @@ namespace cmcglynn_bugTracker.Controllers
             var user = db.Users.Find(User.Identity.GetUserId());
             ViewBag.ProjectId = new SelectList(db.Projects.Where(p => p.Users.Any(u => u.Id == user.Id)), "Id", "Title");
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name");
-           
+
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name");
             return View();
         }
@@ -128,16 +128,16 @@ namespace cmcglynn_bugTracker.Controllers
                 return RedirectToAction("Index");
             }
 
-           
+
             ViewBag.ProjectId = new SelectList(db.Projects.Where(p => p.Users.Any(u => u.Id == user.Id)), "Id", "Title", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
-           
+
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
             return View(ticket);
         }
 
         // GET: Tickets/Edit/5
-       
+
         [Authorize(Roles = "Admin,Project Manager")]
         public ActionResult Edit(int? id)
         {
@@ -150,7 +150,13 @@ namespace cmcglynn_bugTracker.Controllers
             {
                 return HttpNotFound();
             }
+
+            UserRoleHelper helper = new UserRoleHelper();
+            var developers = helper.UserInRole("Developer");
+            var devsOnTicketProj = developers.Where(d => d.Projects.Any(p => p.Id == ticket.ProjectId));
+            ViewBag.AssignToUserId = new SelectList(devsOnTicketProj, "Id", "FirstName", ticket.AssignToUserId);
             ViewBag.AssignToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignToUserId);
+            ViewBag.OwnerUserId = new SelectList(helper.UserInRole("Submitter"), "Id", "FullName", ticket.OwnerUser);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
@@ -168,19 +174,19 @@ namespace cmcglynn_bugTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(ticket.AssignToUserId != null)
-                    {
+                if (ticket.AssignToUserId != null)
+                {
                     ticket.TicketStatusId = 2;
                 }
+
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //var developers = helper.UsersInRole("Developer");
-            //var devsOnTicketProj = developers.Where(d => d.Projects.Any(p => p.Id == ticket.ProjectId));
-            //ViewBag.AssignToUserId = new SelectList(devsOnTicketProj, "Id", "FirstName", ticket.AssignToUserId);
+
+           
             ViewBag.AssignToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignToUserId);
-                ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
+            ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
@@ -226,21 +232,21 @@ namespace cmcglynn_bugTracker.Controllers
 
                 //if (ModelState.IsValid)
                 foreach (var file in files)
-            {
-                TicketAttachment attachment = new TicketAttachment();
+                {
+                    TicketAttachment attachment = new TicketAttachment();
 
-                file.SaveAs(Path.Combine(Server.MapPath("~/TicketAttachments/"), Path.GetFileName(file.FileName)));
-                attachment.FileUrl = file.FileName;
+                    file.SaveAs(Path.Combine(Server.MapPath("~/TicketAttachments/"), Path.GetFileName(file.FileName)));
+                    attachment.FileUrl = file.FileName;
 
-                attachment.AuthorId = User.Identity.GetUserId();
-                attachment.TicketId = ticketId;
-                attachment.Created = DateTimeOffset.Now;
+                    attachment.AuthorId = User.Identity.GetUserId();
+                    attachment.TicketId = ticketId;
+                    attachment.Created = DateTimeOffset.Now;
 
-                db.TicketAttachments.Add(attachment);
-                db.SaveChanges();
-            }
+                    db.TicketAttachments.Add(attachment);
+                    db.SaveChanges();
+                }
 
-            
+
             return RedirectToAction("Details", "Tickets", new { id = ticketId });
         }
 
@@ -283,7 +289,7 @@ namespace cmcglynn_bugTracker.Controllers
             //return View(ticketComment);
         }
 
-
+        // POST: Ticket History
 
 
         protected override void Dispose(bool disposing)
