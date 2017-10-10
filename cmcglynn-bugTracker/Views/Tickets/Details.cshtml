@@ -92,7 +92,7 @@
 
     </dl>
 
-   @using (Html.BeginForm("AddAttachments", "Tickets", FormMethod.Post, new { @class = "ticket-ticketAttachment", enctype = "multipart/form-data" }))
+   @using (Html.BeginForm("AttachmentCreate", "Tickets", FormMethod.Post, new { @class = "ticket-ticketAttachment", enctype = "multipart/form-data" }))
    {
     @Html.AntiForgeryToken()
 
@@ -132,7 +132,7 @@
         <div class="media mb-4">
             @*<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">*@
             <div class="media-body">
-                <h5 class="mt-0">@comment.Author.FullName</h5>@*<span>Posted on @comment.Created</span>*@
+                <h5 class="mt-0">@comment.Author.FullName at @DateTime.Now</h5>@*<span>Posted on @comment.Created</span>*@
                 <p>@comment.Body</p>
             </div>
         </div>

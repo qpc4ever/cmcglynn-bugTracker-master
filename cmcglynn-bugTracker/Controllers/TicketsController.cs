@@ -176,8 +176,11 @@ namespace cmcglynn_bugTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            //var developers = helper.UsersInRole("Developer");
+            //var devsOnTicketProj = developers.Where(d => d.Projects.Any(p => p.Id == ticket.ProjectId));
+            //ViewBag.AssignToUserId = new SelectList(devsOnTicketProj, "Id", "FirstName", ticket.AssignToUserId);
             ViewBag.AssignToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignToUserId);
-            ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
+                ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
@@ -213,7 +216,7 @@ namespace cmcglynn_bugTracker.Controllers
 
         //POST: Ticket Attachments/Create
         [Authorize]
-
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AttachmentCreate(IEnumerable<HttpPostedFileBase> files, int ticketId)
         {
