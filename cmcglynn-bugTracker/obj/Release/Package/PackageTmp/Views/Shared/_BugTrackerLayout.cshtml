@@ -1,50 +1,45 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>cmcglynn-bugTracker</title>
+    <title>Dashboard | Nucleus</title>
     <meta name="description" content="Premium HTML5 Template">
     <meta name="keywords" content=" HTML5, Premium Template, Nucleus Theme">
     <meta name="author" content="Amazyne Themes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <link href="~/Assets/MultiSelect/MultiSelect.css" rel="stylesheet" />
-    
     <!-- Favicon -->
-    <link rel="shortcut icon" href="~/assets/images/cm_monogram_1x.png?" type="image/x-icon" />
+    <link rel="icon" href="~/Assets/favicon.ico" type="image/x-icon">
     <!-- Loading Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700' rel='stylesheet' type='text/css'>
     <!-- Loading Third Party Styles -->
-    <link rel="stylesheet" href="~/Assets/third-party/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Assets/third-party/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/Assets/third-party/et-line/css/style.css">
-    <link rel="stylesheet" href="~/Assets/third-party/elegant-icons/css/style.css">
-    <link rel="stylesheet" href="~/Assets/third-party/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
-    <link rel="stylesheet" href="~/Assets/third-party/pe-icon-7-stroke/css/helper.css">
-    <link rel="stylesheet" href="~/Assets/third-party/nivo-lightbox/css/nivo-lightbox.css" />
-    <link rel="stylesheet" href="~/Assets/third-party/nivo-lightbox/themes/default/default.css" />
-    <link rel="stylesheet" href="~/Assets/third-party/animate/css/animate.css">
-    <link rel="stylesheet" href="~/Assets/third-party/owl/css/owl.carousel.css">
-    <link rel="stylesheet" href="~/Assets/third-party/owl/css/owl.theme.css">
-    <link rel="stylesheet" href="~/Assets/third-party/form-validation/css/formValidation.min.css">
+    <link rel="stylesheet" href="~/Assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Assets/et-line/css/style.css">
+    <link rel="stylesheet" href="~/Assets/elegant-icons/css/style.css">
+    <link rel="stylesheet" href="~/Assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="~/Assets/pe-icon-7-stroke/css/helper.css">
+    <link rel="stylesheet" href="~/Assets/nivo-lightbox/css/nivo-lightbox.css" />
+    <link rel="stylesheet" href="~/Assets/nivo-lightbox/themes/default/default.css" />
+    <link rel="stylesheet" href="~/Assets/animate/css/animate.css">
+    <link rel="stylesheet" href="~/Assets/owl/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Assets/owl/css/owl.theme.css">
+    <link rel="stylesheet" href="~/Assets/form-validation/css/formValidation.min.css">
     <!-- Loading Page's Styles -->
 
-    <link rel="stylesheet" href="~/Assets/third-party/morris.js/morris.css">
-    <link rel="stylesheet" href="~/Assets/third-party/dropzone/css/dropzone.min.css">
-    <link rel="stylesheet" href="~/Assets/third-party/full-calendar/css/fullcalendar.min.css">
-    <link rel="stylesheet" href="~/Assets/third-party/jqv-map/dist/jqvmap.min.css">
+    <link rel="stylesheet" href="~/Assets/morris.js/morris.css">
+    <link rel="stylesheet" href="~/Assets/dropzone/css/dropzone.min.css">
+    <link rel="stylesheet" href="~/Assets/full-calendar/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="~/Assets/jqv-map/dist/jqvmap.min.css">
 
     <!-- Loading Theme's Styles -->
     <link rel="stylesheet" href="~/Assets/css/style.css">
     <link rel="stylesheet" href="~/Assets/css/custom.css">
     <!-- Script for IE < 9 -->
     <!--[if lt IE 9]>
-    <script src="third-party/respond/js/respond.min.js"></script>
+    <script src="~/Assets/respond/js/respond.min.js"></script>
     <![endif]-->
 </head>
 
@@ -60,9 +55,6 @@
         <!-- Header - Add "light" for light menu | "nav-dark-blue" for dark-blue accent | "nav-blue" for blue accent | "nav-blue-grey" for blue-grey accent |
              "nav-green" for green accent | "nav-dark-green" for dark-green accent | "nav-purple" for purple accent | "nav-red" for red accent |
               "nav-Orange" for Orange accent | "nav-yellow" for yellow accent -->
-
-       
-
         <header class="navigation">
 
             <!-- Header Wrapper -->
@@ -79,8 +71,8 @@
                             </a>
 
                             <!-- Logo -->
-                            <a class="logo" href="index.html">
-                                <img alt="~/Assets/image" src="~/Assets/images/logo.png" />
+                            <a class="logo" href="~/Assets/index.html">
+                                <img alt="image" src="~/Assets/images/logo.png" />
                             </a><!-- End of Logo -->
                         </div>
 
@@ -110,14 +102,13 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <div class="profile-details">
-                                                <p class="name">@ViewBag.FullName as string</p>
-                                                <p class="designation">@*Managing Director*@</p>
+                                                @*<p class="name">Jason Smith</p>
+                                                <p class="designation">Managing Director</p>*@
                                             </div>
-                                        <li>
+                                        </li>
                                         <li><a href="#">Profile</a></li>
-                                        <li>@Html.Partial("_LoginPartial")</li>
-                                        @*<li><a href="@Html.Partial("_LoginPartial")"><span class="menu-badge bg-yellow">8</span></a></li>*@
-                                        <li><hr /></li>
+                                        <li><a href="#">Inbox<span class="menu-badge bg-yellow">8</span></a></li>
+                                        <li><hr />@Html.Partial("_LoginPartial")</li>
                                         <li><a href="#">Lock</a></li>
                                     </ul>
                                 </li><!-- End of Account Dropdown -->
@@ -309,9 +300,9 @@
 
                                 <!-- Search Icon -->
 
-                                @*<li class="nav-search">
+                                <li class="nav-search">
                                     <a href="#" class="search-box search-box-trigger"><i class="search-icon pe-7s-search"></i><i class="search-close pe-7s-close"></i></a>
-                                </li>*@<!-- End of Search Icon -->
+                                </li><!-- End of Search Icon -->
                                 <!-- Chat/Settings Trigger -->
 
                                 <li class="nav-chat">
@@ -320,7 +311,7 @@
                                 <!-- Logout Button -->
 
                                 <li>
-                                    <a href="lock-screen-1.html"><i class="logout-icon pe-7s-power"></i></a>
+                                    <a href="~/Assets/lock-screen-1.html"><i class="logout-icon pe-7s-power"></i></a>
                                 </li><!-- End of Logout Button -->
                             </ul><!-- End of Right Aligned Icons -->
                         </div>
@@ -329,7 +320,7 @@
 
                 <!-- Search panel -->
 
-                @*<div class="full-screen-search">
+                <div class="full-screen-search">
                     <div class="search-container">
                         <div class="search-holder">
                             <form id="searchForm" method="post" action="search-results.html">
@@ -337,8 +328,8 @@
                                 <input type="hidden" name="search" />
                             </form>
                         </div>
-                    </div>*@
-                @*</div>*@<!-- End of Search Panel -->
+                    </div>
+                </div><!-- End of Search Panel -->
                 <!-- Side Header | Remove "active" if you want side header closed by default -->
                 <div class="side-header active">
                     <div class="side-header-container">
@@ -347,114 +338,114 @@
                                 <li class="with-dropdown active">
                                     <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-presentation"></i>Dashboards <span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
-                                        <li class="active"><a href="@Url.Action("Index", "Projects", new { })">Projects</a></li>
-                                        <li><a href="index-2.html">Dashboard 2</a></li>
-                                        <li><a href="index-3.html">Dashboard 3</a></li>
+                                        <li><a href="@Html.ActionLink("PROJECTS", "Index", "Projects")"></a></li>
+                                        @*<li><a href="">Dashboard 2</a></li>
+                                        <li><a href="">Dashboard 3</a></li>*@
                                     </ul>
                                 </li>
                                 <li class="menu-heading">Features</li>
                                 <li class="with-dropdown">
                                     <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-browser"></i>UI Elements <span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
-                                        <li><a href="ui-alerts.html">Alerts</a></li>
-                                        <li><a href="ui-accordions.html">Accordions</a></li>
-                                        <li><a href="ui-buttons.html">Buttons</a></li>
-                                        <li><a href="ui-spinner-buttons.html">Spinner Buttons</a></li>
+                                        <li><a href="~/Assets/ui-alerts.html">Alerts</a></li>
+                                        <li><a href="~/Assets/ui-accordions.html">Accordions</a></li>
+                                        <li><a href="~/Assets/ui-buttons.html">Buttons</a></li>
+                                        <li><a href="~/Assets/ui-spinner-buttons.html">Spinner Buttons</a></li>
                                         <li class="with-dropdown-2">
                                             <a class="menu-dropdown-link inner" data-toggle="collapse" aria-expanded="true" href="#">Icons <span class="dropdown-icon"></span></a>
                                             <ul class="menu-dropdown collapse">
-                                                <li><a href="ui-font-awesome-icons.html">Fontawesome</a></li>
-                                                <li><a href="ui-elegant-icons.html">Elegant</a></li>
-                                                <li><a href="ui-7-stroke-icons.html">7 Stroke</a></li>
-                                                <li><a href="ui-et-line-icons.html">ET Line</a></li>
+                                                <li><a href="~/Assets/ui-font-awesome-icons.html">Fontawesome</a></li>
+                                                <li><a href="~/Assets/ui-elegant-icons.html">Elegant</a></li>
+                                                <li><a href="~/Assets/ui-7-stroke-icons.html">7 Stroke</a></li>
+                                                <li><a href="~/Assets/ui-et-line-icons.html">ET Line</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="ui-horizontal-timeline.html">Horizontal Timeline</a></li>
-                                        <li><a href="ui-modal-boxes.html">Modal Boxes</a></li>
-                                        <li><a href="ui-notifications.html">Notifications</a></li>
-                                        <li><a href="ui-progress-bars.html">Progress Bars</a></li>
-                                        <li><a href="ui-page-progress-bar.html">Page Progress Bar</a></li>
-                                        <li><a href="ui-portlets.html">Portlets</a></li>
-                                        <li><a href="ui-social-icons.html">Social Icons</a></li>
-                                        <li><a href="ui-steps.html">Steps</a></li>
-                                        <li><a href="ui-tabs.html">Tabs</a></li>
-                                        <li><a href="ui-timeline.html">Timeline</a></li>
-                                        <li><a href="ui-typography.html">Typography</a></li>
-                                        <li><a href="ui-utility.html">Utility</a></li>
-                                        <li><a href="ui-widgets.html">Widgets</a></li>
+                                        <li><a href="~/Assets/ui-horizontal-timeline.html">Horizontal Timeline</a></li>
+                                        <li><a href="~/Assets/ui-modal-boxes.html">Modal Boxes</a></li>
+                                        <li><a href="~/Assets/ui-notifications.html">Notifications</a></li>
+                                        <li><a href="~/Assets/ui-progress-bars.html">Progress Bars</a></li>
+                                        <li><a href="~/Assets/ui-page-progress-bar.html">Page Progress Bar</a></li>
+                                        <li><a href="~/Assets/ui-portlets.html">Portlets</a></li>
+                                        <li><a href="~/Assets/ui-social-icons.html">Social Icons</a></li>
+                                        <li><a href="~/Assets/ui-steps.html">Steps</a></li>
+                                        <li><a href="~/Assets/ui-tabs.html">Tabs</a></li>
+                                        <li><a href="~/Assets/ui-timeline.html">Timeline</a></li>
+                                        <li><a href="~/Assets/ui-typography.html">Typography</a></li>
+                                        <li><a href="~/Assets/ui-utility.html">Utility</a></li>
+                                        <li><a href="~/Assets/ui-widgets.html">Widgets</a></li>
                                     </ul>
                                 </li>
                                 <li class="with-dropdown">
                                     <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-linegraph"></i>Charts <span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
-                                        <li><a href="charts-charts-js.html">Charts.js</a></li>
-                                        <li><a href="charts-flotchart.html">Flot Charts</a></li>
-                                        <li><a href="charts-google.html">Google Charts</a></li>
-                                        <li><a href="charts-morris.html">Morris Charts</a></li>
+                                        <li><a href="~/Assets/charts-charts-js.html">Charts.js</a></li>
+                                        <li><a href="~/Assets/charts-flotchart.html">Flot Charts</a></li>
+                                        <li><a href="~/Assets/charts-google.html">Google Charts</a></li>
+                                        <li><a href="~/Assets/charts-morris.html">Morris Charts</a></li>
                                     </ul>
                                 </li>
                                 <li class="with-dropdown">
                                     <a href="#" class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true"><i class="icon-map"></i> Maps <span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
-                                        <li><a href="maps-google.html">Google Maps</a></li>
-                                        <li><a href="maps-vector.html">Vector Maps</a></li>
+                                        <li><a href="~/Assets/maps-google.html">Google Maps</a></li>
+                                        <li><a href="~/Assets/maps-vector.html">Vector Maps</a></li>
                                     </ul>
                                 </li>
                                 <li class="with-dropdown">
                                     <a class="menu-dropdown-link with-badge" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-grid"></i>Tables <span class="dropdown-icon"></span><span class="menu-badge bg-orange">2</span></a>
                                     <ul class="menu-dropdown collapse">
-                                        <li><a href="tables-static.html">Static Tables</a></li>
-                                        <li><a href="tables-datatables.html">DataTables</a></li>
+                                        <li><a href="~/Assets/tables-static.html">Static Tables</a></li>
+                                        <li><a href="~/Assets/tables-datatables.html">DataTables</a></li>
                                     </ul>
                                 </li>
                                 <li class="with-dropdown">
                                     <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-document"></i>Forms <span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
-                                        <li><a href="form-code-viewer.html">Code Viewer</a></li>
-                                        <li><a href="form-editor.html">Editor</a></li>
-                                        <li><a href="form-elements.html">Elements</a></li>
-                                        <li><a href="form-file-upload.html">File Upload</a></li>
-                                        <li><a href="form-wizard.html">Form Wizard</a></li>
-                                        <li><a href="form-picker.html">Picker</a></li>
-                                        <li><a href="form-x-editable.html">X-Editable</a></li>
+                                        <li><a href="~/Assets/form-code-viewer.html">Code Viewer</a></li>
+                                        <li><a href="~/Assets/form-editor.html">Editor</a></li>
+                                        <li><a href="~/Assets/form-elements.html">Elements</a></li>
+                                        <li><a href="~/Assets/form-file-upload.html">File Upload</a></li>
+                                        <li><a href="~/Assets/form-wizard.html">Form Wizard</a></li>
+                                        <li><a href="~/Assets/form-picker.html">Picker</a></li>
+                                        <li><a href="~/Assets/form-x-editable.html">X-Editable</a></li>
                                         <li class="with-dropdown-2">
                                             <a class="menu-dropdown-link inner" data-toggle="collapse" aria-expanded="true" href="#">Validations <span class="dropdown-icon"></span></a>
                                             <ul class="menu-dropdown collapse">
-                                                <li><a href="form-custom-errors.html">Custom</a></li>
-                                                <li><a href="form-recaptcha.html">Google Recaptcha</a></li>
-                                                <li><a href="form-html5.html">HTML5 Attributes</a></li>
-                                                <li><a href="form-live-validations.html">Live Validations</a></li>
-                                                <li><a href="form-post-validations.html">Post Validations</a></li>
-                                                <li><a href="form-tooltip-alerts.html">Tooltip-Alerts</a></li>
-                                                <li><a href="form-within-tab.html">Within Tab</a></li>
-                                                <li><a href="form-without-icons.html">Without Icons</a></li>
+                                                <li><a href="~/Assets/form-custom-errors.html">Custom</a></li>
+                                                <li><a href="~/Assets/form-recaptcha.html">Google Recaptcha</a></li>
+                                                <li><a href="~/Assets/form-html5.html">HTML5 Attributes</a></li>
+                                                <li><a href="~/Assets/form-live-validations.html">Live Validations</a></li>
+                                                <li><a href="~/Assets/form-post-validations.html">Post Validations</a></li>
+                                                <li><a href="~/Assets/form-tooltip-alerts.html">Tooltip-Alerts</a></li>
+                                                <li><a href="~/Assets/form-within-tab.html">Within Tab</a></li>
+                                                <li><a href="~/Assets/form-without-icons.html">Without Icons</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="with-badge" href="calendar.html"><i class="icon-calendar"></i> Calendar <span class="menu-badge bg-dark-green">New</span></a>
+                                    <a class="with-badge" href="~/Assets/calendar.html"><i class="icon-calendar"></i> Calendar <span class="menu-badge bg-dark-green">New</span></a>
                                 </li>
                                 <li class="menu-heading">Layouts</li>
                                 <li class="with-dropdown">
                                     <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-envelope"></i>Headers <span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
-                                        <li><a href="header-side.html" class="with-badge">Header - Side</a></li>
-                                        <li><a href="header-top.html">Header - Top</a></li>
-                                        <li><a href="header-fullscreen.html">Header - Fullscreen</a></li>
+                                        <li><a href="~/Assets/header-side.html" class="with-badge">Header - Side</a></li>
+                                        <li><a href="~/Assets/header-top.html">Header - Top</a></li>
+                                        <li><a href="~/Assets/header-fullscreen.html">Header - Fullscreen</a></li>
                                         <li class="with-dropdown-2">
                                             <a class="menu-dropdown-link inner" data-toggle="collapse" aria-expanded="true" href="#">Colors <span class="dropdown-icon"></span></a>
                                             <ul class="menu-dropdown collapse">
-                                                <li><a href="header-light.html">Light</a></li>
-                                                <li><a href="header-dark-blue.html">Dark Blue</a></li>
-                                                <li><a href="header-blue.html">Blue</a></li>
-                                                <li><a href="header-blue-grey.html">Blue Grey</a></li>
-                                                <li><a href="header-dark-green.html">Dark Green</a></li>
-                                                <li><a href="header-green.html">Green</a></li>
-                                                <li><a href="header-purple.html">Purple</a></li>
-                                                <li><a href="header-red.html">Red</a></li>
-                                                <li><a href="header-orange.html">Orange</a></li>
-                                                <li><a href="header-yellow.html">Yellow</a></li>
+                                                <li><a href="~/Assets/header-light.html">Light</a></li>
+                                                <li><a href="~/Assets/header-dark-blue.html">Dark Blue</a></li>
+                                                <li><a href="~/Assets/header-blue.html">Blue</a></li>
+                                                <li><a href="~/Assets/header-blue-grey.html">Blue Grey</a></li>
+                                                <li><a href="~/Assets/header-dark-green.html">Dark Green</a></li>
+                                                <li><a href="~/Assets/header-green.html">Green</a></li>
+                                                <li><a href="~/Assets/header-purple.html">Purple</a></li>
+                                                <li><a href="~/Assets/header-red.html">Red</a></li>
+                                                <li><a href="~/Assets/header-orange.html">Orange</a></li>
+                                                <li><a href="~/Assets/header-yellow.html">Yellow</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -462,25 +453,25 @@
                                 <li class="with-dropdown">
                                     <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-book-open"></i>Pages <span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
-                                        <li><a href="blank-page.html">Blank Page</a></li>
-                                        <li><a href="error-404.html">Error 404</a></li>
-                                        <li><a href="error-500.html">Error 500</a></li>
-                                        <li><a target="_blank" href="frontend.html">Frontend</a></li>
-                                        <li><a href="login-register-1.html">Login/Register 1</a></li>
-                                        <li><a href="login-register-2.html">Login/Register 2</a></li>
-                                        <li><a href="lock-screen-1.html">Lock Screen 1</a></li>
-                                        <li><a href="lock-screen-2.html">Lock Screen 2</a></li>
-                                        <li><a href="user-account.html">User Account</a></li>
-                                        <li><a href="user-help.html">User Help</a></li>
-                                        <li><a href="user-profile.html">User Profile</a></li>
+                                        <li><a href="~/Assets/blank-page.html">Blank Page</a></li>
+                                        <li><a href="~/Assets/error-404.html">Error 404</a></li>
+                                        <li><a href="~/Assets/error-500.html">Error 500</a></li>
+                                        <li><a target="_blank" href="~/Assets/frontend.html">Frontend</a></li>
+                                        <li><a href="~/Assets/login-register-1.html">Login/Register 1</a></li>
+                                        <li><a href="~/Assets/login-register-2.html">Login/Register 2</a></li>
+                                        <li><a href="~/Assets/lock-screen-1.html">Lock Screen 1</a></li>
+                                        <li><a href="~/Assets/lock-screen-2.html">Lock Screen 2</a></li>
+                                        <li><a href="~/Assets/user-account.html">User Account</a></li>
+                                        <li><a href="~/Assets/user-help.html">User Help</a></li>
+                                        <li><a href="~/Assets/user-profile.html">User Profile</a></li>
                                     </ul>
                                 </li>
                                 <li class="with-dropdown">
                                     <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-envelope"></i>Inbox <span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
-                                        <li><a href="mailbox.html" class="with-badge">Mail Box <span class="menu-badge bg-blue">3</span></a></li>
-                                        <li><a href="mail.html">Mail</a></li>
-                                        <li><a href="compose.html">Compose Mail</a></li>
+                                        <li><a href="~/Assets/mailbox.html" class="with-badge">Mail Box <span class="menu-badge bg-blue">3</span></a></li>
+                                        <li><a href="~/Assets/mail.html">Mail</a></li>
+                                        <li><a href="~/Assets/compose.html">Compose Mail</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -523,7 +514,7 @@
 
                             <!-- Search -->
 
-                            @*<div class="form-theme form-search">
+                            <div class="form-theme form-search">
                                 <div class="input-group">
                                     <input class="form-control" name="search" id="search" type="text">
                                     <span class="input-group-btn">
@@ -532,7 +523,7 @@
                                 </div>
                             </div>
                             <div class="slim-scroll-content-friends">
-                                <div class="slim-scroll-div"*@>
+                                <div class="slim-scroll-div">
 
                                     <!-- Friend List -->
 
@@ -711,8 +702,11 @@
                     </div>
                 </div><!-- End of Tabs -->
             </div>
-        @*</div>*@<!-- End of Chat -->
-        @RenderBody()
+        </div><!-- End of Chat -->
+        <div style="padding-bottom: 200px">
+            @RenderBody()
+        </div>
+
         @*<div class="section-admin container-fluid">
             <div class="row admin text-center">
                 <div class="col-lg-4 col-sm-12">
@@ -905,270 +899,70 @@
                     </div>
                 </div>
             </div>
-        </div>*@
-    @*</div>*@<!-- End of Page Content -->
+        </div>
+    </div>*@
+    </div><!-- End of Page Content -->
     <!-- Footer -->
 
-    <footer class="footer container-fluid">
+    @*<footer class="footer container-fluid">
         <div class="row">
             <div class="col-md-12 ">
-                <p class="letter-spacing-1" style="text-align:center">©2017 Chris McGlynn. All rights reserved.</p>
+                <p class="letter-spacing-1">©2016 Nucleus - T. +01 2345 6788 - F. +01 2345 6789</p>
             </div>
         </div>
-    </footer><!-- End of Footer -->
+    </footer>*@<!-- End of Footer -->
     <!-- Loading Third Party Scripts -->
-    <script src="~/Assets/third-party/jquery/jquery.min.js"></script>
-    <script src="~/Assets/third-party/easing/js/jquery.easings.min.js"></script>
-    <script src="~/Assets/third-party/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/Assets/third-party/nivo-lightbox/js/nivo-lightbox.min.js"></script>
-    <script src="~/Assets/third-party/owl/js/owl.carousel.js"></script>
-    <script src="~/Assets/third-party/counter-up/js/jquery.counterup.min.js"></script>
-    <script src="~/Assets/third-party/form-validation/js/formValidation.js"></script>
-    <script src="~/Assets/third-party/form-validation/js/framework/bootstrap.min.js"></script>
-    <script src="~/Assets/third-party/waypoint/js/waypoints.min.js"></script>
-    <script src="~/Assets/third-party/wow/js/wow.min.js"></script>
-    <script src="~/Assets/third-party/slimscroll/jquery.slimscroll.js"></script>
-    <script src="~/Assets/http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script src="~/Assets/jquery/jquery.min.js"></script>
+    <script src="~/Assets/easing/js/jquery.easings.min.js"></script>
+    <script src="~/Assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Assets/nivo-lightbox/js/nivo-lightbox.min.js"></script>
+    <script src="~/Assets/owl/js/owl.carousel.js"></script>
+    <script src="~/Assets/counter-up/js/jquery.counterup.min.js"></script>
+    <script src="~/Assets/form-validation/js/formValidation.js"></script>
+    <script src="~/Assets/form-validation/js/framework/bootstrap.min.js"></script>
+    <script src="~/Assets/waypoint/js/waypoints.min.js"></script>
+    <script src="~/Assets/wow/js/wow.min.js"></script>
+    <script src="~/Assets/slimscroll/jquery.slimscroll.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
 
     <!-- Loading Page's Scripts -->
-
-    @*<script src="~/Assets/third-party/flot/jquery.flot.min.js"></script>
-    <script src="~/Assets/third-party/flot/jquery.flot.time.js"></script>
-    <script src="~/Assets/third-party/flot/jquery.flot.pie.js"></script>
-    <script src="~/Assets/third-party/flot/jquery.flot.crosshair.js"></script>
-    <script src="~/Assets/third-party/flot/jquery.flot.threshold.js"></script>
-    <script src="~/Assets/third-party/flot/jquery.flot.stack.js"></script>
-    <script src="~/Assets/third-party/flot/jquery.flot.min.js"></script>
-    <script src="~/Assets/third-party/flot/jquery.flot.time.min.js"></script>
-    <script src="~/Assets/third-party/flot/jquery.flot.resize.min.js"></script>*@
-    <script src="~/Assets/third-party/jqv-map/dist/jquery.vmap.js"></script>
-    <script src="~/Assets/third-party/jqv-map/dist/maps/jquery.vmap.world.js"></script>
-    <script src="~/Assets/third-party/jqv-map/dist/maps/jquery.vmap.russia.js"></script>
-    <script src="~/Assets/third-party/jqv-map/dist/maps/jquery.vmap.germany.js"></script>
-    <script src="~/Assets/third-party/jqv-map/dist/maps/jquery.vmap.usa.js"></script>
-    <script src="~/Assets/third-party/jqv-map/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="~/Assets/jqv-map/dist/jquery.vmap.js"></script>
+    <script src="~/Assets/jqv-map/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/Assets/jqv-map/dist/maps/jquery.vmap.russia.js"></script>
+    <script src="~/Assets/jqv-map/dist/maps/jquery.vmap.germany.js"></script>
+    <script src="~/Assets/jqv-map/dist/maps/jquery.vmap.usa.js"></script>
+    <script src="~/Assets/jqv-map/examples/js/jquery.vmap.sampledata.js"></script>
     <script src="~/Assets/pages/jqv-map.js"></script>
-    @*<script src="~/Assets/pages/flot-charts.js"></script>*@
-    <script type="~/Assets/text/javascript" src="~/Assets/third-party/sparkline/jquery.sparkline.min.js"></script>
-    @*<script type="~/Assets/text/javascript">
-		$(function() {
-			$("#sparkline1").sparkline([500,640,570,600,700,800,900,550,750,930], {
-				type: 'bar',
-				height: '65px',
-				barWidth: 5,
-				barSpacing: 2,
-				barColor: '#24caa1'
-			});
-			$("#sparkline2").sparkline([200,300,400,500,350,250,650,250,330,500], {
-				type: 'bar',
-				height: '65px',
-				barWidth: 5,
-				barSpacing: 2,
-				barColor: '#faca39'
-			});
-			$("#sparkline3").sparkline([100,150,250,175,350,275,150,100,225,375], {
-				type: 'bar',
-				height: '65px',
-				barWidth: 5,
-				barSpacing: 2,
-				barColor: '#805bbe'
-			});
-			$("#sparkline4").sparkline([300,400,500,200,300,400,200,100,500,300], {
-				type: 'bar',
-				height: '65px',
-				barWidth: 5,
-				barSpacing: 2,
-				barColor: '#2eb7f3'
-			});
-			$("#sparkline5").sparkline([150,250,225,275,175,200,350,120,160,250], {
-				type: 'bar',
-				height: '65px',
-				barWidth: 5,
-				barSpacing: 2,
-				barColor: '#ff7f5a'
-			});
-			$("#sparkline6").sparkline([200,250,275,285,295,150,300,650,500,450], {
-				type: 'bar',
-				height: '65px',
-				barWidth: 5,
-				barSpacing: 2,
-				barColor: '#4c5667'
-			});
-		});
-    </script>
-
-    <script>
-			var d1 = [[0, 9], [1, 8], [2, 5], [3, 8], [4, 5], [5, 14], [6, 10],[7, 8], [8, 5], [9, 14], [10, 10]];
-			$.plot("#website-stats-1", [{
-						data: d1, color: '#fff',
-						lines: { show: true, fill: true, fillColor: "rgba(255, 255, 255, 0.7)" }
-					}
-				],{
-				grid: {
-					show: false,
-					color: "rgb(48, 48, 48)",
-					tickColor: "rgba(255, 255, 255, 0)",
-					borderWidth: 1
-				},
-				series: {
-					lines: {
-						show: false,
-						fill: true
-					},
-					points: {
-						show: false
-					},
-				},
-				legend: {
-					labelBoxBorderColor: "none",
-					position: "right"
-				}
-			} );
-    </script>
-    <script>
-			var d2 = [[0, 5], [1, 12], [2, 4], [3, 3], [4, 12], [5, 11], [6, 14],[7, 12], [8, 8], [9, 4], [10, 8]];
-			$.plot("#website-stats-2", [{
-						data: d2, color: '#fff',
-						lines: { show: true, fill: true, fillColor: "rgba(255, 255, 255, 0.7)" }
-					}
-				],{
-				grid: {
-					show: false,
-					color: "rgb(48, 48, 48)",
-					tickColor: "rgba(255, 255, 255, 0)",
-					borderWidth: 1
-				},
-				series: {
-					lines: {
-						show: false,
-						fill: true
-					},
-					points: {
-						show: false
-					},
-				},
-				legend: {
-					labelBoxBorderColor: "none",
-					position: "right"
-				}
-			} );
-    </script>
-    <script>
-			var d3 = [[5, 14], [6, 10],[7, 8], [8, 5], [9, 14], [10, 10]];
-			$.plot("#website-stats-3", [{
-						data: d3, color: '#fff',
-						lines: { show: true, fill: true, fillColor: "rgba(255, 255, 255, 0.7)" }
-					}
-				],{
-				grid: {
-					show: false,
-					color: "rgb(48, 48, 48)",
-					tickColor: "rgba(255, 255, 255, 0)",
-					borderWidth: 1
-				},
-				series: {
-					lines: {
-						show: false,
-						fill: true
-					},
-					points: {
-						show: false
-					},
-				},
-				legend: {
-					labelBoxBorderColor: "none",
-					position: "right"
-				}
-			} );
-    </script>*@
-
-    @*<script>
-			$(function() {
-
-				var d = [[1196463600000, 0], [1196550000000, 0], [1196636400000, 0], [1196722800000, 77], [1196809200000, 3636], [1196895600000, 3575], [1196982000000, 2736], [1197068400000, 1086], [1197154800000, 676], [1197241200000, 1205], [1197327600000, 906], [1197414000000, 3010], [1197500400000, 2009], [1197586800000, 1040], [1197673200000, 1435], [1197759600000, 301], [1197846000000, 575], [1197932400000, 481], [1198018800000, 591], [1198105200000, 608], [1198191600000, 459], [1198278000000, 234], [1198364400000, 1352], [1198450800000, 686], [1198537200000, 279], [1198623600000, 449], [1198710000000, 468], [1198796400000, 392], [1198882800000, 282], [1198969200000, 208], [1199055600000, 229], [1199142000000, 177], [1199228400000, 374], [1199314800000, 436], [1199401200000, 404], [1199487600000, 253], [1199574000000, 218], [1199660400000, 476], [1199746800000, 462], [1199833200000, 448], [1199919600000, 442], [1200006000000, 403], [1200092400000, 204], [1200178800000, 194], [1200265200000, 327], [1200351600000, 374], [1200438000000, 507], [1200524400000, 546], [1200610800000, 482], [1200697200000, 283], [1200783600000, 221], [1200870000000, 483], [1200956400000, 523], [1201042800000, 528], [1201129200000, 483], [1201215600000, 452], [1201302000000, 270], [1201388400000, 222], [1201474800000, 439], [1201561200000, 559], [1201647600000, 521], [1201734000000, 477], [1201820400000, 442], [1201906800000, 252], [1201993200000, 236], [1202079600000, 525], [1202166000000, 477], [1202252400000, 386], [1202338800000, 409], [1202425200000, 1408], [1202511600000, 237], [1202598000000, 193], [1202684400000, 357], [1202770800000, 414], [1202857200000, 393], [1202943600000, 353], [1203030000000, 364], [1203116400000, 215], [1203202800000, 214], [1203289200000, 356], [1203375600000, 399], [1203462000000, 334], [1203548400000, 348], [1203634800000, 1243], [1203721200000, 526], [1203807600000, 1157], [1203894000000, 288]];
-
-				// first correct the timestamps - they are recorded as the daily
-				// midnights in UTC+0100, but Flot always displays dates in UTC
-				// so we have to add one hour to hit the midnights in the plot
-
-				for (var i = 0; i < d.length; ++i) {
-					d[i][0] += 60 * 60 * 1000;
-				}
-
-				// helper for returning the weekends in a period
-
-				function weekendAreas(axes) {
-
-					var markings = [],
-						d = new Date(axes.xaxis.min);
-
-					// go to the first Saturday
-
-					d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 1) % 7))
-					d.setUTCSeconds(0);
-					d.setUTCMinutes(0);
-					d.setUTCHours(0);
-
-					var i = d.getTime();
-
-					// when we don't set yaxis, the rectangle automatically
-					// extends to infinity upwards and downwards
-
-					do {
-						markings.push({ xaxis: { from: i, to: i + 2 * 24 * 60 * 60 * 1000 } });
-						i += 7 * 24 * 60 * 60 * 1000;
-					} while (i < axes.xaxis.max);
-
-					return markings;
-				}
-
-				var options = {
-					xaxis: {
-						mode: "time",
-						tickLength: 5
-					},
-					series: {
-						lines: {
-							fill: true,
-							show: true,
-							fillColor: "rgba(63, 77, 159, 0.7)"
-						}
-					},
-					colors: ["#3f4d9f"],
-					grid: {
-						color: "#AFAFAF",
-						borderWidth: 0
-					}
-				};
-
-				var plot = $.plot("#Visitors", [d], options);
-			});
-    </script>*@
+    <script src="~/Assets/pages/flot-charts.js"></script>
+    <script type="text/javascript" src="~/Assets/sparkline/jquery.sparkline.min.js"></script>
 
     <!-- Loading Theme's Scripts -->
     <script src="~/Assets/js/scripts.js"></script>
     <script src="~/Assets/js/custom.js"></script>
 
     <script>
-			$(function(){
-				$('.slim-scroll-div').slimscroll({
-					height: 'auto'
-				})
-			});
+        $(function () {
+            $('.slim-scroll-div').slimscroll({
+                height: 'auto'
+            })
+        });
     </script>
 
     <!-- Google Analytics Tracking -->
     <script>
 
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
 
-		ga('create', 'UA-xxxxxxx-x', 'auto');
-		ga('send', 'pageview');
+        ga('create', 'UA-xxxxxxx-x', 'auto');
+        ga('send', 'pageview');
 
-    </script>
-    @RenderSection("scripts", required: false)
+
+        </script>
+        @RenderSection("scripts", required: false)
 </body>
 </html>

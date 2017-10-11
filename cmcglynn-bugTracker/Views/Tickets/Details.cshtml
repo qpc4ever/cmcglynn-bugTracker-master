@@ -133,9 +133,35 @@
         <div class="media mb-4">
             @*<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">*@
             <div class="media-body">
-                <h5 class="mt-0">@comment.Author.FullName at @DateTimeOffset.Now</h5>@*<span>Posted on @comment.Created</span>*@
+                <h5 class="mt-0">@comment.Author.FullName Posted on @DateTimeOffset.Now</h5>@*<span>Posted on @comment.Created</span>*@
                 <p>@comment.Body</p>
             </div>
+        </div>
+    }
+}
+
+<h3>Ticket History</h3>
+<hr />
+@foreach (var history in Model.Histories)
+{
+    if (history != null && history.AuthorId != null)
+    {
+        <div>
+            <p><span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />@history.Created</p>
+        <em>"@history.NewValue"</em>
+        </div>
+        <hr />
+
+
+    }
+    else if (history.Property == "NEW TICKET ATTACHMENT")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">@history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <a href="/TicketAttachments/@history.NewValue">@history.NewValue</a>
+            </p>
         </div>
     }
 }

@@ -30,9 +30,9 @@ namespace cmcglynn_bugTracker.Controllers
             List<Ticket> Tickets = new List<Ticket>();
 
 
-            if (User.IsInRole("Project Manager"))
+            if (User.IsInRole("Admin"))
             {
-                return View(tickets.Where(c => c.Project.Users.Any(u => u.Id == user.Id)));
+                return View(tickets.ToList());
             }
 
             else if (User.IsInRole("Developer"))
@@ -43,9 +43,10 @@ namespace cmcglynn_bugTracker.Controllers
             {
                 return View(tickets.Where(c => c.OwnerUserId == user.Id).ToList());
             }
-            else if (User.IsInRole("Admin"))
+            else if (User.IsInRole("Project Manager"))
             {
-                return View(tickets.ToList());
+                return View(tickets.Where(c => c.Project.Users.Any(u => u.Id == user.Id)));
+                
             }
             return View(tickets);
         }
@@ -114,19 +115,32 @@ namespace cmcglynn_bugTracker.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Submitter")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,")] Ticket ticket)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
+            TicketHistory ticketHistory = new TicketHistory();
+
             if (ModelState.IsValid)
             {
-                ticket.Created = DateTime.Now;
-                ticket.TicketStatusId = 1;
                 ticket.OwnerUserId = user.Id;
+                ticket.Created = DateTimeOffset.UtcNow;
+                ticket.Updated = DateTimeOffset.UtcNow;
+                ticket.TicketStatusId = 1;
                 db.Tickets.Add(ticket);
+
+                ticketHistory.AuthorId = User.Identity.GetUserId();
+                ticketHistory.Created = ticket.Created;
+                ticketHistory.TicketId = ticket.Id;
+                ticketHistory.Property = "TICKET CREATED";
+                db.TicketHistories.Add(ticketHistory);
+
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
-            }
+            
+        }
 
 
             ViewBag.ProjectId = new SelectList(db.Projects.Where(p => p.Users.Any(u => u.Id == user.Id)), "Id", "Title", ticket.ProjectId);
@@ -145,23 +159,53 @@ namespace cmcglynn_bugTracker.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            var user = db.Users.Find(User.Identity.GetUserId());
+            UserRoleHelper helper = new UserRoleHelper();
             Ticket ticket = db.Tickets.Find(id);
             if (ticket == null)
             {
                 return HttpNotFound();
             }
 
-            UserRoleHelper helper = new UserRoleHelper();
+
+           
+
             var developers = helper.UserInRole("Developer");
-            var devsOnTicketProj = developers.Where(d => d.Projects.Any(p => p.Id == ticket.ProjectId));
-            ViewBag.AssignToUserId = new SelectList(devsOnTicketProj, "Id", "FirstName", ticket.AssignToUserId);
-            ViewBag.AssignToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignToUserId);
-            ViewBag.OwnerUserId = new SelectList(helper.UserInRole("Submitter"), "Id", "FullName", ticket.OwnerUser);
-            ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
+            var devsOnProj = developers.Where(d => d.Projects.Any(p => p.Id == ticket.ProjectId));
+
+            ViewBag.AssignToUserId = new SelectList(devsOnProj, "Id", "FullName", ticket.AssignToUserId);
+            ViewBag.OwnerUserId = new SelectList(helper.UserInRole("Submitter"), "Id", "FullName", ticket.OwnerUserId); // Set the list to only those in Submitter Role.
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
+            ViewBag.UserTimeZone = db.Users.Find(User.Identity.GetUserId()).TimeZone;
+           
+
+
+
+
+
+            if (User.IsInRole("Admin"))
+            {
+                return View(ticket);
+            }
+            else if (User.IsInRole("Project Manager") && !ticket.Project.Users.Any(u => u.Id == user.Id))
+            {
+                return View("NotAuthNoTickets");
+            }
+            else if (User.IsInRole("Developer") && ticket.AssignToUserId != user.Id)
+            {
+                return View("NotAuthNoTickets");
+            }
+            else if (User.IsInRole("Submitter") && ticket.OwnerUserId != user.Id)
+            {
+                return View("NotAuthNoTickets");
+            }
+            else if (user.Roles.Count == 0)
+            {
+                return View("NotAuthNoTickets");
+            }
             return View(ticket);
         }
 
@@ -191,6 +235,9 @@ namespace cmcglynn_bugTracker.Controllers
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
+
+          
+
             return View(ticket);
         }
 
@@ -227,12 +274,14 @@ namespace cmcglynn_bugTracker.Controllers
         public ActionResult AttachmentCreate(IEnumerable<HttpPostedFileBase> files, int ticketId)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
+            
             Ticket ticket = db.Tickets.Find(ticketId);
             if (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticket.Project.Users.Any(u => u.Id == user.Id)) || (User.IsInRole("Developer") && ticket.AssignToUserId == user.Id) || (User.IsInRole("Submitter") && ticket.OwnerUserId == user.Id))
 
                 //if (ModelState.IsValid)
                 foreach (var file in files)
                 {
+                    TicketHistory ticketHistory = new TicketHistory();
                     TicketAttachment attachment = new TicketAttachment();
 
                     file.SaveAs(Path.Combine(Server.MapPath("~/TicketAttachments/"), Path.GetFileName(file.FileName)));
@@ -243,6 +292,14 @@ namespace cmcglynn_bugTracker.Controllers
                     attachment.Created = DateTimeOffset.Now;
 
                     db.TicketAttachments.Add(attachment);
+
+                    ticketHistory.AuthorId = User.Identity.GetUserId();
+                    ticketHistory.Created = DateTimeOffset.Now;
+                    ticketHistory.TicketId = ticket.Id;
+                    ticketHistory.NewValue = attachment.FileUrl;
+                    ticketHistory.Property = "TICKET ATTACHMENT";
+                    db.TicketHistories.Add(ticketHistory);
+
                     db.SaveChanges();
                 }
 
@@ -265,22 +322,34 @@ namespace cmcglynn_bugTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CommentCreate([Bind(Include = "Id,TicketId,Body")] TicketComment ticketComment)
         {
+             
+            TicketHistory ticketHistory = new TicketHistory();
             var userId = User.Identity.GetUserId();
+            var ticket = db.Tickets.Find(ticketComment.TicketId);
             if (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticketComment.Ticket.Project.Users.Any(u => u.Id == userId)) || (User.IsInRole("Developer") && ticketComment.Ticket.AssignToUserId == userId) || (User.IsInRole("Submitter") && ticketComment.Ticket.OwnerUserId == userId))
                 if (ModelState.IsValid)
                 {
                     if (!String.IsNullOrWhiteSpace(userId))
                     {
+                        ticketComment.TicketId = ticket.Id;
                         ticketComment.Created = DateTime.Now;
                         ticketComment.AuthorId = User.Identity.GetUserId();
                         db.TicketComments.Add(ticketComment);
+
+                        ticketHistory.AuthorId = User.Identity.GetUserId();
+                        ticketHistory.Created = DateTimeOffset.Now;
+                        ticketHistory.TicketId = ticket.Id;
+                        ticketHistory.NewValue = ticketComment.Body;
+                        ticketHistory.Property = "TICKET COMMENT";
+                        db.TicketHistories.Add(ticketHistory);
+
                         db.SaveChanges();
 
                         //var ticket = db.Tickets.Find(ticketComment.TicketId);
                         //return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
                     }
                 }
-            var ticket = db.Tickets.Find(ticketComment.TicketId);
+           
             return RedirectToAction("Details", "Tickets", new { id = ticket.Id });
 
 

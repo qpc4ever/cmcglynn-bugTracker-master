@@ -14,6 +14,8 @@ namespace cmcglynn_bugTracker.Models.CodeFirst
         public string NewValue { get; set; }
         public DateTimeOffset Created { get; set; }
         public string AuthorId { get; set; }
+        public string AuthorName { get; set; }
+
 
         public virtual Ticket Ticket { get; set; }
         public virtual ApplicationUser Author { get; set; }
