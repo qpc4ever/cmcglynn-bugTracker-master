@@ -20,9 +20,11 @@ namespace cmcglynn_bugTracker.Models
                 ViewBag.FirstName = user.FirstName;
                 ViewBag.LastName = user.LastName;
                 ViewBag.FullName = user.FullName;
+                ViewBag.UserTimeZone = user.TimeZone;
 
                 base.OnActionExecuting(filterContext);
             }
+
         }
     }
 }

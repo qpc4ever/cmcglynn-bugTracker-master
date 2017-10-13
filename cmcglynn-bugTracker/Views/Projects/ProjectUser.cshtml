@@ -3,7 +3,7 @@
     ViewBag.Title = "ProjectUser";
 }
 <h2>Assingn Users to Projects</h2>
-@using (Html.BeginForm("EditProjectUsers", "Project", FormMethod.Post))
+@using (Html.BeginForm("ProjectUser", "Projects", FormMethod.Post))
 {<h3>
         Project Name : @Model.AssignProject.Title
     <input type="submit" value="Assign Projects" class="btn btn-default pull-right" style="margin-top: -7px" />
@@ -23,7 +23,7 @@
 }
 
 <div style="margin-top: 40px">
-    @Html.ActionLink("Back to Project Index", "Index")
+    @Html.ActionLink("Back to Projects Index", "Index")
 </div>
 @section Scripts {
 

@@ -168,8 +168,8 @@ namespace cmcglynn_bugTracker.Controllers
             }
 
 
-           
 
+            TicketHistory ticketHistory = new TicketHistory();
             var developers = helper.UserInRole("Developer");
             var devsOnProj = developers.Where(d => d.Projects.Any(p => p.Id == ticket.ProjectId));
 
@@ -180,9 +180,8 @@ namespace cmcglynn_bugTracker.Controllers
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
             ViewBag.UserTimeZone = db.Users.Find(User.Identity.GetUserId()).TimeZone;
+
            
-
-
 
 
 
@@ -209,19 +208,28 @@ namespace cmcglynn_bugTracker.Controllers
             return View(ticket);
         }
 
+      
+
         // POST: Tickets/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignToUserId")] Ticket ticket)
-        {
+        { TicketHistory ticketHistory = new TicketHistory();
+            
             if (ModelState.IsValid)
             {
                 if (ticket.AssignToUserId != null)
                 {
                     ticket.TicketStatusId = 2;
                 }
+
+                ticketHistory.AuthorId = User.Identity.GetUserId();
+                ticketHistory.Created = ticket.Created;
+                ticketHistory.TicketId = ticket.Id;
+                ticketHistory.Property = "TICKET ASSIGNED";
+                db.TicketHistories.Add(ticketHistory);
 
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
@@ -236,7 +244,13 @@ namespace cmcglynn_bugTracker.Controllers
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
 
-          
+            ticketHistory.AuthorId = User.Identity.GetUserId();
+            ticketHistory.Created = DateTimeOffset.Now;
+            ticketHistory.TicketId = ticket.Id;
+            //ticketHistory.NewValue = attachment.FileUrl;
+            ticketHistory.Property = "TICKET ATTACHMENT";
+            db.TicketHistories.Add(ticketHistory);
+
 
             return View(ticket);
         }
@@ -307,6 +321,51 @@ namespace cmcglynn_bugTracker.Controllers
             return RedirectToAction("Details", "Tickets", new { id = ticketId });
         }
 
+        //GET: Attachment/Delete/5
+        [Authorize(Roles = "Admin")]
+        public ActionResult AttachmentDelete(int? id)
+        {
+            TicketAttachment attachments = db.TicketAttachments.Find(id);
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (attachments == null)
+            {
+                return HttpNotFound();
+            }
+            return View(attachments);
+        }
+
+        // POST: /Delete/5
+        [Authorize(Roles = "Admin")]
+        [HttpPost, ActionName("AttachmentDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult AttachmentDeleteConfirmed(int id )
+        {
+            
+            var user = db.Users.Find(User.Identity.GetUserId());
+ TicketHistory ticketHistory = new TicketHistory();
+            TicketAttachment attachments = db.TicketAttachments.Find(id);
+          /*  var ticket = db.Tickets.Find(ticket.TicketId)*/;
+            //if (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticket.Project.Users.Any(u => u.Id == user.Id)) || (User.IsInRole("Developer") && ticket.AssignToUserId == user.Id) || (User.IsInRole("Submitter") && ticket.OwnerUserId == user.Id))
+
+
+                ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
+            ticketHistory.Created = DateTimeOffset.Now;
+            //ticketHistory.NewValue = comments.Body;
+            ticketHistory.Property = "ATTACHMENT DELETED";
+            ticketHistory.TicketId = attachments.TicketId;
+            db.TicketHistories.Add(ticketHistory);
+
+            db.TicketAttachments.Remove(attachments);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
         // GET: Comments/Create
         public ActionResult CommentCreate()
         {
@@ -336,12 +395,17 @@ namespace cmcglynn_bugTracker.Controllers
                         ticketComment.AuthorId = User.Identity.GetUserId();
                         db.TicketComments.Add(ticketComment);
 
+
+
+
                         ticketHistory.AuthorId = User.Identity.GetUserId();
                         ticketHistory.Created = DateTimeOffset.Now;
                         ticketHistory.TicketId = ticket.Id;
                         ticketHistory.NewValue = ticketComment.Body;
                         ticketHistory.Property = "TICKET COMMENT";
                         db.TicketHistories.Add(ticketHistory);
+
+
 
                         db.SaveChanges();
 
@@ -358,7 +422,46 @@ namespace cmcglynn_bugTracker.Controllers
             //return View(ticketComment);
         }
 
-        // POST: Ticket History
+        //GET: Comments/Delete/5
+        [Authorize(Roles = "Admin")]
+        public ActionResult CommentDelete(int? id)
+        {
+            TicketComment comments = db.TicketComments.Find(id);
+            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (comments == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comments);
+        }
+
+        // POST: Comments/Delete/5
+        [Authorize(Roles = "Admin")]
+        [HttpPost, ActionName("CommentDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CommentDeleteConfirmed(int id)
+        {
+
+
+            TicketHistory ticketHistory = new TicketHistory();
+            TicketComment comments = db.TicketComments.Find(id);
+
+            ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
+            ticketHistory.Created = DateTimeOffset.UtcNow;
+            ticketHistory.NewValue = comments.Body;
+            ticketHistory.Property = "COMMENT DELETED";
+            ticketHistory.TicketId = comments.TicketId;
+            db.TicketHistories.Add(ticketHistory);
+
+            db.TicketComments.Remove(comments);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
 
         protected override void Dispose(bool disposing)

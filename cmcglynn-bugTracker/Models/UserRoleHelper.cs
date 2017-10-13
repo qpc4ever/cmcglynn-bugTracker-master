@@ -9,6 +9,7 @@ namespace cmcglynn_bugTracker.Models
 {
     public class UserRoleHelper
     {
+
         private UserManager<ApplicationUser> userManager =
             new UserManager<ApplicationUser>(new UserStore<ApplicationUser>
             (new ApplicationDbContext()));
@@ -53,6 +54,8 @@ namespace cmcglynn_bugTracker.Models
                     resultList.Add(user);
             }
             return resultList;
+
+
         }
     }
 }

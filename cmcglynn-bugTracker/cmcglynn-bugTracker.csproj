@@ -216,6 +216,7 @@
     <Compile Include="Models\CodeFirst\TicketStatus.cs" />
     <Compile Include="Models\CodeFirst\TicketType.cs" />
     <Compile Include="Models\CustomHtmlHelper.cs" />
+    <Compile Include="Models\EditTicketViewModel.cs" />
     <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Models\ProjectViewModel.cs" />
     <Compile Include="Models\HistoryHelper.cs" />
     <Compile Include="Models\Universalcs.cs" />
+    <Compile Include="Models\UserProjectHelper.cs" />
     <Compile Include="Models\UserRoleHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -2490,6 +2492,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Manage\ChangeUserInfo.cshtml" />
     <Content Include="Views\Tickets\Index - Copy.cshtml" />
+    <Content Include="Views\Tickets\CommentDelete.cshtml" />
+    <Content Include="Views\Tickets\AttachmentDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
