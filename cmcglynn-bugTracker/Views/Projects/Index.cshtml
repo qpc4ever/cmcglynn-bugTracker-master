@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
-<h2>Index</h2>
+<h2 style="text-align:center">PROJECTS</h2>
 @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
 {
 <p>
@@ -26,9 +26,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
+            @*<th>
                 Time Zone
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.AuthorId)
             </th>
@@ -52,9 +52,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                <td>
+                @*<td>
                     @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.AuthorId)
                 </td>

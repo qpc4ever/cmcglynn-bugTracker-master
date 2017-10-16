@@ -1,12 +1,12 @@
 ﻿@model  IEnumerable<cmcglynn_bugTracker.Models.CodeFirst.Ticket>
 
- 
+
 
 @{
     ViewBag.Title = "Index";
 }
-@*<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />*@
-<h1 style="text-align:center;">Tickets</h1>
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<h1 style="text-align:center;">TICKETS</h1>
 
 @if (User.IsInRole("Submitter"))
 {
@@ -18,8 +18,8 @@
     <thead>
         <tr>
             <th>
-                Assigned User
-                @*@Html.DisplayNameFor(model => model.AssignToUser.FirstName)*@
+                
+                @Html.DisplayNameFor(model => model.AssignToUser.FirstName)
             </th>
             <th>
                 Ticket Owner
@@ -49,8 +49,8 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             @*<th>
-               Time Zone
-            </th>*@
+                   Time Zone
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Created)
             </th>
@@ -89,8 +89,8 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 @*<td>
-                    @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
-                </td>*@
+                        @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
+                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Created)
                 </td>
@@ -110,9 +110,9 @@
     </tbody>
 </table>
 @section scripts{
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-<script>
+    <script>
         $("#MyTable").DataTable();
-</script>
-    }
+    </script>
+}

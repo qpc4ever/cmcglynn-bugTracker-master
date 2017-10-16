@@ -2493,9 +2493,9 @@
     <Content Include="Views\Projects\ProjectUser.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Manage\ChangeUserInfo.cshtml" />
-    <Content Include="Views\Tickets\Index - Copy.cshtml" />
     <Content Include="Views\Tickets\CommentDelete.cshtml" />
     <Content Include="Views\Tickets\AttachmentDelete.cshtml" />
+    <Content Include="Views\Tickets\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -103,7 +103,10 @@
    }
 @foreach (var attachment in Model.Attachments)
 {
-       <a href="/TicketAttachments/@attachment.FileUrl" target="_blank">@attachment.FileUrl</a><br />
+    <div>
+        <a href="/TicketAttachments/@attachment.FileUrl" target="_blank">@attachment.FileUrl</a><br />
+        @Html.ActionLink("Delete Attachment", "AttachmentDelete", "Tickets", new { id = attachment.Id }, null)
+    </div>
 }
 </div>
 
@@ -124,7 +127,7 @@
         }
     </div>
 </div>
-
+        
 <!-- Single Comment -->
 @foreach (var comment in Model.Comments)
 {
@@ -133,11 +136,64 @@
         <div class="media mb-4">
             @*<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">*@
             <div class="media-body">
-                <h5 class="mt-0">@comment.Author.FullName at @DateTimeOffset.Now</h5>@*<span>Posted on @comment.Created</span>*@
                 <p>@comment.Body</p>
+                <h5 class="mt-0">@comment.Author.FullName Posted on @DateTimeOffset.Now</h5>@*<span>Posted on @comment.Created</span>*@
             </div>
         </div>
+        @Html.ActionLink("Delete Comment", "CommentDelete", "Tickets", new { id = comment.Id }, null)
+
     }
+}
+
+<h3>NEW TICKET HISTORY</h3>
+<hr />
+@foreach (var history in Model.Histories)
+{
+    if (history.Property == "TICKET COMMENT")
+    {
+        <div>
+            <p><span style="font-weight: 600">A new comment was added to the ticket: <br />@history.Property</span> - @history.Author.FullName <br />@history.Created</p>
+        <em>"@history.NewValue"</em>
+        </div>
+        <hr />
+
+
+
+
+    }
+    else if (history.Property == "TICKET ATTACHMENT")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A new attachment was added to the ticket: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <a href="/TicketAttachments/@history.NewValue">@history.NewValue</a>
+            </p>
+        </div>
+    }
+
+    else if (history.Property == "COMMENT DELETED")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A comment was deleted: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+
+    else if (history.Property == "TICKET ASSIGNED")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket was assigned: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+
 }
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

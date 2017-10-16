@@ -340,14 +340,16 @@
                         <div class="side-header-inner-container">
                             <ul class="side-header-nav">
                                 <li class="with-dropdown active">
-                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-presentation"></i>Dashboards <span class="dropdown-icon"></span></a>
+                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-presentation"></i>DASHBOARD<span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
                                         <li>
-                                            <a href="@Url.Action("Index", "Projects")">PROJECTS</a>
+                                            
+                                            <a  href="@Url.Action("Index", "Projects")"><i class="fa fa-briefcase fa-fw"></i>PROJECTS</a>
+                                           
                                         </li>
-                                        <li>
+                                        @*<li>
                                             <a href="@Url.Action("Index", "Tickets")">TICKETS</a>
-                                        </li>
+                                        </li>*@
                                         @*<li><a href="">Dashboard 2</a></li>
                                         <li><a href="">Dashboard 3</a></li>*@
                                     </ul>
