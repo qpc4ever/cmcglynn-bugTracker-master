@@ -18,8 +18,8 @@
     <thead>
         <tr>
             <th>
-                
-                @Html.DisplayNameFor(model => model.AssignToUser.FirstName)
+                Assigned To
+                @*@Html.DisplayNameFor(model => model.AssignToUser.FirstName)*@
             </th>
             <th>
                 Ticket Owner
@@ -30,27 +30,27 @@
                 @*@Html.DisplayNameFor(model => model.Project.Title)*@
             </th>
             <th>
-                Ticket Type
+                Ticket Priority
                 @*@Html.DisplayNameFor(model => model.TicketPriority.Name)*@
             </th>
             <th>
-                Ticket Priority
+                Ticket Status
                 @*@Html.DisplayNameFor(model => model.TicketStatus.Name)*@
             </th>
             <th>
-                Ticket Status
+                Ticket Type
                 @*@Html.DisplayNameFor(model => model.TicketType.Name)*@
             </th>
             <th>
-                Ticket Title
+                Ticket<br /> Title
                 @*@Html.DisplayNameFor(model => model.Title)*@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            @*<th>
+            <th>
                    Time Zone
-                </th>*@
+                </th>
             <th>
                 @Html.DisplayNameFor(model => model.Created)
             </th>
@@ -88,9 +88,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                @*<td>
+                <td>
                         @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
-                    </td>*@
+                    </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Created)
                 </td>

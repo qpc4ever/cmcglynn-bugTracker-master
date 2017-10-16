@@ -126,21 +126,21 @@ namespace cmcglynn_bugTracker.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-                // GET
+                // GET/ASSIGNED
         [Authorize(Roles = "Admin, ProjectManager")]
-        public ActionResult ProjectUser(int Id)
+        public ActionResult ProjectUser(int id)
         {
 
-            var project = db.Projects.Find(Id);
+            var project = db.Projects.Find(id);
             ProjectViewModel projectuserVM = new ProjectViewModel();
             projectuserVM.AssignProject = project;
-            projectuserVM.AssignProjectId = Id;
+            projectuserVM.AssignProjectId = id;
             projectuserVM.SelectedUsers = project.Users.Select(u => u.Id).ToArray();
             projectuserVM.Users = new MultiSelectList(db.Users.ToList(), "Id", "FirstName", projectuserVM.SelectedUsers);
            
             return View(projectuserVM);
         }
-        [HttpPost]    //POST
+        [HttpPost]    //POST/ASSIGNED
         [Authorize(Roles = "Admin, ProjectManager")]
         public ActionResult ProjectUser(ProjectViewModel model)
         {

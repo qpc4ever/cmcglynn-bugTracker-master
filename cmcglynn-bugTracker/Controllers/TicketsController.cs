@@ -13,6 +13,7 @@ using PagedList.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Web.Security;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace cmcglynn_bugTracker.Controllers
 {
@@ -215,9 +216,11 @@ namespace cmcglynn_bugTracker.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignToUserId")] Ticket ticket)
-        { TicketHistory ticketHistory = new TicketHistory();
-            
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Created,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignToUserId")] Ticket ticket)
+        {
+            TicketHistory ticketHistory = new TicketHistory();
+            ApplicationUser oldDev = new ApplicationUser();
+            ApplicationUser newDev = new ApplicationUser();
             if (ModelState.IsValid)
             {
                 if (ticket.AssignToUserId != null)
@@ -250,6 +253,26 @@ namespace cmcglynn_bugTracker.Controllers
             //ticketHistory.NewValue = attachment.FileUrl;
             ticketHistory.Property = "TICKET ATTACHMENT";
             db.TicketHistories.Add(ticketHistory);
+
+            IdentityMessage messageforNewDev = new IdentityMessage();
+            messageforNewDev.Subject = "BugTracker Notifications";
+            if (oldDev != null)
+            {
+                messageforNewDev.Body = $"Your ticket has been assigned to { newDev.FullName } from { oldDev.FullName }.";
+            }
+            else
+            {
+                messageforNewDev.Body = $"Your ticket has been assigned to { newDev.FullName }.";
+            }
+
+            messageforNewDev.Destination = db.Users.Find(ticket.AssignToUserId).Email;
+            EmailService email = new EmailService();
+            await email.SendAsync(messageforNewDev);
+            
+
+
+
+
 
 
             return View(ticket);
@@ -355,7 +378,7 @@ namespace cmcglynn_bugTracker.Controllers
 
                 ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
             ticketHistory.Created = DateTimeOffset.Now;
-            //ticketHistory.NewValue = comments.Body;
+            ticketHistory.NewValue = attachments.FileUrl;
             ticketHistory.Property = "ATTACHMENT DELETED";
             ticketHistory.TicketId = attachments.TicketId;
             db.TicketHistories.Add(ticketHistory);

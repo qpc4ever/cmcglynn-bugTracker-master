@@ -19,7 +19,7 @@
     <hr />
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.AssignProjectId)
-    @Html.ListBox("SelectedRoles", Model.Users, new { @class = "multi-select" })
+    @Html.ListBox("SelectedUsers", Model.Users, new { @class = "multi-select" })
 }
 
 <div style="margin-top: 40px">
