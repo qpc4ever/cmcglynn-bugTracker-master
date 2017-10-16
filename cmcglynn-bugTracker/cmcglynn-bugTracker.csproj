@@ -1444,6 +1444,7 @@
     <Content Include="Assets\images\castle.jpg" />
     <Content Include="Assets\images\cd-arrow.svg" />
     <Content Include="Assets\images\checkbox-img.png" />
+    <Content Include="Assets\images\cm_monogram_1x.png" />
     <Content Include="Assets\images\ecommerce-1.png" />
     <Content Include="Assets\images\ecommerce-2.png" />
     <Content Include="Assets\images\ecommerce-3.png" />
@@ -1461,6 +1462,7 @@
     <Content Include="Assets\images\landscape.jpg" />
     <Content Include="Assets\images\logo-dark.png" />
     <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\QPCPodcast3NoText.png" />
     <Content Include="Assets\images\radio-img.png" />
     <Content Include="Assets\images\scroll-dark.png" />
     <Content Include="Assets\images\scroll.png" />

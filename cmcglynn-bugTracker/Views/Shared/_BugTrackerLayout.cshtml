@@ -10,7 +10,7 @@
     <meta name="author" content="Amazyne Themes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Favicon -->
-    <link rel="icon" href="~/Assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/Assets/images/cm_monogram_1x.png" type="image/x-icon">
     <link href="~/Assets/MultiSelect/MultiSelect.css" rel="stylesheet" />
 
     <!-- Loading Google Fonts -->
@@ -73,8 +73,10 @@
                             </a>
 
                             <!-- Logo -->
-                            <a class="logo" href="~/Assets/index.html">
-                                <img alt="image" src="~/Assets/images/logo.png" />
+                            <a class="logo" @*href="~/Assets/index.html"*@>
+                                <img src="~/Assets/images/QPCPodcast3NoText.png" />
+                           
+                                
                             </a><!-- End of Logo -->
                         </div>
 
@@ -302,7 +304,7 @@
 
                                 <!-- Search Icon -->
 
-                                <li class="nav-search">
+                                @*<li class="nav-search">
                                     <a href="#" class="search-box search-box-trigger"><i class="search-icon pe-7s-search"></i><i class="search-close pe-7s-close"></i></a>
                                 </li><!-- End of Search Icon -->
                                 <!-- Chat/Settings Trigger -->
@@ -310,7 +312,7 @@
                                 <li class="nav-chat">
                                     <a href="#" class="chat-trigger"><div class="notification-dot"><span class="pulse"></span><span class="point"></span></div><i class="pe-7s-comment"></i></a>
                                 </li><!-- End of Chat/Settings Trigger -->
-                                <!-- Logout Button -->
+                                <!-- Logout Button -->*@
 
                                 <li>
                                     <a href="~/Assets/lock-screen-1.html"><i class="logout-icon pe-7s-power"></i></a>
@@ -343,11 +345,14 @@
                                         <li>
                                             <a href="@Url.Action("Index", "Projects")">PROJECTS</a>
                                         </li>
+                                        <li>
+                                            <a href="@Url.Action("Index", "Tickets")">TICKETS</a>
+                                        </li>
                                         @*<li><a href="">Dashboard 2</a></li>
                                         <li><a href="">Dashboard 3</a></li>*@
                                     </ul>
                                 </li>
-                                <li class="menu-heading">Features</li>
+                                @*<li class="menu-heading">Features</li>
                                 <li class="with-dropdown">
                                     <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-browser"></i>UI Elements <span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
@@ -475,10 +480,10 @@
                                     <ul class="menu-dropdown collapse">
                                         <li><a href="~/Assets/mailbox.html" class="with-badge">Mail Box <span class="menu-badge bg-blue">3</span></a></li>
                                         <li><a href="~/Assets/mail.html">Mail</a></li>
-                                        <li><a href="~/Assets/compose.html">Compose Mail</a></li>
+                                        <li><a href="~/Assets/compose.html">Compose Mail</a></li>*@
                                     </ul>
-                                </li>
-                            </ul>
+                                @*</li>
+                            </ul>*@
                         </div>
                     </div>
                 </div>

@@ -48,9 +48,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
+            @*<th>
                Time Zone
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Created)
             </th>
@@ -88,9 +88,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                <td>
+                @*<td>
                     @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Created)
                 </td>
