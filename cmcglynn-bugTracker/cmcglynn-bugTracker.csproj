@@ -1463,6 +1463,7 @@
     <Content Include="Assets\images\logo-dark.png" />
     <Content Include="Assets\images\logo.png" />
     <Content Include="Assets\images\QPCPodcast3NoText.png" />
+    <Content Include="Assets\images\QPCPodcast3NoTextCrop.png" />
     <Content Include="Assets\images\radio-img.png" />
     <Content Include="Assets\images\scroll-dark.png" />
     <Content Include="Assets\images\scroll.png" />
@@ -2496,6 +2497,7 @@
     <Content Include="Views\Tickets\CommentDelete.cshtml" />
     <Content Include="Views\Tickets\AttachmentDelete.cshtml" />
     <Content Include="Views\Tickets\Index - Copy.cshtml" />
+    <Content Include="Views\Account\Login - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

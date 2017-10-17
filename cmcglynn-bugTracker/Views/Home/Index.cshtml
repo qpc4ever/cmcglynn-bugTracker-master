@@ -2,19 +2,41 @@
     ViewBag.Title = "Home Page";
     Layout = null;
 }
-<link rel="icon" href="~/Assets/images/cm_monogram_1x.png" type="image/x-icon">
-<div>
-    
-</div>
-
-<div align="center" style="padding-bottom:300px; background-color:gray" >
-    <a href="@Url.Action("Login", "Account")" style="text-align:center; font-family:'Goudy Old Style'; color:red; padding-top:160px; font-size:120px">BUG TRACKER</a>
-    <a href="@Url.Action("Login", "Account"@*, new { id = Account.Id })*@)">
-        <img class="img-responsive" style="padding-bottom:300px;"
-             src="~/Assets/images/QPCPodcast3NoText.png" alt="">
+<link href="~/assets/plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="icon" href="~/Assets/images/QPCPodcast3NoTextCrop.png" type="image/x-icon" style="">
+<div align="center" style="background-color:gray">
+    <a href="@Url.Action("Login", "Account")" style=" font-family:'Goudy Old Style'; color:red; font-size:120px">BUG TRACKER</a>
+    <a href="@Url.Action("Login", "Account")">
+        <img class="img-responsive"
+             src="~/Assets/images/QPCPodcast3NoTextCrop.png" alt="">
     </a>
-    <p class="letter-spacing-1" style="text-align:center">©2017 Chris McGlynn www.theqpc.com</p>
 </div>
+    @*<ul>
+        <li>
+            <div>
+                <a href="@Url.Action("https://www.linkedin.com/in/chris-mcglynn-73614714a/")"><i class="icon-linkedin"></i></a>
+            </div>
+        </li>
+
+        <li>
+            <div>
+                <a href="https://github.com/qpc4ever"><i class="icon-github"></i></a>
+            </div>
+        </li>
+    </ul>*@
+
+<footer>
+   
+
+    <p class="letter-spacing-1" style="text-align:center">©2017 Chris McGlynn www.theqpc.com</p>
+</footer>
+    @*<li>
+        <div class="item">
+            <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
+        </div>*@
+    <!-- //.item -->
+    @*</li>*@
+
   @*<footer class="footer container-fluid">
             <div class="row">
                 <div class="col-md-12 ">
