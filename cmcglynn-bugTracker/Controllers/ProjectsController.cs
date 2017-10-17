@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace cmcglynn_bugTracker.Controllers
 {
+    [Authorize]
     public class ProjectsController : Universal
     {
 

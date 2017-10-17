@@ -66,22 +66,29 @@
                                         <div class="col-md-12">
                                             <h3 class="text-light mar-bot-25">Login To Your Account</h3>
                                             <div class="form-theme form-dark">
-                                                <div class="form-group pad-bot-15">
-                                                    <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Username</small> <i class="icon-profile-female text-right text-lighter"></i></label>
-                                                    <input type="text" class="form-control" id="name1">
-                                                </div>
-                                                <div class="form-group pad-bot-15">
-                                                    <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Password</small> <i class="icon-lock text-right text-lighter"></i></label>
-                                                    <input type="password" class="form-control" id="password1">
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-6 pad-top-5 text-center-mobile">
-                                                        <a href="#tab2" data-toggle="tab" class="text-light letter-spacing-2 text-uppercase mar-top-5" style="font-size: 11px;"><b>Forgot Password?</b></a>
+                                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                                                {
+                                                    @Html.AntiForgeryToken()
+                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                    <div class="form-group pad-bot-15">
+                                                        <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Username</small> <i class="icon-profile-female text-right text-lighter"></i></label>
+                                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                                     </div>
-                                                    <div class="col-sm-6 text-right mar-top-15-mobile text-center-mobile">
-                                                        <a href="#" class="btn btn-dark btn-lg">Login</a>
+                                                    <div class="form-group pad-bot-15">
+                                                        <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Password</small> <i class="icon-lock text-right text-lighter"></i></label>
+                                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                                     </div>
-                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 pad-top-5 text-center-mobile">
+                                                            <a href="@Url.Action("ForgotPassword", "Account")" @*data-toggle="tab"*@ class="text-light letter-spacing-2 text-uppercase mar-top-5" style="font-size: 11px;"><b>Forgot Password?</b></a>
+                                                        </div>
+                                                        <div class="col-sm-6 text-right mar-top-15-mobile text-center-mobile">
+                                                            <input type="submit" class="btn btn-dark btn-lg" value="Login"/>
+                                                        </div>
+                                                    </div>
+                                                }
                                                 <hr class="mar-top-25 mar-bot-25 light" />
                                                 <label class="text-lighter">OR LOGIN WITH</label>
                                                 <ul class="social-icons list-inline list-unstyled circle inverse sm">
@@ -91,7 +98,7 @@
                                                     <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
                                                 </ul>
                                                 <hr class="mar-top-25 mar-bot-25 light" />
-                                                <div class="btn-curtain btn-curtain-light btn-full-width"><a href="#tab3" data-toggle="tab" class="btn btn-full-width btn-lg">Create A New Account</a></div>
+                                                <div class="btn-curtain btn-curtain-light btn-full-width"><a href="@Url.Action("Register", "Account")" @*data-toggle="tab"*@ class="btn btn-full-width btn-lg">Create A New Account</a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +179,7 @@
                             </div>
                         </div>
                         <hr class="mar-top-25 mar-bot-25 light" />
-                        <p class="text-center weight-400 text-lighter"><small>©2016 Nucleus - T. +01 2345 6788 - F. +01 2345 6789</small>
+                        <p class="text-center weight-400 text-lighter"><small>©2017 Chris McGlynn - www.theqpc.com</small>
                     </div>
                 </div>
             </div>

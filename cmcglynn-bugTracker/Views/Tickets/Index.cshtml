@@ -49,9 +49,6 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                   Time Zone
-                </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Created)
             </th>
             <th>
@@ -89,13 +86,13 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                        @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
-                    </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Created)
+                    @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Updated)
+                    @if (item.Updated != null)
+                    {
+                        @Html.ToUserTime(item.Updated.Value, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
+                    }
                 </td>
                 <td>
                     @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))

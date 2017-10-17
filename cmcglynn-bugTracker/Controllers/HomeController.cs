@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,6 +10,8 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Net.Mail;
 using static cmcglynn_bugTracker.EmailService;
+using cmcglynn_bugTracker.Models.CodeFirst;
+using Microsoft.AspNet.Identity;
 
 namespace cmcglynn_bugTracker.Controllers
 {
@@ -16,7 +20,28 @@ namespace cmcglynn_bugTracker.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var tickets = db.Tickets.Include(t => t.AssignToUser).Include(t => t.OwnerUser).Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
+            List<Ticket> Tickets = new List<Ticket>();
+
+            if (User.IsInRole("Admin"))
+            {
+                return View(tickets.ToList());
+            }
+            else if (User.IsInRole("Developer"))
+            {
+                return View(tickets.Where(c => c.AssignToUserId == user.Id).ToList());
+            }
+            else if (User.IsInRole("Submitter"))
+            {
+                return View(tickets.Where(c => c.OwnerUserId == user.Id).ToList());
+            }
+            else if (User.IsInRole("Project Manager"))
+            {
+                return View(tickets.Where(c => c.Project.Users.Any(u => u.Id == user.Id)));
+            }
+
+            return View(tickets);
         }
 
         [AllowAnonymous]

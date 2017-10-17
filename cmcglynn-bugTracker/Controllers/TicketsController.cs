@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 
 namespace cmcglynn_bugTracker.Controllers
 {
+    [Authorize]
     public class TicketsController : Universal
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -24,8 +25,6 @@ namespace cmcglynn_bugTracker.Controllers
         // GET: Tickets
         public ActionResult Index()
         {
-
-
             var user = db.Users.Find(User.Identity.GetUserId());
             var tickets = db.Tickets.Include(t => t.AssignToUser).Include(t => t.OwnerUser).Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
             List<Ticket> Tickets = new List<Ticket>();
@@ -35,7 +34,6 @@ namespace cmcglynn_bugTracker.Controllers
             {
                 return View(tickets.ToList());
             }
-
             else if (User.IsInRole("Developer"))
             {
                 return View(tickets.Where(c => c.AssignToUserId == user.Id).ToList());
@@ -47,7 +45,6 @@ namespace cmcglynn_bugTracker.Controllers
             else if (User.IsInRole("Project Manager"))
             {
                 return View(tickets.Where(c => c.Project.Users.Any(u => u.Id == user.Id)));
-                
             }
             return View(tickets);
         }
@@ -209,85 +206,172 @@ namespace cmcglynn_bugTracker.Controllers
             return View(ticket);
         }
 
-      
 
-        // POST: Tickets/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
+        //POST: Tickets/Edit/5
+        //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //more details see https://go.microsoft.com/fwlink/?LinkId=317598.  
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description,Created,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignToUserId")] Ticket ticket)
         {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var edited = false;
             TicketHistory ticketHistory = new TicketHistory();
-            ApplicationUser oldDev = new ApplicationUser();
-            ApplicationUser newDev = new ApplicationUser();
+            Ticket oldTicket = db.Tickets.AsNoTracking().First(t => t.Id == ticket.Id);
+            ApplicationUser oldDev = oldTicket.AssignToUser;
+
             if (ModelState.IsValid)
             {
-                if (ticket.AssignToUserId != null)
+                if (oldTicket.Title != ticket.Title)
                 {
-                    ticket.TicketStatusId = 2;
+                    TicketHistory th = new TicketHistory();
+                    th.Property = "TICKET EDITED: TITLE";
+                    th.OldValue = oldTicket.Title;
+                    th.NewValue = ticket.Title;
+                    th.AuthorId = User.Identity.GetUserId();
+                    th.TicketId = ticket.Id;
+                    db.TicketHistories.Add(th);
+                    db.SaveChanges();
+
+                    edited = true;
+                }
+                if (oldTicket.Description != ticket.Description)
+                {
+                    TicketHistory th = new TicketHistory();
+                    th.Property = "TICKET EDITED: DESCRIPTION";
+                    th.OldValue = oldTicket.Description;
+                    th.NewValue = ticket.Description;
+                    th.AuthorId = User.Identity.GetUserId();
+                    th.TicketId = ticket.Id;
+                    db.TicketHistories.Add(th);
+                    db.SaveChanges();
+
+                    edited = true;
+                }
+                //if (oldTicket.ProjectId != ticket.ProjectId)
+                //{
+                //    TicketHistory th = new TicketHistory();
+                //    th.Property = "TICKET EDITED: PROJECT";
+                //    th.OldValue = oldTicket.ProjectId.ToString();
+                //    th.NewValue = ticket.ProjectId.ToString();
+                //    th.AuthorId = User.Identity.GetUserId();
+                //    th.TicketId = ticket.Id;
+                //    db.TicketHistories.Add(th);
+                //    db.SaveChanges();
+                //}
+                if (oldTicket.TicketTypeId != ticket.TicketTypeId)
+                {
+                    TicketHistory th = new TicketHistory();
+                    th.Property = "TICKET EDITED: TYPE";
+                    th.OldValue = oldTicket.TicketTypeId.ToString();
+                    th.NewValue = ticket.TicketTypeId.ToString();
+                    th.AuthorId = User.Identity.GetUserId();
+                    th.TicketId = ticket.Id;
+                    db.TicketHistories.Add(th);
+                    db.SaveChanges();
+
+                    edited = true;
+                }
+                if (oldTicket.TicketPriorityId != ticket.TicketPriorityId)
+                {
+                    TicketHistory th = new TicketHistory();
+                    th.Property = "TICKET EDITED: PRIORITY";
+                    th.OldValue = oldTicket.TicketPriorityId.ToString();
+                    th.NewValue = ticket.TicketPriorityId.ToString();
+                    th.AuthorId = User.Identity.GetUserId();
+                    th.TicketId = ticket.Id;
+                    db.TicketHistories.Add(th);
+                    db.SaveChanges();
+
+                    edited = true;
+                }
+                if (oldTicket.TicketStatusId != ticket.TicketStatusId)
+                {
+                    TicketHistory th = new TicketHistory();
+                    th.Property = "TICKET EDITED: STATUS";
+                    th.OldValue = oldTicket.TicketStatusId.ToString();
+                    th.NewValue = ticket.TicketStatusId.ToString();
+                    th.AuthorId = User.Identity.GetUserId();
+                    th.TicketId = ticket.Id;
+                    db.TicketHistories.Add(th);
+                    db.SaveChanges();
+
+                    edited = true;
+                }
+                if (oldTicket.AssignToUserId != null && oldTicket.AssignToUserId != ticket.AssignToUserId)
+                {
+                    TicketHistory th = new TicketHistory();
+                    th.Property = "TICKET EDITED: ASSIGNED";
+                    th.OldValue = oldTicket.AssignToUserId.ToString();
+                    th.NewValue = ticket.AssignToUserId.ToString();
+                    th.AuthorId = User.Identity.GetUserId();
+                    th.TicketId = ticket.Id;
+                    db.TicketHistories.Add(th);
+                    db.SaveChanges();
+
+                    edited = true;
                 }
 
-                ticketHistory.AuthorId = User.Identity.GetUserId();
-                ticketHistory.Created = ticket.Created;
-                ticketHistory.TicketId = ticket.Id;
-                ticketHistory.Property = "TICKET ASSIGNED";
-                db.TicketHistories.Add(ticketHistory);
+                if (edited == true && ticket.AssignToUserId != null)
+                {
+                    IdentityMessage messageforNewDev = new IdentityMessage();
+
+                    var callbackUrl = Url.Action("Details", "Tickets", new { id = ticket.Id }, protocol: Request.Url.Scheme);
+
+                    messageforNewDev.Subject = "BugTracker Notifications";
+                    if (oldDev == null || oldDev.Id != ticket.AssignToUserId)
+                    {
+                        messageforNewDev.Body = $"You've been assigned to a new ticket { oldTicket.Title }. Please click <a href=\"" + callbackUrl + "\">here</a> to view it.";
+
+                        Notification n = new Notification();
+                        n.NotifyUserId = ticket.AssignToUserId;
+                        n.Created = DateTime.Now;
+                        n.TicketId = ticket.Id;
+                        n.Type = "ASSIGNMENT";
+                        n.Description = "You've been assigned to a new ticket.";
+                        db.Notifications.Add(n);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        messageforNewDev.Body = $"Your ticket has been updated { oldTicket.Title }. Please click <a href=\"" + callbackUrl + "\">here</a> to view it.";
+
+                        Notification n = new Notification();
+                        n.NotifyUserId = ticket.AssignToUserId;
+                        n.Created = DateTime.Now;
+                        n.TicketId = ticket.Id;
+                        n.Type = "TICKET EDIT";
+                        n.Description = ticket.Title + " has been edited.";
+                        db.Notifications.Add(n);
+                        db.SaveChanges();
+                    }
+
+
+
+                    messageforNewDev.Destination = db.Users.Find(ticket.AssignToUserId).Email;
+                    EmailService email = new EmailService();
+                    await email.SendAsync(messageforNewDev);
+
+                }
 
                 db.Entry(ticket).State = EntityState.Modified;
+                ticket.Updated = DateTimeOffset.Now;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
-            if (ModelState.IsValid)
-            {
+            UserRoleHelper userRoleHelper = new UserRoleHelper();
+            var developers = userRoleHelper.UserInRole("Developer");
+            var devsOnProj = developers.Where(d => d.Projects.Any(p => p.Id == ticket.ProjectId));
 
-                ticketHistory.AuthorId = User.Identity.GetUserId();
-                ticketHistory.Created = ticket.Created;
-                ticketHistory.TicketId = ticket.Id;
-                ticketHistory.Property = "TICKET TYPE";
-                db.TicketHistories.Add(ticketHistory);
-
-                db.Entry(ticket).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-
-            ViewBag.AssignToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignToUserId);
-            ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
+            ViewBag.AssignToUserId = new SelectList(developers, "Id", "FullName", ticket.AssignToUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);
             ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
-
-            ticketHistory.AuthorId = User.Identity.GetUserId();
-            ticketHistory.Created = DateTimeOffset.Now;
-            ticketHistory.TicketId = ticket.Id;
-            //ticketHistory.NewValue = attachment.FileUrl;
-            ticketHistory.Property = "TICKET ATTACHMENT";
-            db.TicketHistories.Add(ticketHistory);
-
-            IdentityMessage messageforNewDev = new IdentityMessage();
-            messageforNewDev.Subject = "BugTracker Notifications";
-            if (oldDev != null)
-            {
-                messageforNewDev.Body = $"Your ticket has been assigned to { newDev.FullName } from { oldDev.FullName }.";
-            }
-            else
-            {
-                messageforNewDev.Body = $"Your ticket has been assigned to { newDev.FullName }.";
-            }
-
-            messageforNewDev.Destination = db.Users.Find(ticket.AssignToUserId).Email;
-            EmailService email = new EmailService();
-            await email.SendAsync(messageforNewDev);
-            
-
-
-
-
-
 
             return View(ticket);
         }
@@ -384,13 +468,13 @@ namespace cmcglynn_bugTracker.Controllers
         {
             
             var user = db.Users.Find(User.Identity.GetUserId());
- TicketHistory ticketHistory = new TicketHistory();
+            TicketHistory ticketHistory = new TicketHistory();
             TicketAttachment attachments = db.TicketAttachments.Find(id);
           /*  var ticket = db.Tickets.Find(ticket.TicketId)*/;
             //if (User.IsInRole("Admin") || (User.IsInRole("Project Manager") && ticket.Project.Users.Any(u => u.Id == user.Id)) || (User.IsInRole("Developer") && ticket.AssignToUserId == user.Id) || (User.IsInRole("Submitter") && ticket.OwnerUserId == user.Id))
 
 
-                ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
+            ticketHistory.Author = db.Users.Find(User.Identity.GetUserId());
             ticketHistory.Created = DateTimeOffset.Now;
             ticketHistory.NewValue = attachments.FileUrl;
             ticketHistory.Property = "ATTACHMENT DELETED";
@@ -406,7 +490,7 @@ namespace cmcglynn_bugTracker.Controllers
         // GET: Comments/Create
         public ActionResult CommentCreate()
         {
-            ViewBag.AuthorId = new SelectList(db.ApplicationUser, "Id", "FirstName");
+            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName");
             ViewBag.PostId = new SelectList(db.Tickets, "Id", "Title");
             return View();
         }
