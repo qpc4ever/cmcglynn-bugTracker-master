@@ -17,12 +17,14 @@ using System.Threading.Tasks;
 
 namespace cmcglynn_bugTracker.Controllers
 {
+    
     [Authorize]
     public class TicketsController : Universal
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Tickets
+        [Authorize]
         public ActionResult Index()
         {
             var user = db.Users.Find(User.Identity.GetUserId());
@@ -60,6 +62,7 @@ namespace cmcglynn_bugTracker.Controllers
 
 
         // GET: Tickets/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             var user = db.Users.Find(User.Identity.GetUserId());
@@ -377,6 +380,7 @@ namespace cmcglynn_bugTracker.Controllers
         }
 
         // GET: Tickets/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -488,6 +492,7 @@ namespace cmcglynn_bugTracker.Controllers
 
 
         // GET: Comments/Create
+        [Authorize]
         public ActionResult CommentCreate()
         {
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName");
@@ -499,6 +504,7 @@ namespace cmcglynn_bugTracker.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult CommentCreate([Bind(Include = "Id,TicketId,Body")] TicketComment ticketComment)
         {

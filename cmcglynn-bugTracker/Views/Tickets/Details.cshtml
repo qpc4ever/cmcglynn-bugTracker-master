@@ -204,6 +204,67 @@
             </p>
         </div>
     }
+    else if (history.Property == "TICKET EDITED: TITLE")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket title was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: DESCRIPTION")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket description was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: TYPE")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket type was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: PRIORITY")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket priority was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: STATUS")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket status was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: ASSIGNED")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket assign was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+
 }
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

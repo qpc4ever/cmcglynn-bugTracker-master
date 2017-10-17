@@ -203,8 +203,11 @@
                                             <div class="slim-scroll-dropdown-content">
                                                 <div class="slim-scroll-div">
                                                     <ul class="inner-dropdown-content">
+                                                        @foreach (var notifications in ViewBag.Notifications)
+                                                        {
 
-                                                        
+                                                        }
+
                                                         @*<li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>
                                                         <li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
                                                         <li><a href="#"><span class="details"><i class="bg-yellow icon_cog"></i> System Maintenance at 10 PM</span><span class="time-badge">15 min</span></a></li>
