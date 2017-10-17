@@ -73,9 +73,10 @@
                             </a>
 
                             <!-- Logo -->
-                            <a class="logo" @*href="~/Assets/index.html"*@>
-                                <img src="~/Assets/images/QPCPodcast3NoText.png" />
-
+                             @*href="~/Assets/index.html"*@
+                                @*<img src="~/Assets/images/QPCPodcast3NoText.png" />*@
+                            <a class="logo" style="font-family:'Goudy Old Style'; color:red; font-size:25px">
+                                BUG TRACKER
 
                             </a><!-- End of Logo -->
                         </div>
@@ -344,12 +345,17 @@
                                         @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
                                         {
                                             <li>
-                                                @Html.ActionLink("ADMIN", "Index", "Admin")
+                                                <a href="@Url.Action("Index", "Admin")"><i class="icon_pencil-edit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>ADMIN</a>
                                             </li>
                                         }
                                         <li>
 
-                                            <a href="@Url.Action("Index", "Projects")"><i class="fa fa-briefcase fa-fw"></i>PROJECTS</a>
+                                            <a href="@Url.Action("Index", "Projects")"><i class="icon-briefcase">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>PROJECTS</a>
+
+                                        </li>
+                                        <li>
+
+                                            <a href="@Url.Action("Index", "Tickets")"><i class="icon-caution">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>TICKETS</a>
 
                                         </li>
                                         @*<li>

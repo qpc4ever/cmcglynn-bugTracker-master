@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
-<h2 style="text-align:center">PROJECTS</h2>
+<h2 style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">PROJECTS</h2>
 @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
 {
 <p>
@@ -65,7 +65,7 @@
                     }
                 </td>
 
-                <td>
+                <td style="font-family:'Goudy Old Style'; color:red;">
                     @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
                 {
                         @Html.ActionLink("ASSIGN TO PROJECT", "ProjectUser", new { id = item.Id })<br />

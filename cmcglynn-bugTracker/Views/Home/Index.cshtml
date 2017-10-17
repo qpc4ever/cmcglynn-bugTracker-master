@@ -2,13 +2,26 @@
     ViewBag.Title = "Home Page";
     Layout = null;
 }
+<link rel="icon" href="~/Assets/images/cm_monogram_1x.png" type="image/x-icon">
+<div>
+    
+</div>
 
-<div align="center" style="margin-bottom:100px; background-color:gray" >
+<div align="center" style="padding-bottom:300px; background-color:gray" >
+    <a href="@Url.Action("Login", "Account")" style="text-align:center; font-family:'Goudy Old Style'; color:red; padding-top:160px; font-size:120px">BUG TRACKER</a>
     <a href="@Url.Action("Login", "Account"@*, new { id = Account.Id })*@)">
-        <img class="img-responsive"
+        <img class="img-responsive" style="padding-bottom:300px;"
              src="~/Assets/images/QPCPodcast3NoText.png" alt="">
     </a>
+    <p class="letter-spacing-1" style="text-align:center">©2017 Chris McGlynn www.theqpc.com</p>
 </div>
+  @*<footer class="footer container-fluid">
+            <div class="row">
+                <div class="col-md-12 ">
+                    
+                </div>
+            </div>
+      </footer>*@
 @*<div class="section-admin container-fluid">
     <div class="row admin text-center">
         <div class="col-lg-4 col-sm-12">

@@ -6,11 +6,11 @@
     ViewBag.Title = "Index";
 }
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
-<h1 style="text-align:center;">TICKETS</h1>
+<h1 style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">TICKETS</h1>
 
 @if (User.IsInRole("Submitter"))
 {
-    <p>
+    <p style="font-family:'Goudy Old Style'; color:red;">
         @Html.ActionLink("Create New", "Create")
     </p>
 }

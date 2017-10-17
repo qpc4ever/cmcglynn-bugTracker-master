@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">TICKET DETAILS</h2>
 
 <div>
-    <h4>Ticket</h4>
+    @*<h4>Ticket</h4>*@
     <hr />
     <dl class="dl-horizontal">
         <dt>AssignToUser
@@ -145,7 +145,7 @@
     }
 }
 
-<h3>NEW TICKET HISTORY</h3>
+<h3 style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">NEW TICKET HISTORY</h3>
 <hr />
 @foreach (var history in Model.Histories)
 {
