@@ -239,7 +239,21 @@ namespace cmcglynn_bugTracker.Controllers
                 return RedirectToAction("Index");
             }
 
-           
+            if (ModelState.IsValid)
+            {
+
+                ticketHistory.AuthorId = User.Identity.GetUserId();
+                ticketHistory.Created = ticket.Created;
+                ticketHistory.TicketId = ticket.Id;
+                ticketHistory.Property = "TICKET TYPE";
+                db.TicketHistories.Add(ticketHistory);
+
+                db.Entry(ticket).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+
             ViewBag.AssignToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignToUserId);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "FirstName", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Title", ticket.ProjectId);

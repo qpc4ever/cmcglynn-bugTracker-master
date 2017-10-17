@@ -194,6 +194,16 @@
         </div>
     }
 
+    else if (history.Property == "ATTACHMENT DELETED")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">An attachment was deleted: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
 }
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

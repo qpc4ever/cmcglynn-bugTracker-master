@@ -11,6 +11,7 @@ using static cmcglynn_bugTracker.EmailService;
 
 namespace cmcglynn_bugTracker.Controllers
 {
+    [Authorize]
     public class HomeController : Universal
     {
         public ActionResult Index()
@@ -18,12 +19,18 @@ namespace cmcglynn_bugTracker.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [AllowAnonymous]
+        public ActionResult Landing()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
+
+        //public ActionResult About()
+        //{
+        //    ViewBag.Message = "Your application description page.";
+
+        //    return View();
+        //}
 
         public ActionResult Contact()
         {
