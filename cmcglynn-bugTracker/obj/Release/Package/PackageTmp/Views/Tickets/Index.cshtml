@@ -6,11 +6,11 @@
     ViewBag.Title = "Index";
 }
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
-<h1 style="text-align:center;">TICKETS</h1>
+<h1 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">TICKETS</h1>
 
 @if (User.IsInRole("Submitter"))
 {
-    <p>
+    <p style="font-family:'Goudy Old Style'; color:red;">
         @Html.ActionLink("Create New", "Create")
     </p>
 }
@@ -18,8 +18,8 @@
     <thead>
         <tr>
             <th>
-                
-                @Html.DisplayNameFor(model => model.AssignToUser.FirstName)
+                Assigned To
+                @*@Html.DisplayNameFor(model => model.AssignToUser.FirstName)*@
             </th>
             <th>
                 Ticket Owner
@@ -30,27 +30,24 @@
                 @*@Html.DisplayNameFor(model => model.Project.Title)*@
             </th>
             <th>
-                Ticket Type
+                Ticket Priority
                 @*@Html.DisplayNameFor(model => model.TicketPriority.Name)*@
             </th>
             <th>
-                Ticket Priority
+                Ticket Status
                 @*@Html.DisplayNameFor(model => model.TicketStatus.Name)*@
             </th>
             <th>
-                Ticket Status
+                Ticket Type
                 @*@Html.DisplayNameFor(model => model.TicketType.Name)*@
             </th>
             <th>
-                Ticket Title
+                Ticket<br /> Title
                 @*@Html.DisplayNameFor(model => model.Title)*@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            @*<th>
-                   Time Zone
-                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Created)
             </th>
@@ -88,15 +85,16 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                @*<td>
-                        @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
-                    </td>*@
                 <td>
-                    @Html.DisplayFor(modelItem => item.Created)
+                    @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Updated)
+                    @if (item.Updated != null)
+                    {
+                        @Html.ToUserTime(item.Updated.Value, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
+                    }
                 </td>
+
                 <td>
                     @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
                 {

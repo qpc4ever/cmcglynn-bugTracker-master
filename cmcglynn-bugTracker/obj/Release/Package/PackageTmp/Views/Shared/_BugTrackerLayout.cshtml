@@ -4,13 +4,13 @@
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dashboard | Nucleus</title>
+    <title>Chris McGlynn | BUG TRACKER</title>
     <meta name="description" content="Premium HTML5 Template">
     <meta name="keywords" content=" HTML5, Premium Template, Nucleus Theme">
     <meta name="author" content="Amazyne Themes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Favicon -->
-    <link rel="icon" href="~/Assets/images/cm_monogram_1x.png" type="image/x-icon">
+    <link rel="icon" href="~/Assets/images/QPCPodcast3NoTextCrop.png" type="image/x-icon">
     <link href="~/Assets/MultiSelect/MultiSelect.css" rel="stylesheet" />
 
     <!-- Loading Google Fonts -->
@@ -73,10 +73,11 @@
                             </a>
 
                             <!-- Logo -->
-                            <a class="logo" @*href="~/Assets/index.html"*@>
-                                <img src="~/Assets/images/QPCPodcast3NoText.png" />
-                           
-                                
+                             @*href="~/Assets/index.html"*@
+                                @*<img src="~/Assets/images/QPCPodcast3NoText.png" />*@
+                            <a class="logo" style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; font-family:'Goudy Old Style'; color:red; font-size:25px">
+                                BUG TRACKER
+
                             </a><!-- End of Logo -->
                         </div>
 
@@ -103,11 +104,11 @@
 
                                 <li class="nav-account dropdown">
                                     <a href="#"><img alt="img" class="profile-picture" src="~/Assets/images/team/man-test-2.jpg" /></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
+                                    <ul class="dropdown-menu" style="background-color:red" >
+                                        <li >
                                             <div class="profile-details">
                                                 @*<p class="name">Jason Smith</p>
-                                                <p class="designation">Managing Director</p>*@
+                                                    <p class="designation">Managing Director</p>*@
                                             </div>
                                         </li>
                                         <li><a href="#">Profile</a></li>
@@ -202,14 +203,19 @@
                                             <div class="slim-scroll-dropdown-content">
                                                 <div class="slim-scroll-div">
                                                     <ul class="inner-dropdown-content">
-                                                        <li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>
+                                                        @*@foreach (var notifications in ViewBag.Notifications)
+                                                        {
+
+                                                        }*@
+
+                                                        @*<li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>
                                                         <li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
                                                         <li><a href="#"><span class="details"><i class="bg-yellow icon_cog"></i> System Maintenance at 10 PM</span><span class="time-badge">15 min</span></a></li>
                                                         <li><a href="#"><span class="details"><i class="bg-green icon_like"></i> 40 New Followers</span><span class="time-badge">3 Hrs</span></a></li>
                                                         <li><a href="#"><span class="details"><i class="bg-red icon_blocked"></i> User IP Blocked</span><span class="time-badge">1 day</span></a></li>
                                                         <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
                                                         <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
-                                                        <li><a href="#"><span class="details"><i class="bg-dark icon_volume-high_alt"></i> Application Error</span><span class="time-badge">3 days</span></a></li>
+                                                        <li><a href="#"><span class="details"><i class="bg-dark icon_volume-high_alt"></i> Application Error</span><span class="time-badge">3 days</span></a></li>*@
                                                     </ul>
                                                 </div>
                                             </div>
@@ -303,19 +309,18 @@
                             <ul class="nav navbar-nav navbar-right">
 
                                 <!-- Search Icon -->
-
                                 @*<li class="nav-search">
-                                    <a href="#" class="search-box search-box-trigger"><i class="search-icon pe-7s-search"></i><i class="search-close pe-7s-close"></i></a>
-                                </li><!-- End of Search Icon -->
-                                <!-- Chat/Settings Trigger -->
+                                        <a href="#" class="search-box search-box-trigger"><i class="search-icon pe-7s-search"></i><i class="search-close pe-7s-close"></i></a>
+                                    </li><!-- End of Search Icon -->
+                                    <!-- Chat/Settings Trigger -->
 
-                                <li class="nav-chat">
-                                    <a href="#" class="chat-trigger"><div class="notification-dot"><span class="pulse"></span><span class="point"></span></div><i class="pe-7s-comment"></i></a>
-                                </li><!-- End of Chat/Settings Trigger -->
-                                <!-- Logout Button -->*@
+                                    <li class="nav-chat">
+                                        <a href="#" class="chat-trigger"><div class="notification-dot"><span class="pulse"></span><span class="point"></span></div><i class="pe-7s-comment"></i></a>
+                                    </li><!-- End of Chat/Settings Trigger -->
+                                    <!-- Logout Button -->*@
 
                                 <li>
-                                    <a href="~/Assets/lock-screen-1.html"><i class="logout-icon pe-7s-power"></i></a>
+                                    @*<a href="~/Assets/lock-screen-1.html"><i class="logout-icon pe-7s-power"></i></a>*@
                                 </li><!-- End of Logout Button -->
                             </ul><!-- End of Right Aligned Icons -->
                         </div>
@@ -342,150 +347,161 @@
                                 <li class="with-dropdown active">
                                     <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-presentation"></i>DASHBOARD<span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("Index", "Admin")"><i class="icon_pencil-edit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>ADMIN</a>
+                                            </li>
+                                        }
                                         <li>
-                                            
-                                            <a  href="@Url.Action("Index", "Projects")"><i class="fa fa-briefcase fa-fw"></i>PROJECTS</a>
-                                           
+
+                                            <a href="@Url.Action("Index", "Projects")"><i class="icon-briefcase">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>PROJECTS</a>
+
+                                        </li>
+                                        <li>
+
+                                            <a href="@Url.Action("Index", "Tickets")"><i class="icon-caution">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>TICKETS</a>
+
                                         </li>
                                         @*<li>
-                                            <a href="@Url.Action("Index", "Tickets")">TICKETS</a>
-                                        </li>*@
+                                                <a href="@Url.Action("Index", "Tickets")">TICKETS</a>
+                                            </li>*@
                                         @*<li><a href="">Dashboard 2</a></li>
-                                        <li><a href="">Dashboard 3</a></li>*@
+                                            <li><a href="">Dashboard 3</a></li>*@
                                     </ul>
                                 </li>
                                 @*<li class="menu-heading">Features</li>
-                                <li class="with-dropdown">
-                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-browser"></i>UI Elements <span class="dropdown-icon"></span></a>
-                                    <ul class="menu-dropdown collapse">
-                                        <li><a href="~/Assets/ui-alerts.html">Alerts</a></li>
-                                        <li><a href="~/Assets/ui-accordions.html">Accordions</a></li>
-                                        <li><a href="~/Assets/ui-buttons.html">Buttons</a></li>
-                                        <li><a href="~/Assets/ui-spinner-buttons.html">Spinner Buttons</a></li>
-                                        <li class="with-dropdown-2">
-                                            <a class="menu-dropdown-link inner" data-toggle="collapse" aria-expanded="true" href="#">Icons <span class="dropdown-icon"></span></a>
-                                            <ul class="menu-dropdown collapse">
-                                                <li><a href="~/Assets/ui-font-awesome-icons.html">Fontawesome</a></li>
-                                                <li><a href="~/Assets/ui-elegant-icons.html">Elegant</a></li>
-                                                <li><a href="~/Assets/ui-7-stroke-icons.html">7 Stroke</a></li>
-                                                <li><a href="~/Assets/ui-et-line-icons.html">ET Line</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="~/Assets/ui-horizontal-timeline.html">Horizontal Timeline</a></li>
-                                        <li><a href="~/Assets/ui-modal-boxes.html">Modal Boxes</a></li>
-                                        <li><a href="~/Assets/ui-notifications.html">Notifications</a></li>
-                                        <li><a href="~/Assets/ui-progress-bars.html">Progress Bars</a></li>
-                                        <li><a href="~/Assets/ui-page-progress-bar.html">Page Progress Bar</a></li>
-                                        <li><a href="~/Assets/ui-portlets.html">Portlets</a></li>
-                                        <li><a href="~/Assets/ui-social-icons.html">Social Icons</a></li>
-                                        <li><a href="~/Assets/ui-steps.html">Steps</a></li>
-                                        <li><a href="~/Assets/ui-tabs.html">Tabs</a></li>
-                                        <li><a href="~/Assets/ui-timeline.html">Timeline</a></li>
-                                        <li><a href="~/Assets/ui-typography.html">Typography</a></li>
-                                        <li><a href="~/Assets/ui-utility.html">Utility</a></li>
-                                        <li><a href="~/Assets/ui-widgets.html">Widgets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="with-dropdown">
-                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-linegraph"></i>Charts <span class="dropdown-icon"></span></a>
-                                    <ul class="menu-dropdown collapse">
-                                        <li><a href="~/Assets/charts-charts-js.html">Charts.js</a></li>
-                                        <li><a href="~/Assets/charts-flotchart.html">Flot Charts</a></li>
-                                        <li><a href="~/Assets/charts-google.html">Google Charts</a></li>
-                                        <li><a href="~/Assets/charts-morris.html">Morris Charts</a></li>
-                                    </ul>
-                                </li>
-                                <li class="with-dropdown">
-                                    <a href="#" class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true"><i class="icon-map"></i> Maps <span class="dropdown-icon"></span></a>
-                                    <ul class="menu-dropdown collapse">
-                                        <li><a href="~/Assets/maps-google.html">Google Maps</a></li>
-                                        <li><a href="~/Assets/maps-vector.html">Vector Maps</a></li>
-                                    </ul>
-                                </li>
-                                <li class="with-dropdown">
-                                    <a class="menu-dropdown-link with-badge" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-grid"></i>Tables <span class="dropdown-icon"></span><span class="menu-badge bg-orange">2</span></a>
-                                    <ul class="menu-dropdown collapse">
-                                        <li><a href="~/Assets/tables-static.html">Static Tables</a></li>
-                                        <li><a href="~/Assets/tables-datatables.html">DataTables</a></li>
-                                    </ul>
-                                </li>
-                                <li class="with-dropdown">
-                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-document"></i>Forms <span class="dropdown-icon"></span></a>
-                                    <ul class="menu-dropdown collapse">
-                                        <li><a href="~/Assets/form-code-viewer.html">Code Viewer</a></li>
-                                        <li><a href="~/Assets/form-editor.html">Editor</a></li>
-                                        <li><a href="~/Assets/form-elements.html">Elements</a></li>
-                                        <li><a href="~/Assets/form-file-upload.html">File Upload</a></li>
-                                        <li><a href="~/Assets/form-wizard.html">Form Wizard</a></li>
-                                        <li><a href="~/Assets/form-picker.html">Picker</a></li>
-                                        <li><a href="~/Assets/form-x-editable.html">X-Editable</a></li>
-                                        <li class="with-dropdown-2">
-                                            <a class="menu-dropdown-link inner" data-toggle="collapse" aria-expanded="true" href="#">Validations <span class="dropdown-icon"></span></a>
-                                            <ul class="menu-dropdown collapse">
-                                                <li><a href="~/Assets/form-custom-errors.html">Custom</a></li>
-                                                <li><a href="~/Assets/form-recaptcha.html">Google Recaptcha</a></li>
-                                                <li><a href="~/Assets/form-html5.html">HTML5 Attributes</a></li>
-                                                <li><a href="~/Assets/form-live-validations.html">Live Validations</a></li>
-                                                <li><a href="~/Assets/form-post-validations.html">Post Validations</a></li>
-                                                <li><a href="~/Assets/form-tooltip-alerts.html">Tooltip-Alerts</a></li>
-                                                <li><a href="~/Assets/form-within-tab.html">Within Tab</a></li>
-                                                <li><a href="~/Assets/form-without-icons.html">Without Icons</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="with-badge" href="~/Assets/calendar.html"><i class="icon-calendar"></i> Calendar <span class="menu-badge bg-dark-green">New</span></a>
-                                </li>
-                                <li class="menu-heading">Layouts</li>
-                                <li class="with-dropdown">
-                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-envelope"></i>Headers <span class="dropdown-icon"></span></a>
-                                    <ul class="menu-dropdown collapse">
-                                        <li><a href="~/Assets/header-side.html" class="with-badge">Header - Side</a></li>
-                                        <li><a href="~/Assets/header-top.html">Header - Top</a></li>
-                                        <li><a href="~/Assets/header-fullscreen.html">Header - Fullscreen</a></li>
-                                        <li class="with-dropdown-2">
-                                            <a class="menu-dropdown-link inner" data-toggle="collapse" aria-expanded="true" href="#">Colors <span class="dropdown-icon"></span></a>
-                                            <ul class="menu-dropdown collapse">
-                                                <li><a href="~/Assets/header-light.html">Light</a></li>
-                                                <li><a href="~/Assets/header-dark-blue.html">Dark Blue</a></li>
-                                                <li><a href="~/Assets/header-blue.html">Blue</a></li>
-                                                <li><a href="~/Assets/header-blue-grey.html">Blue Grey</a></li>
-                                                <li><a href="~/Assets/header-dark-green.html">Dark Green</a></li>
-                                                <li><a href="~/Assets/header-green.html">Green</a></li>
-                                                <li><a href="~/Assets/header-purple.html">Purple</a></li>
-                                                <li><a href="~/Assets/header-red.html">Red</a></li>
-                                                <li><a href="~/Assets/header-orange.html">Orange</a></li>
-                                                <li><a href="~/Assets/header-yellow.html">Yellow</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="with-dropdown">
-                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-book-open"></i>Pages <span class="dropdown-icon"></span></a>
-                                    <ul class="menu-dropdown collapse">
-                                        <li><a href="~/Assets/blank-page.html">Blank Page</a></li>
-                                        <li><a href="~/Assets/error-404.html">Error 404</a></li>
-                                        <li><a href="~/Assets/error-500.html">Error 500</a></li>
-                                        <li><a target="_blank" href="~/Assets/frontend.html">Frontend</a></li>
-                                        <li><a href="~/Assets/login-register-1.html">Login/Register 1</a></li>
-                                        <li><a href="~/Assets/login-register-2.html">Login/Register 2</a></li>
-                                        <li><a href="~/Assets/lock-screen-1.html">Lock Screen 1</a></li>
-                                        <li><a href="~/Assets/lock-screen-2.html">Lock Screen 2</a></li>
-                                        <li><a href="~/Assets/user-account.html">User Account</a></li>
-                                        <li><a href="~/Assets/user-help.html">User Help</a></li>
-                                        <li><a href="~/Assets/user-profile.html">User Profile</a></li>
-                                    </ul>
-                                </li>
-                                <li class="with-dropdown">
-                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-envelope"></i>Inbox <span class="dropdown-icon"></span></a>
-                                    <ul class="menu-dropdown collapse">
-                                        <li><a href="~/Assets/mailbox.html" class="with-badge">Mail Box <span class="menu-badge bg-blue">3</span></a></li>
-                                        <li><a href="~/Assets/mail.html">Mail</a></li>
-                                        <li><a href="~/Assets/compose.html">Compose Mail</a></li>*@
-                                    </ul>
-                                @*</li>
-                            </ul>*@
+                                    <li class="with-dropdown">
+                                        <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-browser"></i>UI Elements <span class="dropdown-icon"></span></a>
+                                        <ul class="menu-dropdown collapse">
+                                            <li><a href="~/Assets/ui-alerts.html">Alerts</a></li>
+                                            <li><a href="~/Assets/ui-accordions.html">Accordions</a></li>
+                                            <li><a href="~/Assets/ui-buttons.html">Buttons</a></li>
+                                            <li><a href="~/Assets/ui-spinner-buttons.html">Spinner Buttons</a></li>
+                                            <li class="with-dropdown-2">
+                                                <a class="menu-dropdown-link inner" data-toggle="collapse" aria-expanded="true" href="#">Icons <span class="dropdown-icon"></span></a>
+                                                <ul class="menu-dropdown collapse">
+                                                    <li><a href="~/Assets/ui-font-awesome-icons.html">Fontawesome</a></li>
+                                                    <li><a href="~/Assets/ui-elegant-icons.html">Elegant</a></li>
+                                                    <li><a href="~/Assets/ui-7-stroke-icons.html">7 Stroke</a></li>
+                                                    <li><a href="~/Assets/ui-et-line-icons.html">ET Line</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="~/Assets/ui-horizontal-timeline.html">Horizontal Timeline</a></li>
+                                            <li><a href="~/Assets/ui-modal-boxes.html">Modal Boxes</a></li>
+                                            <li><a href="~/Assets/ui-notifications.html">Notifications</a></li>
+                                            <li><a href="~/Assets/ui-progress-bars.html">Progress Bars</a></li>
+                                            <li><a href="~/Assets/ui-page-progress-bar.html">Page Progress Bar</a></li>
+                                            <li><a href="~/Assets/ui-portlets.html">Portlets</a></li>
+                                            <li><a href="~/Assets/ui-social-icons.html">Social Icons</a></li>
+                                            <li><a href="~/Assets/ui-steps.html">Steps</a></li>
+                                            <li><a href="~/Assets/ui-tabs.html">Tabs</a></li>
+                                            <li><a href="~/Assets/ui-timeline.html">Timeline</a></li>
+                                            <li><a href="~/Assets/ui-typography.html">Typography</a></li>
+                                            <li><a href="~/Assets/ui-utility.html">Utility</a></li>
+                                            <li><a href="~/Assets/ui-widgets.html">Widgets</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="with-dropdown">
+                                        <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-linegraph"></i>Charts <span class="dropdown-icon"></span></a>
+                                        <ul class="menu-dropdown collapse">
+                                            <li><a href="~/Assets/charts-charts-js.html">Charts.js</a></li>
+                                            <li><a href="~/Assets/charts-flotchart.html">Flot Charts</a></li>
+                                            <li><a href="~/Assets/charts-google.html">Google Charts</a></li>
+                                            <li><a href="~/Assets/charts-morris.html">Morris Charts</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="with-dropdown">
+                                        <a href="#" class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true"><i class="icon-map"></i> Maps <span class="dropdown-icon"></span></a>
+                                        <ul class="menu-dropdown collapse">
+                                            <li><a href="~/Assets/maps-google.html">Google Maps</a></li>
+                                            <li><a href="~/Assets/maps-vector.html">Vector Maps</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="with-dropdown">
+                                        <a class="menu-dropdown-link with-badge" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-grid"></i>Tables <span class="dropdown-icon"></span><span class="menu-badge bg-orange">2</span></a>
+                                        <ul class="menu-dropdown collapse">
+                                            <li><a href="~/Assets/tables-static.html">Static Tables</a></li>
+                                            <li><a href="~/Assets/tables-datatables.html">DataTables</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="with-dropdown">
+                                        <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-document"></i>Forms <span class="dropdown-icon"></span></a>
+                                        <ul class="menu-dropdown collapse">
+                                            <li><a href="~/Assets/form-code-viewer.html">Code Viewer</a></li>
+                                            <li><a href="~/Assets/form-editor.html">Editor</a></li>
+                                            <li><a href="~/Assets/form-elements.html">Elements</a></li>
+                                            <li><a href="~/Assets/form-file-upload.html">File Upload</a></li>
+                                            <li><a href="~/Assets/form-wizard.html">Form Wizard</a></li>
+                                            <li><a href="~/Assets/form-picker.html">Picker</a></li>
+                                            <li><a href="~/Assets/form-x-editable.html">X-Editable</a></li>
+                                            <li class="with-dropdown-2">
+                                                <a class="menu-dropdown-link inner" data-toggle="collapse" aria-expanded="true" href="#">Validations <span class="dropdown-icon"></span></a>
+                                                <ul class="menu-dropdown collapse">
+                                                    <li><a href="~/Assets/form-custom-errors.html">Custom</a></li>
+                                                    <li><a href="~/Assets/form-recaptcha.html">Google Recaptcha</a></li>
+                                                    <li><a href="~/Assets/form-html5.html">HTML5 Attributes</a></li>
+                                                    <li><a href="~/Assets/form-live-validations.html">Live Validations</a></li>
+                                                    <li><a href="~/Assets/form-post-validations.html">Post Validations</a></li>
+                                                    <li><a href="~/Assets/form-tooltip-alerts.html">Tooltip-Alerts</a></li>
+                                                    <li><a href="~/Assets/form-within-tab.html">Within Tab</a></li>
+                                                    <li><a href="~/Assets/form-without-icons.html">Without Icons</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="with-badge" href="~/Assets/calendar.html"><i class="icon-calendar"></i> Calendar <span class="menu-badge bg-dark-green">New</span></a>
+                                    </li>
+                                    <li class="menu-heading">Layouts</li>
+                                    <li class="with-dropdown">
+                                        <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-envelope"></i>Headers <span class="dropdown-icon"></span></a>
+                                        <ul class="menu-dropdown collapse">
+                                            <li><a href="~/Assets/header-side.html" class="with-badge">Header - Side</a></li>
+                                            <li><a href="~/Assets/header-top.html">Header - Top</a></li>
+                                            <li><a href="~/Assets/header-fullscreen.html">Header - Fullscreen</a></li>
+                                            <li class="with-dropdown-2">
+                                                <a class="menu-dropdown-link inner" data-toggle="collapse" aria-expanded="true" href="#">Colors <span class="dropdown-icon"></span></a>
+                                                <ul class="menu-dropdown collapse">
+                                                    <li><a href="~/Assets/header-light.html">Light</a></li>
+                                                    <li><a href="~/Assets/header-dark-blue.html">Dark Blue</a></li>
+                                                    <li><a href="~/Assets/header-blue.html">Blue</a></li>
+                                                    <li><a href="~/Assets/header-blue-grey.html">Blue Grey</a></li>
+                                                    <li><a href="~/Assets/header-dark-green.html">Dark Green</a></li>
+                                                    <li><a href="~/Assets/header-green.html">Green</a></li>
+                                                    <li><a href="~/Assets/header-purple.html">Purple</a></li>
+                                                    <li><a href="~/Assets/header-red.html">Red</a></li>
+                                                    <li><a href="~/Assets/header-orange.html">Orange</a></li>
+                                                    <li><a href="~/Assets/header-yellow.html">Yellow</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="with-dropdown">
+                                        <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-book-open"></i>Pages <span class="dropdown-icon"></span></a>
+                                        <ul class="menu-dropdown collapse">
+                                            <li><a href="~/Assets/blank-page.html">Blank Page</a></li>
+                                            <li><a href="~/Assets/error-404.html">Error 404</a></li>
+                                            <li><a href="~/Assets/error-500.html">Error 500</a></li>
+                                            <li><a target="_blank" href="~/Assets/frontend.html">Frontend</a></li>
+                                            <li><a href="~/Assets/login-register-1.html">Login/Register 1</a></li>
+                                            <li><a href="~/Assets/login-register-2.html">Login/Register 2</a></li>
+                                            <li><a href="~/Assets/lock-screen-1.html">Lock Screen 1</a></li>
+                                            <li><a href="~/Assets/lock-screen-2.html">Lock Screen 2</a></li>
+                                            <li><a href="~/Assets/user-account.html">User Account</a></li>
+                                            <li><a href="~/Assets/user-help.html">User Help</a></li>
+                                            <li><a href="~/Assets/user-profile.html">User Profile</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="with-dropdown">
+                                        <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-envelope"></i>Inbox <span class="dropdown-icon"></span></a>
+                                        <ul class="menu-dropdown collapse">
+                                            <li><a href="~/Assets/mailbox.html" class="with-badge">Mail Box <span class="menu-badge bg-blue">3</span></a></li>
+                                            <li><a href="~/Assets/mail.html">Mail</a></li>
+                                            <li><a href="~/Assets/compose.html">Compose Mail</a></li>*@
+                            </ul>
+                            @*</li>
+                                </ul>*@
                         </div>
                     </div>
                 </div>
@@ -719,209 +735,208 @@
         </div>
 
         @*<div class="section-admin container-fluid">
-            <div class="row admin text-center">
-                <div class="col-lg-4 col-sm-12">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-4">
-                            <div class="admin-content no-margin-top text-light text-left" style="background-color:#4c5667;">
-                                <table class="table table-theme">
-                                    <tbody>
-                                        <tr>
-                                            <td class="no-padding">
-                                                <div id="website-stats-1" class="chart-container theme-background-transparent" style="height:60px !important;"></div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="row vertical-center-box vertical-center-box-tablet mar-top-30">
-                                    <div class="col-xs-7 text-light">
-                                        <h3>Total Visits</h3>
-                                        <h2 class="no-margin">33000</h2>
+                    <div class="row admin text-center">
+                        <div class="col-lg-4 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-4">
+                                    <div class="admin-content no-margin-top text-light text-left" style="background-color:#4c5667;">
+                                        <table class="table table-theme">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="no-padding">
+                                                        <div id="website-stats-1" class="chart-container theme-background-transparent" style="height:60px !important;"></div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="row vertical-center-box vertical-center-box-tablet mar-top-30">
+                                            <div class="col-xs-7 text-light">
+                                                <h3>Total Visits</h3>
+                                                <h2 class="no-margin">33000</h2>
+                                            </div>
+                                            <div class="col-xs-5 text-right">
+                                                <label class="label bg-blue" style="font-size:12px;"><i class="arrow_up"></i> 25%</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-5 text-right">
-                                        <label class="label bg-blue" style="font-size:12px;"><i class="arrow_up"></i> 25%</label>
+                                </div>
+                                <div class="col-lg-12 col-sm-4">
+                                    <div class="admin-content no-margin-top text-light text-left" style="background-color:#8a97ad;">
+                                        <table class="table table-theme">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="no-padding">
+                                                        <div id="website-stats-2" class="chart-container theme-background-transparent" style="height:60px !important;"></div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="row vertical-center-box vertical-center-box-tablet mar-top-30">
+                                            <div class="col-xs-7 text-light">
+                                                <h3>Total Sales</h3>
+                                                <h2 class="no-margin">50000</h2>
+                                            </div>
+                                            <div class="col-xs-5 text-right">
+                                                <label class="label bg-red" style="font-size:12px;"><i class="arrow_down"></i> 5%</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-sm-4">
+                                    <div class="admin-content no-margin-top text-light text-left" style="background-color:#c7cfdb;">
+                                        <table class="table table-theme">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="no-padding">
+                                                        <div id="website-stats-3" class="chart-container theme-background-transparent" style="height:60px !important;"></div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="row vertical-center-box vertical-center-box-tablet mar-top-30">
+                                            <div class="col-xs-7 text-light">
+                                                <h3>Site Analysis</h3>
+                                                <h2 class="no-margin">75000</h2>
+                                            </div>
+                                            <div class="col-xs-5 text-right">
+                                                <label class="label bg-dark-green" style="font-size:12px;"><i class="arrow_up"></i> 17%</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-sm-4">
-                            <div class="admin-content no-margin-top text-light text-left" style="background-color:#8a97ad;">
-                                <table class="table table-theme">
-                                    <tbody>
-                                        <tr>
-                                            <td class="no-padding">
-                                                <div id="website-stats-2" class="chart-container theme-background-transparent" style="height:60px !important;"></div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="row vertical-center-box vertical-center-box-tablet mar-top-30">
-                                    <div class="col-xs-7 text-light">
-                                        <h3>Total Sales</h3>
-                                        <h2 class="no-margin">50000</h2>
+                        <div class="col-lg-8 col-sm-12">
+                            <div class="admin-content">
+                                <h3>Site Visits</h3>
+                                <div class="row mar-top-30">
+                                    <div class="col-md-12">
+                                        <div id="Visitors" class="chart-container theme-background-transparent"></div>
                                     </div>
-                                    <div class="col-xs-5 text-right">
-                                        <label class="label bg-red" style="font-size:12px;"><i class="arrow_down"></i> 5%</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-sm-4">
-                            <div class="admin-content no-margin-top text-light text-left" style="background-color:#c7cfdb;">
-                                <table class="table table-theme">
-                                    <tbody>
-                                        <tr>
-                                            <td class="no-padding">
-                                                <div id="website-stats-3" class="chart-container theme-background-transparent" style="height:60px !important;"></div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="row vertical-center-box vertical-center-box-tablet mar-top-30">
-                                    <div class="col-xs-7 text-light">
-                                        <h3>Site Analysis</h3>
-                                        <h2 class="no-margin">75000</h2>
-                                    </div>
-                                    <div class="col-xs-5 text-right">
-                                        <label class="label bg-dark-green" style="font-size:12px;"><i class="arrow_up"></i> 17%</label>
+                                    <div class="col-md-12 text-center text-lighter text-uppercase mar-top-30">
+                                        <div class="row">
+                                            <div class="col-md-2 col-xs-4">
+                                                <div id="sparkline1" class="sparkline-container">Loading..</div>
+                                                <h5><b>USA</b></h5>
+                                            </div>
+                                            <div class="col-md-2 col-xs-4">
+                                                <div id="sparkline2" class="sparkline-container">Loading..</div>
+                                                <h5><b>India</b></h5>
+                                            </div>
+                                            <div class="col-md-2 col-xs-4">
+                                                <div id="sparkline3" class="sparkline-container">Loading..</div>
+                                                <h5><b>UK</b></h5>
+                                            </div>
+                                            <div class="col-md-2 col-xs-4">
+                                                <div id="sparkline4" class="sparkline-container">Loading..</div>
+                                                <h5><b>Australia</b></h5>
+                                            </div>
+                                            <div class="col-md-2 col-xs-4">
+                                                <div id="sparkline5" class="sparkline-container">Loading..</div>
+                                                <h5><b>China</b></h5>
+                                            </div>
+                                            <div class="col-md-2 col-xs-4">
+                                                <div id="sparkline6" class="sparkline-container">Loading..</div>
+                                                <h5><b>France</b></h5>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-sm-12">
-                    <div class="admin-content">
-                        <h3>Site Visits</h3>
-                        <div class="row mar-top-30">
-                            <div class="col-md-12">
-                                <div id="Visitors" class="chart-container theme-background-transparent"></div>
-                            </div>
-                            <div class="col-md-12 text-center text-lighter text-uppercase mar-top-30">
-                                <div class="row">
-                                    <div class="col-md-2 col-xs-4">
-                                        <div id="sparkline1" class="sparkline-container">Loading..</div>
-                                        <h5><b>USA</b></h5>
-                                    </div>
-                                    <div class="col-md-2 col-xs-4">
-                                        <div id="sparkline2" class="sparkline-container">Loading..</div>
-                                        <h5><b>India</b></h5>
-                                    </div>
-                                    <div class="col-md-2 col-xs-4">
-                                        <div id="sparkline3" class="sparkline-container">Loading..</div>
-                                        <h5><b>UK</b></h5>
-                                    </div>
-                                    <div class="col-md-2 col-xs-4">
-                                        <div id="sparkline4" class="sparkline-container">Loading..</div>
-                                        <h5><b>Australia</b></h5>
-                                    </div>
-                                    <div class="col-md-2 col-xs-4">
-                                        <div id="sparkline5" class="sparkline-container">Loading..</div>
-                                        <h5><b>China</b></h5>
-                                    </div>
-                                    <div class="col-md-2 col-xs-4">
-                                        <div id="sparkline6" class="sparkline-container">Loading..</div>
-                                        <h5><b>France</b></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="section-admin container-fluid">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="admin-content">
-                        <h3>CPU Load</h3>
-                        <div id="live-chart" class="chart-container mar-top-30" style="height:285px !important;"></div>
+                <div class="section-admin container-fluid">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="admin-content">
+                                <h3>CPU Load</h3>
+                                <div id="live-chart" class="chart-container mar-top-30" style="height:285px !important;"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="admin-content">
+                                <div id="vmap_world" class="vmaps" style="height:335px !important;"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="admin-content">
+                                <h3>Browser Stats</h3>
+                                <table class="table table-theme mar-top-30">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Google Chrome
+                                            </td>
+                                            <td class="text-right">
+                                                <label class="label bg-green">35%</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Firefox
+                                            </td>
+                                            <td class="text-right">
+                                                <label class="label bg-orange">19%</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Apple Safari
+                                            </td>
+                                            <td class="text-right">
+                                                <label class="label bg-yellow">15%</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Opera
+                                            </td>
+                                            <td class="text-right">
+                                                <label class="label bg-red">5%</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Internet Explorer
+                                            </td>
+                                            <td class="text-right">
+                                                <label class="label bg-blue">5%</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Mini Opera
+                                            </td>
+                                            <td class="text-right">
+                                                <label class="label bg-dark-green">16%</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Mini Safari
+                                            </td>
+                                            <td class="text-right">
+                                                <label class="label bg-purple">21%</label>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="admin-content">
-                        <div id="vmap_world" class="vmaps" style="height:335px !important;"></div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="admin-content">
-                        <h3>Browser Stats</h3>
-                        <table class="table table-theme mar-top-30">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Google Chrome
-                                    </td>
-                                    <td class="text-right">
-                                        <label class="label bg-green">35%</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Firefox
-                                    </td>
-                                    <td class="text-right">
-                                        <label class="label bg-orange">19%</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Apple Safari
-                                    </td>
-                                    <td class="text-right">
-                                        <label class="label bg-yellow">15%</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Opera
-                                    </td>
-                                    <td class="text-right">
-                                        <label class="label bg-red">5%</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Internet Explorer
-                                    </td>
-                                    <td class="text-right">
-                                        <label class="label bg-blue">5%</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Mini Opera
-                                    </td>
-                                    <td class="text-right">
-                                        <label class="label bg-dark-green">16%</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Mini Safari
-                                    </td>
-                                    <td class="text-right">
-                                        <label class="label bg-purple">21%</label>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
+            </div>*@
     </div><!-- End of Page Content -->
     <!-- Footer -->
-
     @*<footer class="footer container-fluid">
-        <div class="row">
-            <div class="col-md-12 ">
-                <p class="letter-spacing-1">©2016 Nucleus - T. +01 2345 6788 - F. +01 2345 6789</p>
+            <div class="row">
+                <div class="col-md-12 ">
+                    <p class="letter-spacing-1">©2016 Nucleus - T. +01 2345 6788 - F. +01 2345 6789</p>
+                </div>
             </div>
-        </div>
-    </footer>*@<!-- End of Footer -->
+        </footer>*@<!-- End of Footer -->
     <!-- Loading Third Party Scripts -->
     <script src="~/Assets/jquery/jquery.min.js"></script>
     <script src="~/Assets/easing/js/jquery.easings.min.js"></script>
@@ -963,17 +978,17 @@
     <script>
 
         (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
         })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-xxxxxxx-x', 'auto');
         ga('send', 'pageview');
 
 
-        </script>
-        @RenderSection("scripts", required: false)
+    </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

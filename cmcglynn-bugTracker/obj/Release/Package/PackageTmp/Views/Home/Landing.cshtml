@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris McGlynn | BUG TRACKER</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="~/Assets/images/QPCPodcast3NoTextCrop.png" type="image/x-icon">
+    @Styles.Render("~/Content/css")
+</head>
+<body style="padding-top: 0px; background-color:gray; overflow: hidden">
+    <link href="~/Assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Assets/animate/css/animate.css" rel="stylesheet" />
+    <link rel="icon" href="~/Assets/images/QPCPodcast3NoTextCrop.png" type="image/x-icon" style="">
+    <div class="row" style="text-align: center">
+        <div class="col-sm-2 col-md-9">
+            <p class="animated tada" style="margin-top: 200px; margin-left: 60px; text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">
+               <a href="@Url.Action("Index", "Home")" style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:135px; text-decoration: underline">BUG TRACKER</a>
+            </p>
+        </div>
+        <div class="col-sm-2 col-md-3">
+            <a href="@Url.Action("Index", "Home")">
+                <img class="img-responsive animated bounceInRight" src="~/Assets/images/QPCPodcast3NoTextCrop.png" alt="" style="margin-right: 0px">
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <center style="font-size: 40px">
+            <a href="https://www.linkedin.com/in/chris-mcglynn-73614714a/" target="_blank"><i class="fa fa-linkedin" style="margin-right: 10px"></i></a>
+            <a href="https://github.com/qpc4ever" target="_blank"><i class="fa fa-github" style="margin-left: 10px"></i></a>
+        </center>
+        <p class="letter-spacing-1" style="text-align:center">©2017 Chris McGlynn - www.theqpc.com</p>
+    </footer>
+</body>
+</html>
+
+

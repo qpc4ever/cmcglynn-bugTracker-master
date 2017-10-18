@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">TICKET DETAILS</h2>
 
 <div>
-    <h4>Ticket</h4>
+    @*<h4>Ticket</h4>*@
     <hr />
     <dl class="dl-horizontal">
         <dt>AssignToUser
@@ -145,7 +145,7 @@
     }
 }
 
-<h3>NEW TICKET HISTORY</h3>
+<h3 style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">NEW TICKET HISTORY</h3>
 <hr />
 @foreach (var history in Model.Histories)
 {
@@ -188,6 +188,77 @@
         <div>
             <p>
                 <span style="font-weight: 600">A ticket was assigned: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+
+    else if (history.Property == "ATTACHMENT DELETED")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">An attachment was deleted: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: TITLE")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket title was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: DESCRIPTION")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket description was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: TYPE")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket type was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: PRIORITY")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket priority was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: STATUS")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket status was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
+                @history.Created<br />
+                <em>"@history.NewValue"</em>
+            </p>
+        </div>
+    }
+    else if (history.Property == "TICKET EDITED: ASSIGNED")
+    {
+        <div>
+            <p>
+                <span style="font-weight: 600">A ticket assign was edited: <br /> @history.Property</span> - @history.Author.FullName <br />
                 @history.Created<br />
                 <em>"@history.NewValue"</em>
             </p>

@@ -345,7 +345,7 @@
                         <div class="side-header-inner-container">
                             <ul class="side-header-nav">
                                 <li class="with-dropdown active">
-                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-presentation"></i>DASHBOARD<span class="dropdown-icon"></span></a>
+                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-presentation"></i>NATIGATION<span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
                                         @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
                                         {
@@ -353,6 +353,11 @@
                                                 <a href="@Url.Action("Index", "Admin")"><i class="icon_pencil-edit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>ADMIN</a>
                                             </li>
                                         }
+                                        <li>
+
+                                            <a href="@Url.Action("Index", "Home")"><i class="icon-gears">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>DASHBOARD</a>
+
+                                        </li>
                                         <li>
 
                                             <a href="@Url.Action("Index", "Projects")"><i class="icon-briefcase">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>PROJECTS</a>
@@ -363,6 +368,7 @@
                                             <a href="@Url.Action("Index", "Tickets")"><i class="icon-caution">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>TICKETS</a>
 
                                         </li>
+                                       
                                         @*<li>
                                                 <a href="@Url.Action("Index", "Tickets")">TICKETS</a>
                                             </li>*@
