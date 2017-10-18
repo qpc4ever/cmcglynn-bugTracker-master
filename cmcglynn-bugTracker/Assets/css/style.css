@@ -953,7 +953,8 @@ label {
 }
 .main-nav .navbar-nav .dropdown-menu {
 	width:300px;
-	padding:0;	
+	padding:0;
+    background-color: lightgrey;
 }
 .nav-normal .main-nav .navbar-container .navbar-nav .dropdown-menu {
 	min-width:200px;

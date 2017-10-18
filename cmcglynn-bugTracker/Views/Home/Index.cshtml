@@ -10,9 +10,9 @@
 
 @if (User.IsInRole("Submitter"))
 {
-    <p style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">
+    @*<p style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">
         @Html.ActionLink("Create New", "Create")
-    </p>
+    </p>*@
 }
 <table Id="MyTable" class="table">
     <thead>
@@ -99,7 +99,7 @@
                 {
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id })<br />
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })<br />
-                        @Html.ActionLink("ASSIGN", "ProjectUser", new { id = item.Id })<br />
+                        @*@Html.ActionLink("ASSIGN", "ProjectUser", new { id = item.Id })<br />*@
                     }
                     @Html.ActionLink("Details", "Details", new { id = item.Id })
                 </td>

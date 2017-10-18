@@ -105,21 +105,21 @@
                                 <li class="nav-account dropdown">
                                     <a href="#"><img alt="img" class="profile-picture" src="~/Assets/images/team/man-test-2.jpg" /></a>
                                     <ul class="dropdown-menu" style="background-color:red" >
-                                        <li >
+                                        @*<li >
                                             <div class="profile-details">
-                                                @*<p class="name">Jason Smith</p>
-                                                    <p class="designation">Managing Director</p>*@
+                                                <p class="name">Jason Smith</p>
+                                                <p class="designation">Managing Director</p>
                                             </div>
-                                        </li>
+                                        </li>*@
                                         <li><a href="#">Profile</a></li>
-                                        <li><a href="#">Inbox<span class="menu-badge bg-yellow">8</span></a></li>
+                                        @*<li><a href="#">Inbox<span class="menu-badge bg-yellow">8</span></a></li>*@
                                         <li><hr />@Html.Partial("_LoginPartial")</li>
-                                        <li><a href="#">Lock</a></li>
+                                        @*<li><a href="#">Lock</a></li>*@
                                     </ul>
                                 </li><!-- End of Account Dropdown -->
                                 <!-- Messages Dropdown -->
 
-                                <li class="nav-messages dropdown">
+                                @*<li class="nav-messages dropdown">
                                     <a href="#"><i class="pe-7s-mail"></i><span class="menu-badge bg-purple">8</span></a>
                                     <ul class="dropdown-menu">
                                         <li class="dropdown-heading"><span class="number">8 pending</span> notifications <a href="#">View All</a></li>
@@ -191,22 +191,22 @@
                                                 </div>
                                             </div>
                                         </li>
-                                    </ul>
+                                    </ul>*@
                                 </li><!-- End of Messages Dropdown -->
                                 <!-- Notification Dropdown -->
 
                                 <li class="nav-notify dropdown">
-                                    <a href="#"><i class="pe-7s-bell"></i><span class="menu-badge bg-blue">10</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-heading"><span class="number">8 pending</span> notifications <a href="#">View All</a></li>
+                                    <a href="#"><i class="pe-7s-bell"></i><span class="menu-badge bg-red">@ViewBag.Notifications.Count</span></a>
+                                    <ul class="dropdown-menu" style="background-color: red">
+                                        <li class="dropdown-heading bg-red"><span class="number">@ViewBag.Notifications.Count pending</span> notifications <a href="#">View All</a></li>
                                         <li>
                                             <div class="slim-scroll-dropdown-content">
                                                 <div class="slim-scroll-div">
                                                     <ul class="inner-dropdown-content">
-                                                        @*@foreach (var notifications in ViewBag.Notifications)
+                                                        @foreach (var notifications in ViewBag.Notifications)
                                                         {
-
-                                                        }*@
+                                                            <li><a href="@Url.Action("DeleteNotification", "Tickets", new { id = notifications.Id } )"><span class="details"><i class="bg-blue icon_plus_alt2"></i> @notifications.Description</span><span class="time-badge">@notifications.Created</span></a></li>
+                                                        }
 
                                                         @*<li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>
                                                         <li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
@@ -224,7 +224,7 @@
                                 </li><!-- End of Notification Dropdown -->
                                 <!-- Task Dropdown -->
 
-                                <li class="nav-task dropdown">
+                                @*<li class="nav-task dropdown">
                                     <a href="#"><i class="pe-7s-note2"></i><span class="menu-badge bg-green">3</span></a>
                                     <ul class="dropdown-menu">
                                         <li class="dropdown-heading">You have <span class="number">5 pending</span> tasks <a href="#">View All</a></li>
@@ -301,8 +301,8 @@
                                                 </div>
                                             </div>
                                         </li>
-                                    </ul>
-                                </li><!-- End of Task Dropdown -->
+                                    </ul>*@
+                                @*</li>*@<!-- End of Task Dropdown -->
                             </ul><!-- End of Left Aligned Icons -->
                             <!-- Right Aligned Icons -->
 
@@ -345,7 +345,7 @@
                         <div class="side-header-inner-container">
                             <ul class="side-header-nav">
                                 <li class="with-dropdown active">
-                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-presentation"></i>NATIGATION<span class="dropdown-icon"></span></a>
+                                    <a class="menu-dropdown-link" data-toggle="collapse" aria-expanded="true" href="#"><i class="icon-presentation"></i>NAVIGATION<span class="dropdown-icon"></span></a>
                                     <ul class="menu-dropdown collapse">
                                         @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
                                         {
@@ -934,7 +934,7 @@
                     </div>
                 </div>
             </div>*@
-    </div><!-- End of Page Content -->
+    @*</div>*@<!-- End of Page Content -->
     <!-- Footer -->
     @*<footer class="footer container-fluid">
             <div class="row">

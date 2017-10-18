@@ -131,7 +131,7 @@ namespace cmcglynn_bugTracker.Migrations
                     Email = "submitter@coderfoundry.com",
                     FirstName = "Sub",
                     LastName = "Mitter",
-                }, "Password1!");
+                }, "Password6!");
             }
             var userId_sb = userManager.FindByEmail("submitter@coderfoundry.com").Id;
             userManager.AddToRole(userId_sb, "Submitter");

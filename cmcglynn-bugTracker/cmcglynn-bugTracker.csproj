@@ -2500,6 +2500,8 @@
     <Content Include="Views\Tickets\Index - Copy.cshtml" />
     <Content Include="Views\Account\Login - Copy.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Tickets\Details - Copy.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
