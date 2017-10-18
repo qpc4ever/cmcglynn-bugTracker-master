@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
-<h2 style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">PROJECTS</h2>
+<h2 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">PROJECTS</h2>
 @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
 {
 <p>
@@ -41,10 +41,13 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Created)
+                    @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Updated)
+                    @if (item.Updated != null)
+                    {
+                        @Html.ToUserTime(item.Updated.Value, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
@@ -68,7 +71,7 @@
                 <td style="font-family:'Goudy Old Style'; color:red;">
                     @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
                 {
-                        @Html.ActionLink("ASSIGN TICKETS", "ProjectUser", new { id = item.Id })<br />
+                        @Html.ActionLink("ASSIGN ", "ProjectUser", new { id = item.Id })<br />
                         
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id })<br />
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })<br />

@@ -6,7 +6,7 @@
     ViewBag.Title = "Index";
 }
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
-<h1 style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">TICKETS</h1>
+<h1 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">TICKETS</h1>
 
 @if (User.IsInRole("Submitter"))
 {
@@ -94,6 +94,7 @@
                         @Html.ToUserTime(item.Updated.Value, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
                     }
                 </td>
+
                 <td>
                     @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
                 {
