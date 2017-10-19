@@ -1465,6 +1465,7 @@
     <Content Include="Assets\images\logo.png" />
     <Content Include="Assets\images\QPCPodcast3NoText.png" />
     <Content Include="Assets\images\QPCPodcast3NoTextCrop.png" />
+    <Content Include="Assets\images\QPCPodcast3NoText_square.png" />
     <Content Include="Assets\images\radio-img.png" />
     <Content Include="Assets\images\scroll-dark.png" />
     <Content Include="Assets\images\scroll.png" />
@@ -2502,6 +2503,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Tickets\Details.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Home\TestChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2510,6 +2512,7 @@
     <Folder Include="Assets\jq-plot\examples\jquery-ui\css\ui-lightness\images-1.9pre\" />
     <Folder Include="Assets\jqv-map\create\output\" />
     <Folder Include="Assets\jqv-map\create\source\" />
+    <Folder Include="Assets\ProfilePics\" />
     <Folder Include="TicketAttachments\" />
   </ItemGroup>
   <ItemGroup>

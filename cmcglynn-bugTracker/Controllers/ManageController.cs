@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using cmcglynn_bugTracker.Models;
 using static cmcglynn_bugTracker.EmailService;
+using System.IO;
+using System.Data.Entity;
 
 namespace cmcglynn_bugTracker.Controllers
 {
@@ -58,6 +60,7 @@ namespace cmcglynn_bugTracker.Controllers
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == ManageMessageId.ChangeUserInfoSuccess ? "Your account information has been updated."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
@@ -323,22 +326,75 @@ namespace cmcglynn_bugTracker.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+        //GET: /Manage/UpdateInformation
         public ActionResult ChangeUserInfo()
         {
+            var user = UserManager.FindById(User.Identity.GetUserId());
             ChangeUserInfoViewModel model = new ChangeUserInfoViewModel();
-            model.FirstName = UserManager.FindById(User.Identity.GetUserId()).FirstName;
-            //model.PasswordHash = UserManager.FindById(User.Identity.GetUserId()).PasswordHash;
+            model.FirstName = user.FirstName;
+            model.LastName = user.LastName;
+            model.ProfilePic = user.ProfilePic;
+
             return View(model);
         }
+
+        //POST: /Manage/UpdateInformation
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangeUserInfo( ChangeUserInfoViewModel model)
+        public ActionResult ChangeUserInfo(ChangeUserInfoViewModel model, HttpPostedFileBase image)
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            user.FirstName = model.FirstName;
-            UserManager.Update(user);
-            return RedirectToAction("Index", "Home");
+            var pPic = model.ProfilePic;
+
+            if (image != null && image.ContentLength > 0)
+            {
+                var ext = Path.GetExtension(image.FileName).ToLower();
+                if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp")
+                    ModelState.AddModelError("image", "Invalid Format.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (image != null)
+                {
+                    //Counter
+                    var num = 0;
+                    //Gets Filename without the extension
+                    var fileName = Path.GetFileNameWithoutExtension(image.FileName);
+                    pPic = Path.Combine("/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                    //Checks if pPic matches any of the current attachments, 
+                    //if so it will loop and add a (number) to the end of the filename
+                    while (db.Users.AsNoTracking().Any(u => u.ProfilePic == pPic))
+                    {
+                        //Sets "filename" back to the default value
+                        fileName = Path.GetFileNameWithoutExtension(image.FileName);
+                        //Add's parentheses after the name with a number ex. filename(4)
+                        fileName = string.Format(fileName + "(" + ++num + ")");
+                        //Makes sure pPic gets updated with the new filename so it could check
+                        pPic = Path.Combine("/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                    }
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Assets/ProfilePics/"), fileName + Path.GetExtension(image.FileName)));
+                }
+
+                var defaultProfilePic = "/Assets/images/QPCPodcast3NoText_square.png";
+                if (String.IsNullOrWhiteSpace(pPic))
+                {
+                    pPic = defaultProfilePic;
+                }
+
+                var user = UserManager.FindById(User.Identity.GetUserId());
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.ProfilePic = pPic;
+                UserManager.Update(user);
+
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangeUserInfoSuccess });
+            }
+
+            return View(model);
         }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -394,6 +450,7 @@ namespace cmcglynn_bugTracker.Controllers
         {
             AddPhoneSuccess,
             ChangePasswordSuccess,
+            ChangeUserInfoSuccess,
             SetTwoFactorSuccess,
             SetPasswordSuccess,
             RemoveLoginSuccess,

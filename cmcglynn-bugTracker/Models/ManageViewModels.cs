@@ -60,6 +60,8 @@ namespace cmcglynn_bugTracker.Models
     public class ChangeUserInfoViewModel
     {
         public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string ProfilePic { get; set; }
     }
     public class AddPhoneNumberViewModel
     {

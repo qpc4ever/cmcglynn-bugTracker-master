@@ -100,7 +100,21 @@ namespace cmcglynn_bugTracker.Controllers
                     await Task.FromResult(0);
                 }
             }
+
+
             return View(model);
+
+            
+        }
+
+        public ActionResult TestChart()
+        {
+            ViewBag.AssignTk = db.Tickets.Where(t => t.TicketType.Name == "Assigned");
+            ViewBag.UnassignedTk = 8;
+            ViewBag.ResolvedTk = 7;
+
+            return View();
+
         }
     }
 }

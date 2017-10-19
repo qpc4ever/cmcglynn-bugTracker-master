@@ -103,7 +103,7 @@
                                 <!-- Account Dropdown -->
 
                                 <li class="nav-account dropdown">
-                                    <a href="#"><img alt="img" class="profile-picture" src="~/Assets/images/team/man-test-2.jpg" /></a>
+                                    <a href="#"><img alt="img" class="profile-picture" src="@ViewBag.ProfilePic" /></a>
                                     <ul class="dropdown-menu" style="background-color:red" >
                                         @*<li >
                                             <div class="profile-details">
@@ -111,7 +111,6 @@
                                                 <p class="designation">Managing Director</p>
                                             </div>
                                         </li>*@
-                                        <li><a href="#">Profile</a></li>
                                         @*<li><a href="#">Inbox<span class="menu-badge bg-yellow">8</span></a></li>*@
                                         <li><hr />@Html.Partial("_LoginPartial")</li>
                                         @*<li><a href="#">Lock</a></li>*@

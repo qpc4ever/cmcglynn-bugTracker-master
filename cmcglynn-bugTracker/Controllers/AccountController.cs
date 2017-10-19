@@ -148,61 +148,66 @@ namespace cmcglynn_bugTracker.Controllers
             return View();
         }
 
-        //
+
         // POST: /Account/Register
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Register(RegisterViewModel model, string mediaURL, HttpPostedFileBase image)
-        //{
-        //    if (image != null && image.ContentLength > 0)  //CODE TO BE ABLE TO UPLOAD IMAGES
-        //    {
-        //        var ext = Path.GetExtension(image.FileName).ToLower();
-        //        if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp")
-        //            ModelState.AddModelError("image", "Invalid Format.");
-        //    }
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(User).State = EntityState.Modified;
-        //        if (image != null)
-        //        {
-        //            var filePath = "/Upload/";   //UPLOADING IMAGES TO DATABASE AND PHYSICAL LOCATION "FOLDER"
-        //            var absPath = Server.MapPath("~" + filePath);
-        //            User.MediaUrl = filePath + image.FileName;
-        //            image.SaveAs(Path.Combine(absPath, image.FileName));
-        //        }
-        //        else
-        //        {
-        //            User.MediaUrl = mediaURL;
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase image)
+        {
+            var pPic = "/Assets/images/QPCPodcast3NoText_square.png";
 
-        //        }
+            if (image != null && image.ContentLength > 0)
+            {
+                var ext = Path.GetExtension(image.FileName).ToLower();
+                if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp")
+                    ModelState.AddModelError("image", "Invalid Format.");
+            }
 
-        //        //post.Updated = System.DateTime.Now;
-        //        db.SaveChanges();
-        //        if (ModelState.IsValid)
-        //    {                                                                         // ADD "FIRSTNAME" AND "LASTNAME"
-        //        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, TimeZone = model.TimeZone };
-        //        var result = await UserManager.CreateAsync(user, model.Password);
-        //        if (result.Succeeded)
-        //        {
-        //            await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-        //            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-        //            // Send an email with this link
-        //            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-        //            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-        //            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+            if (ModelState.IsValid)
+            {
+                if (image != null)
+                {
+                    //Counter
+                    var num = 0;
+                    //Gets Filename without the extension
+                    var fileName = Path.GetFileNameWithoutExtension(image.FileName);
+                    pPic = Path.Combine("/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                    //Checks if pPic matches any of the current attachments, 
+                    //if so it will loop and add a (number) to the end of the filename
+                    while (db.Users.Any(u => u.ProfilePic == pPic))
+                    {
+                        //Sets "filename" back to the default value
+                        fileName = Path.GetFileNameWithoutExtension(image.FileName);
+                        //Add's parentheses after the name with a number ex. filename(4)
+                        fileName = string.Format(fileName + "(" + ++num + ")");
+                        //Makes sure pPic gets updated with the new filename so it could check
+                        pPic = Path.Combine("/Assets/ProfilePics/", fileName + Path.GetExtension(image.FileName));
+                    }
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Assets/ProfilePics/"), fileName + Path.GetExtension(image.FileName)));
+                }
 
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        AddErrors(result);
-        //    }
-        //    var timezones = TimeZoneInfo.GetSystemTimeZones();
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, TimeZone = model.TimeZone, ProfilePic = pPic };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-        //    ViewBag.TimeZone = new SelectList(timezones, "Id", "Id");
-        //    // If we got this far, something failed, redisplay form
-        //    return View(model);
-        //}
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+
+            return View(model);
+        }
 
         //
         // GET: /Account/ConfirmEmail

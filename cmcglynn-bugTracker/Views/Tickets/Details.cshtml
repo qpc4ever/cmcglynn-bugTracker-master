@@ -144,7 +144,7 @@
 
     }
 }
-<h3 style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">NEW TICKET HISTORY</h3>
+<h3 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">NEW TICKET HISTORY</h3>
 <hr />
 
 <div class="section-admin container-fluid"  style="background-color: #1f232b !important">
@@ -162,7 +162,11 @@
                         @foreach (var history in Model.Histories)
                         {
                             <li>
-                                <div class="timeline-badge text-blue-grey"><i class="pe-7s-diamond 3-x"></i></div>
+                                <div class="timeline-badge text-blue-grey">
+
+                                    <i class="pe-7s-diamond 3-x"></i>
+                                </div>
+                                
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
                                         <h4 class="timeline-title">@history.Author.FullName - @history.Property</h4>
