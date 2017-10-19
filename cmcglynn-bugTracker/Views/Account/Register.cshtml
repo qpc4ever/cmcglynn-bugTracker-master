@@ -45,9 +45,25 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.MediaUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MediaUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MediaUrl, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Upload Image</label>
+
+            <div class="col-md-10">
+                <input name="image" type="file" class="form-control" />  @*INPUT TO UPLOAD IMAGES*@
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(m => m.TimeZone, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownList("TimeZone", null, new { @class = "searchable-select" })
+                @Html.DropDownList("TimeZone", null, new { @class = "searchable-select", style="color:black" })
             </div>
         </div>
         <div class="form-group">

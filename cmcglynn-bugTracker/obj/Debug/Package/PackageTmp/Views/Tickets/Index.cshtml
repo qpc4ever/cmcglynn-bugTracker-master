@@ -1,0 +1,116 @@
+﻿@model  IEnumerable<cmcglynn_bugTracker.Models.CodeFirst.Ticket>
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<h1 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">TICKETS</h1>
+
+@if (User.IsInRole("Submitter"))
+{
+    <p style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">
+        @Html.ActionLink("CREATE NEW TICKET", "Create")
+    </p>
+}
+<table Id="MyTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                Assigned To
+                @*@Html.DisplayNameFor(model => model.AssignToUser.FirstName)*@
+            </th>
+            <th>
+                Ticket Owner
+                @*@Html.DisplayNameFor(model => model.OwnerUser.FirstName)*@
+            </th>
+            <th>
+                Project Title
+                @*@Html.DisplayNameFor(model => model.Project.Title)*@
+            </th>
+            <th>
+                Ticket Priority
+                @*@Html.DisplayNameFor(model => model.TicketPriority.Name)*@
+            </th>
+            <th>
+                Ticket Status
+                @*@Html.DisplayNameFor(model => model.TicketStatus.Name)*@
+            </th>
+            <th>
+                Ticket Type
+                @*@Html.DisplayNameFor(model => model.TicketType.Name)*@
+            </th>
+            <th>
+                Ticket<br /> Title
+                @*@Html.DisplayNameFor(model => model.Title)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Updated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignToUser.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerUser.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketPriority.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketStatus.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ToUserTime(item.Created, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
+                </td>
+                <td>
+                    @if (item.Updated != null)
+                    {
+                        @Html.ToUserTime(item.Updated.Value, ViewBag.UserTimeZone as string, "MM/dd/yyyy h:mm:ss tt")
+                    }
+                </td>
+
+                <td>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
+                {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })<br />
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })<br />
+                    }
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $("#MyTable").DataTable();
+    </script>
+}

@@ -2486,7 +2486,7 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Tickets\Create.cshtml" />
     <Content Include="Views\Tickets\Delete.cshtml" />
-    <Content Include="Views\Tickets\Details.cshtml" />
+    <Content Include="Views\Tickets\Details-timeline.cshtml" />
     <Content Include="Views\Tickets\Edit.cshtml" />
     <Content Include="Views\Tickets\Index.cshtml" />
     <Content Include="Views\Shared\_BugTrackerLayout.cshtml" />
@@ -2500,7 +2500,7 @@
     <Content Include="Views\Tickets\Index - Copy.cshtml" />
     <Content Include="Views\Account\Login - Copy.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Tickets\Details - Copy.cshtml" />
+    <Content Include="Views\Tickets\Details.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>

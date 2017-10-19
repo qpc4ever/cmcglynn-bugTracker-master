@@ -1,0 +1,59 @@
+﻿@model cmcglynn_bugTracker.Models.AdminUserViewModels
+
+@{
+    ViewBag.Title = "EditUserRoles";
+}
+
+<h2 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">EDIT USER ROLES</h2>
+<hr />
+
+@using (Html.BeginForm("EditUserRoles", "Admin", FormMethod.Post))
+{
+    <h4>
+        @Html.DisplayFor(model => model.User.FullName)
+        <input type="submit" value="Assign Roles" class="btn btn-default pull-right" style="margin-top: -7px"/>
+    </h4>
+    <hr />
+    @Html.HiddenFor(model => model.User.Id)
+    @Html.ListBox("SelectedRoles", Model.Roles, new { @class = "multi-select" })
+}
+
+<div style="margin-top: 40px">
+    @Html.ActionLink("Back to Admin Index", "Index")
+</div>
+@section Scripts {  
+    
+<script src="~/Assets/MultiSelect/MultiSelect.js"></script>
+    <script type="text/javascript">
+        //MULTISELECT INPUTS
+        $(function () {
+            "use strict";
+            $('.multi-select').multiSelect({
+                selectableHeader: "<div styles='text-align: center; background-color: black; color: white'><strong>Available Roles</strong></div>",
+                selectionHeader: "<div styles='text-align: center; background-color: black; color: white'><strong>User Roles</strong></div>"
+            });
+
+            $(".ms-container").append('<i class="glyph-icon icon-exchange"></i>');
+        });
+    </script>
+}
+
+        @*[HttpPost]
+        public ActionResult EditUserRoles(AdminUserViewModels model)
+        {
+            var user = db.Users.Find(model.User.Id);
+            UserRoleHelper helper = new UserRoleHelper();
+            foreach (var role in db.Roles.Select(r => r.Name).ToList())
+            {
+                helper.RemoveUserFromRole(user.Id, role);
+            }
+            if (model.SelectedRoles != null)
+            {
+                foreach (var role in model.SelectedRoles)
+                {
+                    helper.AddUserToRole(user.Id, role);
+                }
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }*@

@@ -1,0 +1,206 @@
+﻿@model LoginViewModel
+@using cmcglynn_bugTracker.Models
+
+@{
+    ViewBag.Title = "Log in";
+    //Layout = null;
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<link href="~/Assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="~/Assets/animate/css/animate.css" rel="stylesheet" />
+<link rel="icon" href="~/Assets/images/QPCPodcast3NoTextCrop.png" type="image/x-icon" style="">
+<div class="row" style="text-align: center">
+    <div class="col-sm-2 col-md-6">
+        <p class="" style="margin-top: 0px; margin-left: 330px; text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">
+            <a href="@Url.Action("Index", "Home")" style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:65px; text-decoration: underline">BUG TRACKER</a>
+        </p>
+    </div>
+    <div class="col-sm-2 col-md-6">
+        <a href="@Url.Action("Index", "Home")">
+            <img class="img-responsive" src="~/Assets/images/QPCPodcast3NoTextCrop.png" alt="" style="margin-left: 80px; margin-top: 0px;" height="120" width="120">
+        </a>
+    </div>
+</div>
+ <!-- Page Content -->
+<div class="page-content no-margin-top">
+
+    <div class="pad-top-0 pad-bot-0" style="background-color:#1f232b;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="tab-theme login-register-tab">
+                        <div class="tab-content">
+                            <div id="tab1" class="tab-pane active">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="text-light mar-bot-25">Login To Your Account</h3>
+                                        <div class="form-theme form-dark">
+                                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                                            {
+                                                @Html.AntiForgeryToken()
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <div class="form-group pad-bot-15">
+                                                    <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Username</small> <i class="icon-profile-female text-right text-lighter"></i></label>
+                                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class="form-group pad-bot-15">
+                                                    <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Password</small> <i class="icon-lock text-right text-lighter"></i></label>
+                                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6 pad-top-5 text-center-mobile">
+                                                            <a href="@Url.Action("ForgotPassword", "Account")" @*data-toggle="tab"*@ class="text-light letter-spacing-2 text-uppercase mar-top-5" style="font-size: 11px;"><b>Forgot Password?</b></a>
+                                                        </div>
+                                                        <div class="col-sm-6 text-right mar-top-15-mobile text-center-mobile">
+                                                            <input type="submit" class="btn btn-dark btn-lg btn-full-width" value="Login" />
+                                                        </div>
+                                                    </div>
+                                            }
+                                            <div class="row" style="margin-top:10px;">
+                                                <div class="col-md-12">
+                                                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <input name="Email" value="qpc4ever@gmail.com" hidden />
+                                                        <input name="Password" value="Qpc4ever!" hidden />
+                                                        <div class="form-group pad-bot-15">
+                                                            <input type="submit" class="btn btn-blue btn-lg btn-full-width" value="Admin Demo" />
+                                                        </div>
+                                                    }
+
+                                                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <input name="Email" value="mjaang@coderfoundry.com" hidden />
+                                                        <input name="Password" value="Password1!" hidden />
+                                                        <div class="form-group pad-bot-15">
+                                                            <input type="submit" class="btn btn-blue btn-lg btn-full-width" value="Project Manager Demo" />
+                                                        </div>
+                                                    }
+
+                                                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <input name="Email" value="devdemo@coderfoundry.com" hidden />
+                                                                <input name="Password" value="Password5!" hidden />
+                                                                <div class="form-group pad-bot-15">
+                                                                    <input type="submit" class="btn btn-blue btn-lg btn-full-width" value="Developer Demo" />
+                                                                </div>
+                                                    }
+
+                                                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+                                                        <input name="Email" value="submitter@coderfoundry.com" hidden />
+                                                                        <input name="Password" value="Password1!" hidden />
+                                                                        <div class="form-group pad-bot-15">
+                                                                            <input type="submit" class="btn btn-blue btn-lg btn-full-width" value="Submitter Demo" />
+
+                                                                        </div>
+                                                    }
+                                                    </div>
+                                                </div>
+                                                    <hr class="mar-top-25 mar-bot-25 light" />
+                                                    <label class="text-lighter">OR LOGIN WITH</label>
+                                                    <ul class="social-icons list-inline list-unstyled circle inverse sm">
+                                                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                                        <li><a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
+                                                        <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                                    </ul>
+                                                    <hr class="mar-top-25 mar-bot-25 light" />
+                                                    <div class="btn-curtain btn-curtain-light btn-full-width"><a href="@Url.Action("Register", "Account")" @*data-toggle="tab"*@ class="btn btn-full-width btn-lg">Create A New Account</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div id="tab2" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="text-light">Forgot Password?</h3>
+                                        <p class="text-light mar-bot-25">Enter your e-mail address below to reset your password.</p>
+                                        <div class="form-theme form-dark">
+                                            <div class="form-group pad-bot-15">
+                                                <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Email</small> <i class="icon-envelope text-right text-lighter"></i></label>
+                                                <input type="email" class="form-control" id="exampleInputEmailForgot">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 pad-top-5 text-center-mobile">
+                                                    <div class="btn-curtain btn-curtain-light"><a href="#tab1" data-toggle="tab" class="btn btn-full-width btn-lg">Back</a></div>
+                                                </div>
+                                                <div class="col-sm-6 text-right text-center-mobile mar-top-15-mobile">
+                                                    <a href="#" class="btn btn-dark btn-lg">Submit</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab3" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="text-light">Sign Up</h3>
+                                        <p class="text-light mar-bot-25">Enter your personal details below:</p>
+                                        <div class="form-theme form-dark">
+                                            <div class="form-group pad-bot-15">
+                                                <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Name</small> <i class="icon-profile-female text-right text-lighter"></i></label>
+                                                <input type="text" class="form-control" id="nameNew">
+                                            </div>
+                                            <div class="form-group pad-bot-15">
+                                                <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Email</small> <i class="icon-envelope text-right text-lighter"></i></label>
+                                                <input type="email" class="form-control" id="exampleInputEmailNew">
+                                            </div>
+                                            <div class="form-group pad-bot-15">
+                                                <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Address</small> <i class="icon-streetsign text-right text-lighter"></i></label>
+                                                <input type="text" class="form-control" id="addressNew">
+                                            </div>
+                                            <div class="form-group pad-bot-15">
+                                                <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>City</small> <i class="icon-map-pin text-right text-lighter"></i></label>
+                                                <input type="text" class="form-control" id="cityNew">
+                                            </div>
+                                            <div class="form-group pad-bot-25">
+                                                <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Town</small> <i class="icon-globe text-right text-lighter"></i></label>
+                                                <input type="text" class="form-control" id="townNew">
+                                            </div>
+                                            <p class="text-light mar-bot-25">Enter your account details below:</p>
+                                            <div class="form-group pad-bot-15">
+                                                <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Username</small> <i class="pe-7s-id text-right text-lighter"></i></label>
+                                                <input type="text" class="form-control" id="usernameNew">
+                                            </div>
+                                            <div class="form-group pad-bot-15">
+                                                <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Password</small> <i class="icon-lock text-right text-lighter"></i></label>
+                                                <input type="text" class="form-control" id="passNew">
+                                            </div>
+                                            <div class="form-group pad-bot-25">
+                                                <label class="control-label text-uppercase letter-spacing-3 pad-bot-5 text-lighter"><small>Re-enter Password</small> <i class="pe-7s-check text-right text-lighter"></i></label>
+                                                <input type="text" class="form-control" id="passNew1">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 pad-top-5 text-center-mobile">
+                                                    <div class="btn-curtain btn-curtain-light"><a href="#tab1" data-toggle="tab" class="btn btn-full-width btn-lg">Back</a></div>
+                                                </div>
+                                                <div class="col-sm-6 text-right text-center-mobile mar-top-15-mobile">
+                                                    <a href="#" class="btn btn-dark btn-lg">Register</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mar-top-25 mar-bot-25 light" />
+                    <p class="text-center weight-400 text-lighter"><small>©2017 Chris McGlynn - www.theqpc.com</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- End of Page Content -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

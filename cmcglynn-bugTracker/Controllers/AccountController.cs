@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using cmcglynn_bugTracker.Models;
 using static cmcglynn_bugTracker.EmailService;
+using System.Data.Entity;
+using System.IO;
 
 namespace cmcglynn_bugTracker.Controllers
 {
@@ -141,40 +143,66 @@ namespace cmcglynn_bugTracker.Controllers
         public ActionResult Register()
         {
             var timezones = TimeZoneInfo.GetSystemTimeZones();
-
-            ViewBag.TimeZone = new SelectList(timezones, "Id", "Id");
+            var defaulttimezone = TimeZoneInfo.FindSystemTimeZoneById("US Eastern Standard Time");
+            ViewBag.TimeZone = new SelectList(timezones, "Id", "Id", defaulttimezone);
             return View();
         }
 
         //
         // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {                                                                         // ADD "FIRSTNAME" AND "LASTNAME"
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Register(RegisterViewModel model, string mediaURL, HttpPostedFileBase image)
+        //{
+        //    if (image != null && image.ContentLength > 0)  //CODE TO BE ABLE TO UPLOAD IMAGES
+        //    {
+        //        var ext = Path.GetExtension(image.FileName).ToLower();
+        //        if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp")
+        //            ModelState.AddModelError("image", "Invalid Format.");
+        //    }
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(User).State = EntityState.Modified;
+        //        if (image != null)
+        //        {
+        //            var filePath = "/Upload/";   //UPLOADING IMAGES TO DATABASE AND PHYSICAL LOCATION "FOLDER"
+        //            var absPath = Server.MapPath("~" + filePath);
+        //            User.MediaUrl = filePath + image.FileName;
+        //            image.SaveAs(Path.Combine(absPath, image.FileName));
+        //        }
+        //        else
+        //        {
+        //            User.MediaUrl = mediaURL;
+
+        //        }
+
+        //        //post.Updated = System.DateTime.Now;
+        //        db.SaveChanges();
+        //        if (ModelState.IsValid)
+        //    {                                                                         // ADD "FIRSTNAME" AND "LASTNAME"
+        //        var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, TimeZone = model.TimeZone };
+        //        var result = await UserManager.CreateAsync(user, model.Password);
+        //        if (result.Succeeded)
+        //        {
+        //            await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+        //            // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+        //            // Send an email with this link
+        //            // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+        //            // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+        //            // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
-                }
-                AddErrors(result);
-            }
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        AddErrors(result);
+        //    }
+        //    var timezones = TimeZoneInfo.GetSystemTimeZones();
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
+        //    ViewBag.TimeZone = new SelectList(timezones, "Id", "Id");
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
         //
         // GET: /Account/ConfirmEmail
