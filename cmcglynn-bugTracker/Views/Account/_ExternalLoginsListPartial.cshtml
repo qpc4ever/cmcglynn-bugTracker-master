@@ -4,9 +4,75 @@
 @{
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-<div style="margin:200px; color:white;">
-    <h4 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">Use another service to log in.</h4>
-    <hr />
+<style>
+    button.facebook {
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        color: #fff !important;
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        font-size: 17px;
+        float: left;
+        height: 35px;
+        line-height: 5px;
+        width: 35px;
+        -webkit-transition: all 0.2s linear;
+        -moz-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+        font-family: 'Roboto Condensed', sans-serif;
+        letter-spacing: 1px;
+        background-color: #337ab7;
+    }
+    button.google-plus {
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        color: #fff !important;
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        font-size: 17px;
+        float: left;
+        height: 35px;
+        line-height: 5px;
+        width: 35px;
+        -webkit-transition: all 0.2s linear;
+        -moz-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+        font-family: 'Roboto Condensed', sans-serif;
+        letter-spacing: 1px;
+        background-color: #ff0000;
+    }
+
+        button:hover {
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            color: #fff !important;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            font-size: 17px;
+            float: left;
+            height: 35px;
+            line-height: 5px;
+            width: 35px;
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+            font-family: 'Roboto Condensed', sans-serif;
+            letter-spacing: 1px;
+            background-color: #555;
+        }
+</style>
+
+<h4 >SOCIAL MEDIA LOGIN</h4>
+<div>
     @{
         var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
         if (loginProviders.Count() == 0)
@@ -20,17 +86,32 @@
         }
         else
         {
-            using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+            using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { id = "externalloginformsubmit"}))
             {
                 @Html.AntiForgeryToken()
-                <div id="socialLoginList">
-                    <p>
-                        @foreach (AuthenticationDescription p in loginProviders)
+                <ul class="social-icons list-inline list-unstyled circle inverse sm">
+                    @foreach (AuthenticationDescription p in loginProviders)
+                    {
+                        if (p.AuthenticationType == "Facebook")
                         {
-                            <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                            <li><button type="submit" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account" class="facebook"><i class="fa fa-facebook"></i></button></li>
+
+                            @*<li><a href="#" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account" class="facebook"><button type="submit"><i class="fa fa-facebook"></i></button></a></li>*@
                         }
-                    </p>
-                </div>
+                        if (p.AuthenticationType == "Google")
+                        {
+                            <li><button type="submit" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account" class="google-plus"><i class="fa fa-google-plus"></i></button></li>
+                        }
+                        if (p.AuthenticationType == "Linkedin")
+                        {
+                            <li><a href="javascript:void(0)" onclick="document.getElementById('externalloginformsubmit').submit();" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        }
+                        if (p.AuthenticationType == "Twitter")
+                        {
+                            <li><a href="javascript:void(0)" onclick="document.getElementById('externalloginformsubmit').submit();" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                        }
+                    }
+                </ul>
             }
         }
     }
