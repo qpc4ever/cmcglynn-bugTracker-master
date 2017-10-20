@@ -144,9 +144,67 @@
 
     }
 }
-
-<h3 style="text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">NEW TICKET HISTORY</h3>
+<h3 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">NEW TICKET HISTORY</h3>
 <hr />
+
+<div class="section-admin container-fluid"  style="background-color: #1f232b !important">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-7">
+            <div class="portlet">
+                @*<div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject text-uppercase"></span>
+                    </div>
+                </div>*@
+                <div class="portlet-body" style="margin-top: 100px">
+                    <ul class="timeline timeline-left timeline-light timeline-dark-green">
+                        @foreach (var history in Model.Histories)
+                        {
+                            <li>
+                                <div class="timeline-badge text-blue-grey">
+
+                                    <i class="pe-7s-diamond 3-x"></i>
+                                </div>
+                                
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4 class="timeline-title">@history.Author.FullName - @history.Property</h4>
+                                        <p><small class="timeline-time pull-right">@history.Created</small></p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>
+                                            Changed from @history.OldValue to @history.NewValue.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        
+                        @*<li>
+                            <div class="timeline-badge text-blue-grey"><i class="pe-7s-rocket 3-x"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">Our first medal</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
+                                        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+                                        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+                                        Aliquam in felis sit amet augue.
+                                    </p>
+                                </div>
+                            </div>
+                        </li>*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
 @foreach (var history in Model.Histories)
 {
     if (history.Property == "TICKET COMMENT")

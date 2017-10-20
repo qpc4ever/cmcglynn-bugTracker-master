@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 <div style="margin:200px; color:white;">
-    <h4>Use another service to log in.</h4>
+    <h4 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">Use another service to log in.</h4>
     <hr />
     @{
         var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();

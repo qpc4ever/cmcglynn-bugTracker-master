@@ -155,7 +155,7 @@ namespace cmcglynn_bugTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase image)
         {
-            var pPic = "/Assets/images/QPCPodcast3NoText_square.png";
+            var pPic = "/Assets/images/QPCPodcast3NoTextCrop.png";
 
             if (image != null && image.ContentLength > 0)
             {

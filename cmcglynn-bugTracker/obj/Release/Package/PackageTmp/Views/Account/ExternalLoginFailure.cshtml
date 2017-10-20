@@ -1,8 +1,10 @@
 ﻿@{
     ViewBag.Title = "Login Failure";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-
-<hgroup>
-    <h2>@ViewBag.Title.</h2>
-    <h3 class="text-danger">Unsuccessful login with service.</h3>
-</hgroup>
+<div style="margin:200px; color:white;">
+    <hgroup>
+        <h2 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">@ViewBag.Title.</h2>
+        <h3 class="text-danger" style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">Unsuccessful login with service.</h3>
+    </hgroup>
+    </div>   

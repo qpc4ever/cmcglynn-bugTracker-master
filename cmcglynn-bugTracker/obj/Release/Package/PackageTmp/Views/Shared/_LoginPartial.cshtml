@@ -7,8 +7,9 @@
         //ADD NAME TO NAV BAR/LOGIN
     <ul class="nav navbar-nav navbar-right">
         <li>             
-            @Html.ActionLink("Hello " + ViewBag.FullName as string  + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <a href="#">Hello @ViewBag.FullName!</a>
         </li>
+        <li><a href="@Url.Action("Index", "Manage")">Account Settings</a></li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
     }

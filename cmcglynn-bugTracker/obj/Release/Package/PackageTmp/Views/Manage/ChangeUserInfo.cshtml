@@ -6,9 +6,10 @@
 
 <h2 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">ChangeUserInfo</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("ChangeUserInfo", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "Multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+    <input name="ProfilePic" value="@Model.ProfilePic" hidden />
     
     <div class="form-horizontal">
         <h4></h4>
@@ -22,6 +23,21 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Profile Picture</label>
+            <div class="col-md-10">
+                <input id="profilePicUpload" name="image" type="file" class="form-control" />  @*INPUT TO UPLOAD IMAGES*@
+                <div id="fileDisplay" style="max-width: 180px; padding-top: 10px"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
@@ -32,3 +48,37 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    <script>
+        var fileInput = document.getElementById('profilePicUpload');
+        var fileDisplayArea = document.getElementById('fileDisplay');
+
+        //File Reader Function for displaying images
+        fileInput.addEventListener('change', function (e) {
+            var file = fileInput.files[0];
+            var imageType = /image.*/;
+
+            if (file.type.match(imageType)) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    fileDisplayArea.innerHTML = "";
+
+                    // Create a new image.
+                    var img = new Image();
+                    // Set the img src property using the data URL.
+                    img.src = reader.result;
+                    // Add the image to the page.
+                    fileDisplayArea.appendChild(img);
+                }
+
+                reader.readAsDataURL(file);
+            }
+
+            else {
+                fileDisplayArea.innerHTML = "File not supported!";
+            }
+        });
+    </script>
+}
