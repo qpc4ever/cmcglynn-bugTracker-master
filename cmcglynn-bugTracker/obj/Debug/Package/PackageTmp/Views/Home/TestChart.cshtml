@@ -1,0 +1,25 @@
+﻿@{ 
+    ViewBag.Title = "TestChart";
+}
+
+<h2>TestChart</h2>
+
+<link rel="stylesheet" href="~/Assets/morris.js/morris.css">
+
+<div id="SampleChart" style="height:300px"></div>
+
+@section scripts{
+<script src="~/Assets/morrisjs/raphael-min.js"></script>
+<script src="~/Assets/morrisjs/morris.min.js"></script>
+
+    <script>
+        Morris.Donut({
+            element: 'SampleChart',
+            data: [
+                { label: "Assigned", value: @ViewBag.AssignedTk },
+                { label: "Unassigned", value: @ViewBag.UnnasignedTk },
+                { label: "Resolved", value: @ViewBag.ResolvedTk }
+            ]
+        }); 
+    </script>
+    }

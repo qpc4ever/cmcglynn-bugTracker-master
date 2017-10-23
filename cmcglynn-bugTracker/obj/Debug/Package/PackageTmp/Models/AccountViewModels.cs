@@ -78,6 +78,9 @@ namespace cmcglynn_bugTracker.Models
         [Display(Name = "Time Zone")]
         public string TimeZone { get; set; }
 
+        //[Display(Name = "Profile Picture")]
+        //public string ProfilePic { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

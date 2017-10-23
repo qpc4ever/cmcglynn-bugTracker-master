@@ -55,15 +55,15 @@ namespace cmcglynn_bugTracker
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "365711280534215",
+               appSecret: "bcc181a23714e637b500b7bd02c4696f");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "858858019920-s5331c3gb8hgmi8t3p0fvi0mq2cfpqib.apps.googleusercontent.com ",
+                ClientSecret = "Zke0_V7rTPB6DZkEPWRgulaX "
+            });
         }
     }
 }

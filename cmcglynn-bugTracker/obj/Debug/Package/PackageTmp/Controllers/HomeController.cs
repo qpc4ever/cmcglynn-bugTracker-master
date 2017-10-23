@@ -20,6 +20,10 @@ namespace cmcglynn_bugTracker.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.AssignedTk = db.Tickets.Where(t => t.TicketStatus.Name == "Assigned").Count();
+            ViewBag.UnassignedTk = db.Tickets.Where(t => t.TicketStatus.Name == "Unassigned").Count();
+            ViewBag.CompleteTk = db.Tickets.Where(t => t.TicketStatus.Name == "Complete").Count();
+
             var user = db.Users.Find(User.Identity.GetUserId());
             var tickets = db.Tickets.Include(t => t.AssignToUser).Include(t => t.OwnerUser).Include(t => t.Project).Include(t => t.TicketPriority).Include(t => t.TicketStatus).Include(t => t.TicketType);
             List<Ticket> Tickets = new List<Ticket>();
@@ -100,7 +104,21 @@ namespace cmcglynn_bugTracker.Controllers
                     await Task.FromResult(0);
                 }
             }
+
+
             return View(model);
+
+            
+        }
+
+        public ActionResult TestChart()
+        {
+            ViewBag.AssignedTk = db.Tickets.Where(t => t.TicketType.Name == "Hardware").Count();
+            ViewBag.UnnasignedTk = 8;
+            ViewBag.ResolvedTk = 7;
+
+            return View();
+
         }
     }
 }
