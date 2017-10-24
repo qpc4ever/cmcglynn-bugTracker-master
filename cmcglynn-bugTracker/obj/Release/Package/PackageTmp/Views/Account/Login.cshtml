@@ -68,7 +68,7 @@ Layout = "~/Views/Shared/_LoginLayout.cshtml";
                                                         <input name="Email" value="qpc4ever@gmail.com" hidden />
                                                         <input name="Password" value="Qpc4ever!" hidden />
                                                         <div class="form-group pad-bot-15">
-                                                            <input type="submit" class="btn btn-red btn-lg btn-full-width" value="Admin Demo" />
+                                                            <input type="submit" style="background-color:red" class="btn btn-lg btn-full-width" value="Admin Demo" />
                                                         </div>
                                                     }
 
@@ -78,7 +78,7 @@ Layout = "~/Views/Shared/_LoginLayout.cshtml";
                                                         <input name="Email" value="mjaang@coderfoundry.com" hidden />
                                                         <input name="Password" value="Password1!" hidden />
                                                         <div class="form-group pad-bot-15">
-                                                            <input type="submit" class="btn btn-red btn-lg btn-full-width" value="Project Manager Demo" />
+                                                            <input type="submit" style="background-color:red" class="btn btn-lg btn-full-width" value="Project Manager Demo" />
                                                         </div>
                                                     }
 
@@ -88,7 +88,7 @@ Layout = "~/Views/Shared/_LoginLayout.cshtml";
                                                         <input name="Email" value="devdemo@coderfoundry.com" hidden />
                                                                 <input name="Password" value="Password5!" hidden />
                                                                 <div class="form-group pad-bot-15">
-                                                                    <input type="submit" class="btn btn-red btn-lg btn-full-width" value="Developer Demo" />
+                                                                    <input type="submit" style="background-color:red" class="btn btn-lg btn-full-width" value="Developer Demo" />
                                                                 </div>
                                                     }
 
@@ -98,21 +98,18 @@ Layout = "~/Views/Shared/_LoginLayout.cshtml";
                                                         <input name="Email" value="submitter@coderfoundry.com" hidden />
                                                                         <input name="Password" value="Password1!" hidden />
                                                                         <div class="form-group pad-bot-15">
-                                                                            <input type="submit" class="btn btn-red btn-lg btn-full-width" value="Submitter Demo" />
+                                                                            <input type="submit" style="background-color:red" class="btn btn-lg btn-full-width" value="Submitter Demo" />
 
                                                                         </div>
                                                     }
                                                     </div>
                                                 </div>
                                                     <hr class="mar-top-25 mar-bot-25 light" />
-                                                    <label class="text-lighter">OR LOGIN WITH</label>
-                                                    <ul class="social-icons list-inline list-unstyled circle inverse sm">
-                                                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                                        <li><a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
-                                                        <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                                    </ul>
-                                                    <hr class="mar-top-25 mar-bot-25 light" />
+                                            <br />
+                                            <section id="solcialLoginForm">
+                                                    <center> @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })</center>
+                                                  </section>
+                                            <hr class="mar-top-25 mar-bot-25 light" />
                                                     <div class="btn-curtain btn-curtain-light btn-full-width"><a href="@Url.Action("Register", "Account")" @*data-toggle="tab"*@ class="btn btn-full-width btn-lg">Create A New Account</a></div>
                                                 </div>
                                             </div>

@@ -197,14 +197,15 @@
                                 <li class="nav-notify dropdown">
                                     <a href="#"><i class="pe-7s-bell"></i><span class="menu-badge bg-red">@ViewBag.Notifications.Count</span></a>
                                     <ul class="dropdown-menu" style="background-color: red">
-                                        <li class="dropdown-heading bg-red"><span class="number">@ViewBag.Notifications.Count pending</span> notifications <a href="#">View All</a></li>
+                                        <li class="dropdown-heading bg-red"><span class="number">@ViewBag.Notifications.Count pending</span> notifications @*<a href="#">View All</a>*@</li>
                                         <li>
                                             <div class="slim-scroll-dropdown-content">
                                                 <div class="slim-scroll-div">
                                                     <ul class="inner-dropdown-content">
                                                         @foreach (var notifications in ViewBag.Notifications)
                                                         {
-                                                            <li><a href="@Url.Action("DeleteNotification", "Tickets", new { id = notifications.Id } )"><span class="details"><i class="bg-blue icon_plus_alt2"></i> @notifications.Description</span><span class="time-badge">@notifications.Created</span></a></li>
+                                                            @*<li><span class="time-badge">@notifications.Created</span></li>*@
+                                                            <li><a href="@Url.Action("DeleteNotification", "Tickets", new { id = notifications.Id } )"><span class="details"><i class="bg-blue icon_plus_alt2"></i> @notifications.Description</span><hr/></a></li>
                                                         }
 
                                                         @*<li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>

@@ -97,7 +97,7 @@
 
                 <td>
                     @if (User.IsInRole("Admin") || User.IsInRole("Project Manager"))
-                {
+                    {
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id })<br />
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })<br />
                     }

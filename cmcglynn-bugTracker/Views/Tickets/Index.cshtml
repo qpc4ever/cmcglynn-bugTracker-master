@@ -10,7 +10,7 @@
 
 @if (User.IsInRole("Submitter"))
 {
-    <p style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">
+    <p> @*style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">*@
         @Html.ActionLink("CREATE NEW TICKET", "Create")
     </p>
 }

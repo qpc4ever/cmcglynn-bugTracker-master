@@ -141,11 +141,18 @@ namespace cmcglynn_bugTracker.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
+            
+
         {
+            //if (!ModelState.IsValid)
+            //{
+            //    ViewBag.TimeZone = new SelectList(timezones, "Id", "Id", defaulttimezone);
+            //}
+
             var timezones = TimeZoneInfo.GetSystemTimeZones();
             var defaulttimezone = TimeZoneInfo.FindSystemTimeZoneById("US Eastern Standard Time");
             ViewBag.TimeZone = new SelectList(timezones, "Id", "Id", defaulttimezone);
-            return View();
+             return View();
         }
 
 
@@ -153,8 +160,19 @@ namespace cmcglynn_bugTracker.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase image)
+
+
         {
+            if (!ModelState.IsValid)
+            {
+                var timezones = TimeZoneInfo.GetSystemTimeZones();
+                var defaulttimezone = TimeZoneInfo.FindSystemTimeZoneById("US Eastern Standard Time");
+                ViewBag.TimeZone = new SelectList(timezones, "Id", "Id", defaulttimezone);
+                //return View(model);
+            }
+
             var pPic = "/Assets/images/QPCPodcast3NoTextCrop.png";
 
             if (image != null && image.ContentLength > 0)
@@ -203,7 +221,10 @@ namespace cmcglynn_bugTracker.Controllers
                 }
                 AddErrors(result);
             }
-
+            if (!ModelState.IsValid)
+            {
+            
+            }
             // If we got this far, something failed, redisplay form
 
             return View(model);

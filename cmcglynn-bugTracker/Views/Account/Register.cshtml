@@ -6,7 +6,11 @@
 <div style="margin:200px; color:white;">
     <h2 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">@ViewBag.Title.</h2>
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "Multipart/form-data" }))
-    {
+    {  
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+   
         <div class="form-group">
             @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })          @*ADD "FIRSTNAME" AND "LASTNAME" FIRST EVERY APPLICATION*@
             <div class="col-md-10">
@@ -21,10 +25,10 @@
         </div>
 
 
-        @Html.AntiForgeryToken()
+      
         <h4 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">Create a new account.</h4>
         <hr />
-        @Html.ValidationSummary("", new { @class = "text-danger" })
+       
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
@@ -32,6 +36,8 @@
             </div>
         </div>
 
+        
+        
         <div class="form-group">
             <label class="control-label col-md-2">Profile Picture</label>
             <div class="col-md-10">
@@ -40,6 +46,9 @@
         </div>
 
         <div class="form-group">
+
+
+            
             @Html.LabelFor(m => m.TimeZone, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.DropDownList("TimeZone", null, new { @class = "searchable-select", style="color:black" })

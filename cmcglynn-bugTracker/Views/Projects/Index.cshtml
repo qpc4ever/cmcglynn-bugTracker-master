@@ -30,7 +30,8 @@
                 Time Zone
             </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.AuthorId)
+                Author
+                @*@Html.DisplayNameFor(model => model.AuthorId)*@
             </th>
             <th>Assigned Users</th>
             <th></th>
@@ -77,7 +78,7 @@
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })<br />
                     }
                     @Html.ActionLink("Details", "Details", new { id = item.Id })<br />
-                    @Html.ActionLink("Tickets", "Index", "Tickets")
+                    @*@Html.ActionLink("Tickets", "Index", "Tickets")*@
 
                 </td>
             </tr>

@@ -163,8 +163,100 @@
                         {
                             <li>
                                 <div class="timeline-badge text-blue-grey">
+                                    @if (history.Property == "TICKET COMMENT")
+                                    {
+                                    <div>
+                                        <i class="pe-7s-comment 3-x" style="color:purple;"></i>
+                                    </div>
+                                    <hr />
 
-                                    <i class="pe-7s-diamond 3-x"></i>
+
+
+
+                                    }
+                                    else if (history.Property == "TICKET ATTACHMENT")
+                                    {
+                                    <div>
+                                        <i class="pe-7s-paperclip 3-x" style="color:aqua;"></i>
+                                    </div>
+                                    <hr />
+                                    }
+
+                                    else if (history.Property == "COMMENT DELETED")
+                                    {
+
+                                            <div>
+                                            <i class="pe-7s-comment 3-x" style="color:red;"></i>
+                                        </div>
+                                        <hr />
+                                    }
+
+                                    else if (history.Property == "TICKET ASSIGNED")
+                                    {
+                                 
+                                        <div>
+                                            <i class="pe-7s-ticket 3-x" style="color:green;"></i>
+                                        </div>
+                                        <hr />
+                                    }
+
+                                    else if (history.Property == "ATTACHMENT DELETED")
+                                    {
+                                    
+                                        <div>
+                                            <i class="pe-7s-paperclip 3-x" style="color:red;"></i>
+                                        </div>
+                                        <hr />
+                                    }
+                                    else if (history.Property == "TICKET EDITED: TITLE")
+                                    {
+                                  
+                                        <div>
+                                            <i class="pe-7s-ticket 3-x" style="color:blue;"></i>
+                                        </div>
+                                        <hr />
+                                    }
+                                    else if (history.Property == "TICKET EDITED: DESCRIPTION")
+                                    {
+                                 
+                                        <div>
+                                            <i class="pe-7s-ticket 3-x" style="color:yellow;"></i>
+                                        </div>
+                                        <hr />
+                                    }
+                                    else if (history.Property == "TICKET EDITED: TYPE")
+                                    {
+                                    
+                                        <div>
+                                            <i class="pe-7s-ticket 3-x" style="color:orange;"></i>
+                                        </div>
+                                        <hr />
+                                    }
+                                    else if (history.Property == "TICKET EDITED: PRIORITY")
+                                    {
+                                    
+                                        <div>
+                                            <i class="pe-7s-ticket 3-x" style="color:sienna;"></i>
+                                        </div>
+                                        <hr />
+                                    }
+                                    else if (history.Property == "TICKET EDITED: STATUS")
+                                    {
+                                    
+                                        <div>
+                                            <i class="pe-7s-ticket 3-x" style="color:saddlebrown;"></i>
+                                        </div>
+                                        <hr />
+                                    }
+                                    else if (history.Property == "TICKET EDITED: ASSIGNED")
+                                    {
+                                 
+                                        <div>
+                                            <i class="pe-7s-ticket 3-x" style="color:white;"></i>
+                                        </div>
+                                        <hr />
+                                    }
+                                   
                                 </div>
                                 
                                 <div class="timeline-panel">
@@ -172,10 +264,11 @@
                                         <h4 class="timeline-title">@history.Author.FullName - @history.Property</h4>
                                         <p><small class="timeline-time pull-right">@history.Created</small></p>
                                     </div>
+                                    <hr />
                                     <div class="timeline-body">
-                                        <p>
-                                            Changed from @history.OldValue to @history.NewValue.
-                                        </p>
+                                        <em>
+                                            @*Changed from*@ @history.OldValue @*to*@ "@history.NewValue."
+                                        </em>
                                     </div>
                                 </div>
                             </li>
@@ -205,7 +298,7 @@
     </div>
 </div>
 
-@foreach (var history in Model.Histories)
+@*@foreach (var history in Model.Histories)
 {
     if (history.Property == "TICKET COMMENT")
     {
@@ -321,9 +414,9 @@
                 <em>"@history.NewValue"</em>
             </p>
         </div>
-    }
+    }*@
 
-}
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
