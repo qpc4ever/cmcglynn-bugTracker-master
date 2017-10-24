@@ -111,14 +111,9 @@ namespace cmcglynn_bugTracker.Controllers
             
         }
 
-        public ActionResult TestChart()
+        public ActionResult CustomErrors()
         {
-            ViewBag.AssignedTk = db.Tickets.Where(t => t.TicketType.Name == "Hardware").Count();
-            ViewBag.UnnasignedTk = 8;
-            ViewBag.ResolvedTk = 7;
-
             return View();
-
         }
     }
 }
