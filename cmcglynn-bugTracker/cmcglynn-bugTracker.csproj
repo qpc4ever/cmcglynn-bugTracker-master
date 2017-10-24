@@ -1345,6 +1345,11 @@
     <Content Include="Assets\flot\jquery.flot.tooltip.min.js" />
     <Content Include="Assets\flot\jquery.js" />
     <Content Include="Assets\flot\LICENSE.txt" />
+    <Content Include="Assets\images\asp-mvc.png" />
+    <Content Include="Assets\images\img-2.jpg" />
+    <Content Include="Assets\images\main-qimg-73742f9afad887900ea786ae2006ba28.png" />
+    <Content Include="Assets\images\mvc_05.png" />
+    <Content Include="Assets\images\net_c.jpg" />
     <Content Include="Assets\font-awesome\css\font-awesome.css" />
     <Content Include="Assets\font-awesome\css\font-awesome.min.css" />
     <Content Include="Assets\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -1469,6 +1474,7 @@
     <Content Include="Assets\images\radio-img.png" />
     <Content Include="Assets\images\scroll-dark.png" />
     <Content Include="Assets\images\scroll.png" />
+    <Content Include="Assets\images\ssms_connection_errors-100601651-primary.idge.jpg" />
     <Content Include="Assets\images\sunset-field.jpg" />
     <Content Include="Assets\images\team\1-square.jpg" />
     <Content Include="Assets\images\team\2-square.jpg" />
