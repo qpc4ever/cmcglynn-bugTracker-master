@@ -5,7 +5,8 @@
 @{
     ViewBag.Title = "Index";
 }
-<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Assets/datatables/media/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/datatables/media/css/dataTables.bootstrap.min.css">
 <h1 style="text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;text-decoration: underline; text-align:center; font-family:'Goudy Old Style'; color:red; font-size:45px">TICKETS</h1>
 
 @if (User.IsInRole("Submitter"))
@@ -108,7 +109,8 @@
     </tbody>
 </table>
 @section scripts{
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="~/Assets/datatables/media/js/dataTables.bootstrap.min.js"></script>
 
     <script>
         $("#MyTable").DataTable();
